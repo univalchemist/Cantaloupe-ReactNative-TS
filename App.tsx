@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
+import {SafeAreaView, StyleSheet, useColorScheme, useWindowDimensions } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 

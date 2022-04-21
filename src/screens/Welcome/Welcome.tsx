@@ -5,6 +5,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WelcomeScreenProp } from '../../navigation/MainNavigator';
 import { COLORS } from '@theme/color';
+import { useNavigation } from '@react-navigation/native';
 
 const CarouselData = [
   {
@@ -30,6 +31,7 @@ const CarouselData = [
 ];
 
 const Welcome = ({ }: WelcomeScreenProp) => {
+  const navigation = useNavigation<WelcomeScreenProp>();
 
   return (
     <View style={styles.container}>
@@ -37,7 +39,7 @@ const Welcome = ({ }: WelcomeScreenProp) => {
       <Carousel data={CarouselData} />
       <Button
         title="Create Account"
-        onPress={() => {}}
+        onPress={() => navigation.navigate("AuthOption")}
         style={styles.btnCreate}
       />
       <Button
