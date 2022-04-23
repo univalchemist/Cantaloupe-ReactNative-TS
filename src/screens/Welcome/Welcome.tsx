@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { Button } from '@components/Button';
 import { CardImage, LogoMore } from '@assets/icon';
 import { Carousel } from '@components/Carousel';
@@ -5,7 +6,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { WelcomeScreenProp } from '../../navigation/MainNavigator';
 import { COLORS } from '@theme/color';
-import { useNavigation } from '@react-navigation/native';
+import { Container } from '@components/Container';
 
 const CarouselData = [
   {
@@ -34,21 +35,21 @@ const Welcome = ({ }: WelcomeScreenProp) => {
   const navigation = useNavigation<WelcomeScreenProp>();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logo}><LogoMore /></View>
-      <Carousel data={CarouselData} />
-      <Button
-        title="Create Account"
-        onPress={() => navigation.navigate("AuthOption")}
-        style={styles.btnCreate}
-      />
-      <Button
-        title="Already Have An Account?"
-        onPress={() => {}}
-        style={styles.btnHave}
-        titleStyle={styles.btnHaveTitle}
-      />
-    </View>
+      <View style={styles.container}>
+        <View style={styles.logo}><LogoMore /></View>
+        <Carousel data={CarouselData} />
+        <Button
+          title="Create Account"
+          onPress={() => navigation.navigate("AuthOption")}
+          style={styles.btnCreate}
+        />
+        <Button
+          title="Already Have An Account?"
+          onPress={() => {}}
+          style={styles.btnHave}
+          titleStyle={styles.btnHaveTitle}
+        />
+      </View>
   );
 };
 
