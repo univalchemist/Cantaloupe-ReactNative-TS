@@ -1,3 +1,3 @@
-import AuthOption from "./AuthOption";
+import AuthOption from './AuthOption';
 
-export { AuthOption as AuthOptionScreen };
+export {AuthOption as AuthOptionScreen};

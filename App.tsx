@@ -9,13 +9,21 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  useColorScheme,
+  useWindowDimensions,
+  StatusBar,
+  View,
+} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {Provider} from 'react-redux';
 import MainNavigator from './src/navigation/MainNavigator';
 import {store} from './src/store/store';
+import {GradientWrapper} from './src/components/GradientWrpper';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,7 +33,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={[styles.Container, backgroundStyle]}>
+      <SafeAreaView style={{flex: 0, backgroundColor: '#ffe1cc'}} />
+
+      <SafeAreaView style={[styles.Container]}>
         <MainNavigator />
       </SafeAreaView>
     </Provider>
