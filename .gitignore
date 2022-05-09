@@ -62,3 +62,5 @@ buck-out/
 package-lock.json
 yarn.lock
 ios/Podfile.lock
+ios/cantaloupe.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+ios/cantaloupe.xcworkspace/contents.xcworkspacedata

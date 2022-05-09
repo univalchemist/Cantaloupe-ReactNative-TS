@@ -6,7 +6,7 @@ import {StyleSheet, View} from 'react-native';
 import {WelcomeScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-import {GradientWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrpper';
 
 const CarouselData = [
   {
@@ -35,7 +35,7 @@ const Welcome = ({}: WelcomeScreenProp) => {
   const navigation = useNavigation<WelcomeScreenProp>();
 
   return (
-    <GradientWrapper style={styles.container} scrollable>
+    <GradientScrollingWrapper style={styles.container}>
       <View style={styles.logo}>
         <LogoMore />
       </View>
@@ -51,7 +51,7 @@ const Welcome = ({}: WelcomeScreenProp) => {
         style={styles.btnHave}
         titleStyle={styles.btnHaveTitle}
       />
-    </GradientWrapper>
+    </GradientScrollingWrapper>
   );
 };
 

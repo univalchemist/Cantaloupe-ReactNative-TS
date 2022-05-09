@@ -3,7 +3,7 @@ import {Alert, StyleSheet, View} from 'react-native';
 import {CardsScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-import {GradientWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrpper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
 import {CardImage1, CardLogo, EmptyCardLogo, InfoIcon} from '@assets/icon';
@@ -13,7 +13,7 @@ const CardsScreen = ({}: CardsScreenProp) => {
   const navigation = useNavigation<CardsScreenProp>();
 
   return (
-    <GradientWrapper thirdColor="#fff" scrollable>
+    <GradientScrollingWrapper thirdColor="#fff">
       <Header onPressRight={() => Alert.alert('Go to profile screen')} />
       <CardImage
         CardImg={<CardImage1 style={{backgroundColor: '#004890'}} />}
@@ -43,7 +43,7 @@ const CardsScreen = ({}: CardsScreenProp) => {
         InfoIcon={<InfoIcon />}
       />
       <View style={[styles.separator, {marginTop: 130}]} />
-    </GradientWrapper>
+    </GradientScrollingWrapper>
   );
 };
 const styles = StyleSheet.create({

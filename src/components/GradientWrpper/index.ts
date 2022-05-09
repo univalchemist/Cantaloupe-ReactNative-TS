@@ -1,1 +1,1 @@
-export {GradientWrapper} from './GradientWrapper';
+export {GradientScrollingWrapper} from './GradientWrapper';

@@ -20,6 +20,7 @@ import {
   MapIcon,
   RewardIcon,
 } from '@assets/icon';
+import { COLORS } from '@theme/color';
 
 export type MainStackParamList = {
   Welcome: undefined;
@@ -43,7 +44,7 @@ function BottomTabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          borderTopColor: '#fff',
+          borderTopColor: COLORS.white,
         },
       }}>
       <BottomTab.Screen

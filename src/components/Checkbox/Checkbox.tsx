@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 28,
     textAlign: 'center',
-    color: '#FFF',
+    color: COLORS.white,
   },
 });

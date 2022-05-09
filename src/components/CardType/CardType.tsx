@@ -5,11 +5,11 @@ import {RightArrow} from '@assets/icon';
 
 interface CardTypeProps {
   CardLogo: any;
-  balance?: string;
   cardNumber: string;
   onPressRight: () => void;
-  style?: ViewStyle;
   InfoIcon: any;
+  style?: ViewStyle;
+  balance?: string;
 }
 
 export const CardType = ({

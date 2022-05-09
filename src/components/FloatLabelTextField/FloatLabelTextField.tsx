@@ -103,14 +103,14 @@ export const FloatLabelTextField = ({
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
     paddingTop: 25,
     paddingBottom: 18,
     paddingHorizontal: 10,
     width: '90%',
     alignSelf: 'center',
     minHeight: 60,
-    shadowColor: '#000000',
+    shadowColor: COLORS.black,
     shadowRadius: 3,
     shadowOpacity: 0.1,
     borderRadius: 20,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 28,
     textAlign: 'center',
-    color: '#FFF',
-    backgroundColor: '#fff',
+    color: COLORS.white,
+    backgroundColor: COLORS.white,
   },
 });

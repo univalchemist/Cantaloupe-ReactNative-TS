@@ -2,7 +2,7 @@ import {StyleSheet, ScrollView, ViewStyle} from 'react-native';
 import {COLORS} from '@theme/color';
 import LinearGradient from 'react-native-linear-gradient';
 
-type GridentWrapperProps = {
+type GradientScrollingWrapperProps = {
   style?: ViewStyle,
   firstColor?: string,
   secondColor?: string,
@@ -10,21 +10,21 @@ type GridentWrapperProps = {
   scrollable?: boolean
 }
 
-export const GradientWrapper = ({
+export const GradientScrollingWrapper = ({
   children,
   style,
   firstColor,
   secondColor,
   thirdColor,
-  scrollable = false,
-}: React.PropsWithChildren<GridentWrapperProps>) => {
+  scrollable = true,
+}: React.PropsWithChildren<GradientScrollingWrapperProps>) => {
   return (
     <LinearGradient
       start={{x: 2, y: -1.8}}
       end={{x: 2, y: 3.1}}
       colors={[
         firstColor ? firstColor : COLORS.orange,
-        secondColor ? secondColor : '#fff',
+        secondColor ? secondColor : COLORS.white,
         thirdColor ? thirdColor : COLORS.blue,
       ]}
       style={[styles.linearGradient, style]}>

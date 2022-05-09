@@ -23,7 +23,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Provider} from 'react-redux';
 import MainNavigator from './src/navigation/MainNavigator';
 import {store} from './src/store/store';
-import {GradientWrapper} from './src/components/GradientWrpper';
+import {GradientScrollingWrapper} from './src/components/GradientWrpper';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';

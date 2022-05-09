@@ -7,7 +7,7 @@ import {AuthOptionScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {Typography} from '@components/Typography';
 import {useNavigation} from '@react-navigation/native';
-import {GradientWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrpper';
 
 const AuthOption = () => {
   const navigation = useNavigation<AuthOptionScreenProp>();
@@ -18,7 +18,7 @@ const AuthOption = () => {
 
   const handleBackHome = useCallback(() => navigation.goBack(), [navigation]);
   return (
-    <GradientWrapper style={styles.container}>
+    <GradientScrollingWrapper style={styles.container} scrollable={false}>
       <Typography style={styles.title}>Create Account</Typography>
       {/* Apple button needs to be passed by apple */}
       {/* <AppleButton
@@ -60,7 +60,7 @@ const AuthOption = () => {
         style={styles.btnBack}
         titleStyle={styles.btnBackTitle}
       />
-    </GradientWrapper>
+    </GradientScrollingWrapper>
   );
 };
 
@@ -88,15 +88,18 @@ const styles = StyleSheet.create({
     color: COLORS.orange,
     textDecorationLine: 'underline',
   },
+
   btnBack: {
-    backgroundColor: 'transparent',
+    width: '90%',
+    alignSelf: 'center',
+    marginTop: 12,
+    minHeight: 60,
     position: 'absolute',
-    bottom: 5,
+    bottom: 15,
+    backgroundColor: 'transparent',
   },
-  btnBackTitle: {
+  btnBackTitle:{
     color: COLORS.primaryGray,
-    fontSize: 16,
-    fontWeight: '500',
-  },
+  }
 });
 export default AuthOption;

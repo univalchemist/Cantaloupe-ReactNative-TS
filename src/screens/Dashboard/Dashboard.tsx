@@ -6,13 +6,13 @@ import {DashboardScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {Typography} from '@components/Typography';
-import {GradientWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrpper';
 
 const Dashboard = ({}: DashboardScreenProp) => {
   const navigation = useNavigation<DashboardScreenProp>();
 
   return (
-    <GradientWrapper>
+    <GradientScrollingWrapper scrollable={false}>
       <View style={styles.container}>
         <View style={styles.logo}>
           <LogoMore />
@@ -43,7 +43,7 @@ const Dashboard = ({}: DashboardScreenProp) => {
           style={styles.btnCreate}
         />
       </View>
-    </GradientWrapper>
+    </GradientScrollingWrapper>
   );
 };
 const styles = StyleSheet.create({

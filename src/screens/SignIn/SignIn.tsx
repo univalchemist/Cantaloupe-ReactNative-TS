@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Dimensions} from 'react-native';
 import {FloatLabelTextField} from '@components/FloatLabelTextField';
 import CheckBox from 'react-native-check-box';
-import {GradientWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrpper';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const SignIn = () => {
@@ -18,7 +18,7 @@ const SignIn = () => {
   //const handleContinueWithEmail = useCallback(() => {}, []);
   // const handleBackHome = useCallback(() => navigation.goBack(), [navigation]);
   return (
-    <GradientWrapper>
+    <GradientScrollingWrapper>
       <KeyboardAwareScrollView>
         <View style={styles.container}>
           <Typography style={styles.title}>Create Account</Typography>
@@ -26,7 +26,7 @@ const SignIn = () => {
             title="Email"
             onPress={() => navigation.navigate('Dashboard')}
             style={styles.input}
-            titleStyle={styles.btnBackTitle}
+            titleStyle={styles.inputTitle}
           />
           <Typography style={styles.subtitle}>
             Enter personal details
@@ -36,41 +36,42 @@ const SignIn = () => {
             title="First Name *"
             onPress={() => navigation.navigate('Dashboard')}
             style={styles.input}
-            titleStyle={styles.btnBackTitle}
+            titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Last Name *"
             onPress={() => navigation.navigate('Dashboard')}
             style={styles.input}
-            titleStyle={styles.btnBackTitle}
+            titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Street Address"
             onPress={() => navigation.navigate('Dashboard')}
             style={styles.input}
-            titleStyle={styles.btnBackTitle}
+            titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Zip / Postal Code *"
             onPress={() => navigation.navigate('Dashboard')}
             style={styles.input}
-            titleStyle={styles.btnBackTitle}
+            titleStyle={styles.inputTitle}
           />
           <View style={styles.checkbox_view}>
-            <View style={{flexDirection: 'row'}}>
-              <CheckBox
-                style={{}}
+          <CheckBox
+                
                 onClick={() => {
                   setChecked(!checked);
                 }}
                 isChecked={checked}
               />
+            <View >
+          
               <Typography style={styles.label}>
                 I have read and aggree to Cabtalopes's:
               </Typography>
-            </View>
             <Typography style={styles.label_orange}>Terms of Use</Typography>
             <Typography style={styles.label_orange}>Privacy Policy</Typography>
+            </View>
           </View>
 
           <View style={styles.overlayBtnCont}>
@@ -81,14 +82,15 @@ const SignIn = () => {
             />
             <Button
               title="Back Home"
-              onPress={() => navigation.goBack()}
-              style={styles.btnBack}
-              titleStyle={{...styles.btnBackTitle, fontWeight: 'bold'}}
+              onPress={() => navigation.navigate('Welcome')}
+              style={styles.btnBack }
+        titleStyle={styles.btnBackTitle}
+
             />
           </View>
         </View>
       </KeyboardAwareScrollView>
-    </GradientWrapper>
+    </GradientScrollingWrapper>
   );
 };
 let width = Dimensions.get('window').width;
@@ -116,36 +118,34 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: COLORS.primaryGray,
   },
-  btnBack: {
-    backgroundColor: 'transparent',
-    alignSelf: 'center',
-    marginTop: -5,
-  },
   btnBackTitle: {
+    color: COLORS.primaryGray,
+  
+  },
+  inputTitle:{
     color: COLORS.primaryGray,
     fontSize: 16,
     fontWeight: '500',
   },
-
   input: {},
   label: {
     fontSize: 16,
-    paddingLeft: 5,
-    paddingBottom: 5,
-    fontWeight: '600',
   },
   label_orange: {
     color: COLORS.orange,
-    alignitems: 'left',
+    
     fontSize: 18,
     paddingTop: 7,
-    fontWeight: 'bold',
-    marginLeft: 30,
   },
   checkbox_view: {
     width: width - 20,
     paddingLeft: 10,
     fontWeight: 700,
+    flexDirection: "row",
+
+
+justifyContent:'space-around',
+alignItems: "center"
   },
 
   overlayBtnCont: {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 60,
     marginTop: 20,
-    shadowColor: '#000000',
+    shadowColor: COLORS.black,
     shadowRadius: 3,
     shadowOpacity: 0.1,
   },
@@ -165,6 +165,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 12,
     minHeight: 60,
+  },
+  btnBack: {
+    width: '90%',
+    alignSelf: 'center',
+    marginTop: 12,
+    minHeight: 60,
+    backgroundColor: 'transparent',
   },
 });
 
