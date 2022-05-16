@@ -6,7 +6,7 @@ import {RightArrow} from '@assets/icon';
 interface CardTypeProps {
   CardLogo: any;
   cardNumber: string;
-  onPressRight: () => void;
+  onPress: () => void;
   InfoIcon: any;
   style?: ViewStyle;
   balance?: string;
@@ -17,11 +17,13 @@ export const CardType = ({
   balance,
   cardNumber,
   style,
-  onPressRight,
+  onPress,
   InfoIcon,
 }: CardTypeProps) => {
   return (
-    <View style={[styles.CardTypeContainer, style]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.CardTypeContainer, style]}>
       {CardLogo}
       <View style={styles.cardInfoContainer}>
         {balance && <Typography style={styles.balance}>{balance}</Typography>}
@@ -30,10 +32,10 @@ export const CardType = ({
           {InfoIcon}
         </View>
       </View>
-      <TouchableOpacity onPress={onPressRight} style={styles.rightTitle}>
+      <View style={styles.rightTitle}>
         <RightArrow />
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 

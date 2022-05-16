@@ -15,6 +15,8 @@ import HistoryIcon from './historyIcon.svg';
 import CardIcon from './cardIcon.svg';
 import RewardIcon from './rewardIcon.svg';
 import HelpIcon from './helpIcon.svg';
+import ManaullyReloadIcon from './manaullyReloadIcon.svg';
+import CardImage2 from './cardImage2.svg';
 
 export {
   CardImage,
@@ -34,4 +36,6 @@ export {
   CardIcon,
   RewardIcon,
   HelpIcon,
+  ManaullyReloadIcon,
+  CardImage2,
 };

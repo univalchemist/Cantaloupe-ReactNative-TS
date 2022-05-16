@@ -5,6 +5,8 @@ import {
   SignInScreen,
   DashboardScreen,
   CardsScreen,
+  CardDetailScreen,
+  ReloadCardScreen,
 } from '@screens/index';
 import {
   createStackNavigator,
@@ -20,7 +22,7 @@ import {
   MapIcon,
   RewardIcon,
 } from '@assets/icon';
-import { COLORS } from '@theme/color';
+import {COLORS} from '@theme/color';
 
 export type MainStackParamList = {
   Welcome: undefined;
@@ -29,12 +31,21 @@ export type MainStackParamList = {
   Dashboard: undefined;
   BottomTabs: undefined;
 };
+export type CardScreensParamList = {
+  Cards: undefined;
+  CardDetail: undefined;
+  ReloadCard: undefined;
+};
 export type BottomTabParamList = {
   Map: undefined;
   History: undefined;
-  Cards: undefined;
   Rewards: undefined;
   Help: undefined;
+  CardScreenNavigator1: undefined;
+  CardScreenNavigator2: undefined;
+  CardScreenNavigator3: undefined;
+  CardScreenNavigator4: undefined;
+  CardScreenNavigator5: undefined;
 };
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -55,8 +66,8 @@ function BottomTabs() {
             <BottomTabIcon Icon={MapIcon} label="Map" active={focused} />
           ),
         }}
-        name="Map"
-        component={CardsScreen}
+        name="CardScreenNavigator1"
+        component={CardScreenNavigator}
       />
       <BottomTab.Screen
         options={{
@@ -70,8 +81,8 @@ function BottomTabs() {
             />
           ),
         }}
-        name="History"
-        component={CardsScreen}
+        name="CardScreenNavigator2"
+        component={CardScreenNavigator}
       />
       <BottomTab.Screen
         options={{
@@ -81,8 +92,8 @@ function BottomTabs() {
             <BottomTabIcon Icon={CardIcon} label="Cards" active={focused} />
           ),
         }}
-        name="Cards"
-        component={CardsScreen}
+        name="CardScreenNavigator3"
+        component={CardScreenNavigator}
       />
       <BottomTab.Screen
         options={{
@@ -92,8 +103,8 @@ function BottomTabs() {
             <BottomTabIcon Icon={RewardIcon} label="Rewards" active={focused} />
           ),
         }}
-        name="Rewards"
-        component={CardsScreen}
+        name="CardScreenNavigator4"
+        component={CardScreenNavigator}
       />
       <BottomTab.Screen
         options={{
@@ -103,12 +114,28 @@ function BottomTabs() {
             <BottomTabIcon Icon={HelpIcon} label="Help" active={focused} />
           ),
         }}
-        name="Help"
-        component={CardsScreen}
+        name="CardScreenNavigator5"
+        component={CardScreenNavigator}
       />
     </BottomTab.Navigator>
   );
 }
+
+const CardScreenStack = createStackNavigator<CardScreensParamList>();
+const CardScreenNavigator = () => {
+  return (
+    <CardScreenStack.Navigator
+      // initialRouteName="Cards"
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: false,
+      }}>
+      <CardScreenStack.Screen name="Cards" component={CardsScreen} />
+      <CardScreenStack.Screen name="CardDetail" component={CardDetailScreen} />
+      <CardScreenStack.Screen name="ReloadCard" component={ReloadCardScreen} />
+    </CardScreenStack.Navigator>
+  );
+};
 
 const Stack = createStackNavigator<MainStackParamList>();
 const MainNavigator = () => {
@@ -148,4 +175,15 @@ export type DashboardScreenProp = StackNavigationProp<
   MainStackParamList,
   'Dashboard'
 >;
-export type CardsScreenProp = StackNavigationProp<BottomTabParamList, 'Cards'>;
+export type CardsScreenProp = StackNavigationProp<
+  CardScreensParamList,
+  'Cards'
+>;
+export type CardDetailsScreenProp = StackNavigationProp<
+  CardScreensParamList,
+  'CardDetail'
+>;
+export type ReloadCardScreenProp = StackNavigationProp<
+  CardScreensParamList,
+  'ReloadCard'
+>;
