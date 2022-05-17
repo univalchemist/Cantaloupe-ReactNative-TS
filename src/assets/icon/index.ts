@@ -17,6 +17,10 @@ import RewardIcon from './rewardIcon.svg';
 import HelpIcon from './helpIcon.svg';
 import ManaullyReloadIcon from './manaullyReloadIcon.svg';
 import CardImage2 from './cardImage2.svg';
+import CardRightArrow from './cardRightArrow.svg';
+import VisaIcon from './visaIcon.svg';
+import CardSymbolIcon from './cardSymbolIcon.svg';
+import Card2 from './card2.svg';
 
 export {
   CardImage,
@@ -38,4 +42,8 @@ export {
   HelpIcon,
   ManaullyReloadIcon,
   CardImage2,
+  CardRightArrow,
+  VisaIcon,
+  CardSymbolIcon,
+  Card2,
 };

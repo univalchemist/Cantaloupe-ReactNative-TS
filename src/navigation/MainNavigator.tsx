@@ -7,6 +7,7 @@ import {
   CardsScreen,
   CardDetailScreen,
   ReloadCardScreen,
+  ReloadCardScreen2,
 } from '@screens/index';
 import {
   createStackNavigator,
@@ -35,6 +36,7 @@ export type CardScreensParamList = {
   Cards: undefined;
   CardDetail: undefined;
   ReloadCard: undefined;
+  ReloadCard2: undefined;
 };
 export type BottomTabParamList = {
   Map: undefined;
@@ -133,6 +135,10 @@ const CardScreenNavigator = () => {
       <CardScreenStack.Screen name="Cards" component={CardsScreen} />
       <CardScreenStack.Screen name="CardDetail" component={CardDetailScreen} />
       <CardScreenStack.Screen name="ReloadCard" component={ReloadCardScreen} />
+      <CardScreenStack.Screen
+        name="ReloadCard2"
+        component={ReloadCardScreen2}
+      />
     </CardScreenStack.Navigator>
   );
 };
@@ -183,7 +189,7 @@ export type CardDetailsScreenProp = StackNavigationProp<
   CardScreensParamList,
   'CardDetail'
 >;
-export type ReloadCardScreenProp = StackNavigationProp<
+export type ReloadCardScreenProp2 = StackNavigationProp<
   CardScreensParamList,
-  'ReloadCard'
+  'ReloadCard2'
 >;

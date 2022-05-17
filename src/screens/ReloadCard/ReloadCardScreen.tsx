@@ -6,10 +6,11 @@ import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrpper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
-import {CardImage2} from '@assets/icon';
+import {CardImage2, VisaIcon, CardSymbolIcon} from '@assets/icon';
 import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
 import {CardAmountDropDown} from '@components/CardAmountDropDown/CardAmountDropDown';
+import {PaymentMethodCard} from '@components/PaymentMethodCard';
 
 const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
   const navigation = useNavigation<ReloadCardScreenProp>();
@@ -38,7 +39,17 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
           }
           data={[200, 300, 400, 500]}
         />
-        <Typography style={styles.screenTitle}>Reload Card</Typography>
+        <Typography style={styles.reloadWithTxt}>Payment Method:</Typography>
+
+        <PaymentMethodCard
+          CardTypeIcon={<VisaIcon />}
+          CardIcon={<CardSymbolIcon />}
+          phoneNumber="+1 (•••) •••-•567"
+          onPressContinueTxt={() => {}}
+          onPressContinueBtn={() => {
+            navigation.navigate('ReloadCard2');
+          }}
+        />
 
         {/* <View style={styles.separatorCont}>
           <View style={[styles.separator]} />
