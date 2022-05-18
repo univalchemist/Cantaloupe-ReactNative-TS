@@ -3,12 +3,12 @@ import {COLORS} from '@theme/color';
 import LinearGradient from 'react-native-linear-gradient';
 
 type GradientScrollingWrapperProps = {
-  style?: ViewStyle,
-  firstColor?: string,
-  secondColor?: string,
-  thirdColor?: string,
-  scrollable?: boolean
-}
+  style?: ViewStyle;
+  firstColor?: string;
+  secondColor?: string;
+  thirdColor?: string;
+  scrollable?: boolean;
+};
 
 export const GradientScrollingWrapper = ({
   children,
@@ -28,9 +28,11 @@ export const GradientScrollingWrapper = ({
         thirdColor ? thirdColor : COLORS.blue,
       ]}
       style={[styles.linearGradient, style]}>
-      {scrollable ?<ScrollView style={{ flex: 1 }}>
-        {children}
-      </ScrollView> : children}
+      {scrollable ? (
+        <ScrollView style={{flex: 1}}>{children}</ScrollView>
+      ) : (
+        children
+      )}
     </LinearGradient>
   );
 };

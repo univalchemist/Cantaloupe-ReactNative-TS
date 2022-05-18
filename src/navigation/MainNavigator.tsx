@@ -189,6 +189,10 @@ export type CardDetailsScreenProp = StackNavigationProp<
   CardScreensParamList,
   'CardDetail'
 >;
+export type ReloadCardScreenProp = StackNavigationProp<
+  CardScreensParamList,
+  'ReloadCard'
+>;
 export type ReloadCardScreenProp2 = StackNavigationProp<
   CardScreensParamList,
   'ReloadCard2'

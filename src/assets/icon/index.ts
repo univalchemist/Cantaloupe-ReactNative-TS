@@ -21,6 +21,9 @@ import CardRightArrow from './cardRightArrow.svg';
 import VisaIcon from './visaIcon.svg';
 import CardSymbolIcon from './cardSymbolIcon.svg';
 import Card2 from './card2.svg';
+import TickIcon from './tickIcon.svg';
+import ArrowDown from './arrowDown.svg';
+import WalletIcon from './walletIcon.svg';
 
 export {
   CardImage,
@@ -46,4 +49,7 @@ export {
   VisaIcon,
   CardSymbolIcon,
   Card2,
+  TickIcon,
+  ArrowDown,
+  WalletIcon,
 };

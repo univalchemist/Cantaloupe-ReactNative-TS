@@ -3,9 +3,9 @@ import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 
 interface TabIconProps {
-  Icon: any;
-  label: string;
-  active: boolean;
+  Icon?: any;
+  label?: string;
+  active?: boolean;
 }
 
 export const BottomTabIcon = ({Icon, label, active}: TabIconProps) => {

@@ -1,10 +1,10 @@
 import {StyleSheet, View, ViewStyle} from 'react-native';
 
 interface CardImageProps {
-  CardImg: any;
+  CardImg?: any;
   style?: ViewStyle;
-  cardTypeText: any;
-  containerStyle: any;
+  cardTypeText?: any;
+  containerStyle?: any;
 }
 
 export const CardImage = ({

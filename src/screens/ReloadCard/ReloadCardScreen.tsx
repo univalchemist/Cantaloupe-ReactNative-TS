@@ -1,5 +1,5 @@
-import React from 'react';
-import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {Alert, StyleSheet, View} from 'react-native';
 import {ReloadCardScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
@@ -14,53 +14,59 @@ import {PaymentMethodCard} from '@components/PaymentMethodCard';
 
 const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
   const navigation = useNavigation<ReloadCardScreenProp>();
+  const [items, setItems] = useState([
+    {label: '$50', value: '50'},
+    {label: '$100', value: '100'},
+    {label: '$200', value: '200'},
+  ]);
 
   return (
-    <GradientScrollingWrapper thirdColor="#fff">
-      <Header onPressRight={() => Alert.alert('Go to profile screen')} />
-      <View style={styles.container}>
-        <Typography style={styles.screenTitle}>Reload Card</Typography>
-        <ReloadCardImage
-          CardLogo={
-            <CardImage
-              cardTypeText={
-                <Typography style={styles.primaryTxt}>PRIMARY</Typography>
-              }
-              CardImg={<CardImage2 style={{backgroundColor: '#004890'}} />}
-            />
-          }
-          cardNumber="More Card •• 5743"
-          balance="50.00"
-        />
-        <Typography style={styles.reloadWithTxt}>Reload With:</Typography>
-        <CardAmountDropDown
-          onPress={selectedValue =>
-            console.log('selectedValue ', selectedValue)
-          }
-          data={[200, 300, 400, 500]}
-        />
-        <Typography style={styles.reloadWithTxt}>Payment Method:</Typography>
+    <View style={styles.container}>
+      <GradientScrollingWrapper thirdColor="#fff">
+        <Header onPressRight={() => Alert.alert('Go to profile screen')} />
+        <View style={styles.subContainer}>
+          <Typography style={styles.screenTitle}>Reload Card</Typography>
+          <ReloadCardImage
+            CardLogo={
+              <CardImage
+                cardTypeText={
+                  <Typography style={styles.primaryTxt}>PRIMARY</Typography>
+                }
+                CardImg={<CardImage2 style={{backgroundColor: '#004890'}} />}
+              />
+            }
+            cardNumber="More Card •• 5743"
+            balance="50.00"
+          />
+          <Typography style={styles.reloadWithTxt}>Reload With:</Typography>
+          <CardAmountDropDown
+            onPress={() => {}}
+            items={items}
+            setItems={setItems}
+          />
+          <Typography style={styles.reloadWithTxt}>Payment Method:</Typography>
 
-        <PaymentMethodCard
-          CardTypeIcon={<VisaIcon />}
-          CardIcon={<CardSymbolIcon />}
-          phoneNumber="+1 (•••) •••-•567"
-          onPressContinueTxt={() => {}}
-          onPressContinueBtn={() => {
-            navigation.navigate('ReloadCard2');
-          }}
-        />
-
-        {/* <View style={styles.separatorCont}>
-          <View style={[styles.separator]} />
-        </View> */}
+          <PaymentMethodCard
+            CardTypeIcon={<VisaIcon />}
+            CardIcon={<CardSymbolIcon />}
+            phoneNumber="+1 (•••) •••-•567"
+            onPressContinueTxt={() => {}}
+            onPressContinueBtn={() => {
+              navigation.navigate('ReloadCard2');
+            }}
+          />
+        </View>
+      </GradientScrollingWrapper>
+      <View style={styles.separatorCont}>
+        <View style={[styles.separator]} />
       </View>
-    </GradientScrollingWrapper>
+    </View>
   );
 };
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: '5%',
+  container: {flex: 1},
+  subContainer: {
+    paddingHorizontal: 20,
   },
 
   screenTitle: {
@@ -94,7 +100,7 @@ const styles = StyleSheet.create({
   },
   separatorCont: {
     position: 'absolute',
-    bottom: '-7%',
+    bottom: 40,
     left: 0,
     right: 0,
     alignItems: 'center',

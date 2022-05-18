@@ -3,8 +3,8 @@ import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 
 interface CardTypeProps {
-  CardLogo: any;
-  cardNumber: string;
+  CardLogo?: any;
+  cardNumber?: string;
   style?: ViewStyle;
   balance?: string;
 }

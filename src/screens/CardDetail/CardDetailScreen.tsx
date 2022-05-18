@@ -6,7 +6,12 @@ import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrpper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
-import {CardImage1, ManaullyReloadIcon, RightArrow} from '@assets/icon';
+import {
+  CardImage1,
+  ManaullyReloadIcon,
+  RightArrow,
+  WalletIcon,
+} from '@assets/icon';
 import {AutoReload} from '@components/AutoReload';
 import {Button} from '@components/Button';
 
@@ -14,44 +19,49 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
   const navigation = useNavigation<CardDetailsScreenProp>();
 
   return (
-    <GradientScrollingWrapper thirdColor="#fff">
-      <Header onPressRight={() => Alert.alert('Go to profile screen')} />
-      <CardImage
-        CardImg={<CardImage1 style={{backgroundColor: '#004890'}} />}
-      />
-      <View style={styles.balanceContainer}>
-        <Text style={styles.balanceTxt}>Balance</Text>
-        <Text style={styles.balanaceAmount}>$50</Text>
-      </View>
-      <View style={styles.cardNoContainer}>
-        <Text style={styles.cardNo}>CPay •• 5743</Text>
-        <Text style={styles.cardTypeTxt}>This is the Primary Card</Text>
-      </View>
-      <AutoReload
-        balance="50"
-        onPress={() => {
-          navigation.navigate('ReloadCard');
-        }}
-      />
-      <TouchableOpacity style={styles.manuallyReload}>
-        <ManaullyReloadIcon />
-        <Text style={styles.ManaulReloadTxt}>Manaully Reload</Text>
-        <RightArrow />
-      </TouchableOpacity>
-      <Button
-        onPress={() => {}}
-        title="Add to Apple Wallet"
-        style={styles.addToWallet}
-        titleStyle={styles.addToWalletTxt}
-        leftIcon={null}
-      />
+    <View style={styles.container}>
+      <GradientScrollingWrapper thirdColor="#fff">
+        <Header onPressRight={() => Alert.alert('Go to profile screen')} />
+        <CardImage
+          CardImg={<CardImage1 style={{backgroundColor: '#004890'}} />}
+        />
+        <View style={styles.balanceContainer}>
+          <Text style={styles.balanceTxt}>Balance</Text>
+          <Text style={styles.balanaceAmount}>$50</Text>
+        </View>
+        <View style={styles.cardNoContainer}>
+          <Text style={styles.cardNo}>CPay •• 5743</Text>
+          <Text style={styles.cardTypeTxt}>This is the Primary Card</Text>
+        </View>
+        <AutoReload
+          balance="50"
+          onPress={() => {
+            navigation.navigate('ReloadCard');
+          }}
+        />
+        <TouchableOpacity style={styles.manuallyReload}>
+          <ManaullyReloadIcon />
+          <Text style={styles.ManaulReloadTxt}>Manaully Reload</Text>
+          <RightArrow />
+        </TouchableOpacity>
+        <Button
+          onPress={() => {}}
+          title="Add to Apple Wallet"
+          style={styles.addToWallet}
+          titleStyle={styles.addToWalletTxt}
+          leftIcon={<WalletIcon />}
+        />
+      </GradientScrollingWrapper>
       <View style={styles.separatorCont}>
         <View style={[styles.separator]} />
       </View>
-    </GradientScrollingWrapper>
+    </View>
   );
 };
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   balanceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -87,7 +97,7 @@ const styles = StyleSheet.create({
   },
   separatorCont: {
     position: 'absolute',
-    bottom: '-7%',
+    bottom: 40,
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -120,8 +130,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.black,
   },
   addToWalletTxt: {
-    width: '90%',
-    alignSelf: 'center',
+    // width: '90%',
+    // alignSelf: 'center',
     fontSize: 18,
   },
 });

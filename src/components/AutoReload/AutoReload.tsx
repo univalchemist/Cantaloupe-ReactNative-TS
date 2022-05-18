@@ -5,23 +5,16 @@ import {
   ViewStyle,
   Text,
 } from 'react-native';
-import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 import {RightArrow} from '@assets/icon';
 
 interface AutoReload {
-  onPress: () => void;
-
+  onPress?: () => void;
   style?: ViewStyle;
   balance?: string;
 }
 
-export const AutoReload = ({
-  balance,
-
-  style,
-  onPress,
-}: AutoReload) => {
+export const AutoReload = ({balance, style, onPress}: AutoReload) => {
   return (
     <TouchableOpacity
       onPress={onPress}

@@ -3,12 +3,12 @@ import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 
 interface CardDetailProps {
-  amount: string;
-  CardImg: any;
-  cardNumber: string;
-  name: string;
-  street: string;
-  city: string;
+  amount?: string;
+  CardImg?: any;
+  cardNumber?: string;
+  name?: string;
+  street?: string;
+  city?: string;
 }
 
 export const CardDetail = ({
@@ -55,9 +55,6 @@ export const CardDetail = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    alignSelf: 'center',
-    height: '50%',
     borderWidth: 0.2,
     borderColor: COLORS.primaryGray,
     borderRadius: 5,
@@ -66,7 +63,6 @@ const styles = StyleSheet.create({
   },
   totalContainer: {
     width: '100%',
-    height: '14%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -83,17 +79,16 @@ const styles = StyleSheet.create({
   },
   separator: {
     backgroundColor: COLORS.gray1,
-    height: 0.2,
     width: '100%',
     alignSelf: 'center',
-    marginVertical: 15,
+    marginVertical: 10,
+    padding: 0.2,
   },
   cardImgContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 5,
     width: '100%',
-    height: '12%',
   },
   cashBackCont: {
     marginLeft: 20,
@@ -105,8 +100,6 @@ const styles = StyleSheet.create({
   addressContainer: {
     flexDirection: 'row',
     width: '100%',
-    height: '30%',
-    marginTop: 8,
   },
   address: {
     fontSize: 18,

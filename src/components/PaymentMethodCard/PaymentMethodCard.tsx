@@ -6,11 +6,11 @@ import {CardRightArrow} from '@assets/icon';
 import {Button} from '../Button';
 
 interface PaymentMethodProps {
-  CardTypeIcon: any;
-  CardIcon: any;
-  phoneNumber: string;
-  onPressContinueTxt: any;
-  onPressContinueBtn: any;
+  CardTypeIcon?: any;
+  CardIcon?: any;
+  phoneNumber?: string;
+  onPressContinueTxt?: any;
+  onPressContinueBtn?: any;
 }
 
 export const PaymentMethodCard = ({
@@ -35,10 +35,10 @@ export const PaymentMethodCard = ({
           {CardIcon}
         </View>
       </View>
-      <Typography style={[styles.codeText, {marginTop: 8}]}>
+      <Typography style={[styles.codeText, {marginTop: 4}]}>
         Enter The Code Mastercard Sent
       </Typography>
-      <Typography style={[styles.codeText, {marginBottom: 20}]}>
+      <Typography style={[styles.codeText, {marginBottom: 15}]}>
         To {phoneNumber}
       </Typography>
       <TextInput
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     alignSelf: 'center',
-    height: '48%',
+    height: '45%',
     borderWidth: 0.2,
     borderColor: COLORS.primaryGray,
     borderRadius: 5,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   payProfileCont: {
     width: '100%',
-    height: '20%',
+    height: '18%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 
   looksLike: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 18,
     color: COLORS.black,
   },
   cardInfoContainer: {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   codeInput: {
     width: '100%',
-    height: '20%',
+    height: '18%',
     borderWidth: 1,
     borderColor: COLORS.gray2,
     borderRadius: 8,

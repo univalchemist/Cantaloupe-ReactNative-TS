@@ -4,10 +4,10 @@ import {COLORS} from '@theme/color';
 import {RightArrow} from '@assets/icon';
 
 interface CardTypeProps {
-  CardLogo: any;
-  cardNumber: string;
-  onPress: () => void;
-  InfoIcon: any;
+  CardLogo?: any;
+  cardNumber?: string;
+  onPress?: () => void;
+  InfoIcon?: any;
   style?: ViewStyle;
   balance?: string;
 }

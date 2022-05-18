@@ -4,10 +4,10 @@ import {COLORS} from '@theme/color';
 
 interface IButtonProps {
   onPress: () => void;
-  title: string;
+  title?: string;
   style?: ViewStyle;
   titleStyle?: TextStyle;
-  leftIcon: any;
+  leftIcon?: any;
 }
 export const Button = ({
   title,
@@ -19,10 +19,19 @@ export const Button = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.container, style]}
+      style={[
+        styles.container,
+        style,
+        {
+          flexDirection: leftIcon ? 'row' : 'column',
+        },
+      ]}
       activeOpacity={0.8}>
       {leftIcon}
-      <Typography style={[styles.title, titleStyle]}>{title}</Typography>
+      <Typography
+        style={[styles.title, titleStyle, {marginLeft: leftIcon && 8}]}>
+        {title}
+      </Typography>
     </TouchableOpacity>
   );
 };
@@ -33,6 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     minHeight: 64,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontWeight: '500',

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, StyleSheet, View, Text, TextInput} from 'react-native';
+import {StyleSheet, View, TextInput} from 'react-native';
 import {ReloadCardScreenProp2} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
@@ -18,61 +18,62 @@ const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
   const [reloadDone, setReloadDone] = useState(false);
 
   return (
-    <GradientScrollingWrapper thirdColor="#fff">
-      <Header onPressRight={() => Alert.alert('Go to profile screen')} />
-      {!reloadDone ? (
-        <View style={styles.container}>
-          <Typography style={styles.screenTitle}>Reload Card</Typography>
-          <ReloadCardImage
-            CardLogo={
-              <CardImage
-                cardTypeText={
-                  <Typography style={styles.primaryTxt}>PRIMARY</Typography>
-                }
-                CardImg={<CardImage2 style={{backgroundColor: '#004890'}} />}
-              />
-            }
-            cardNumber="More Card •• 5743"
-            balance="50.00"
-          />
-          <CardDetail
-            CardImg={<Card2 />}
-            amount="50.00"
-            cardNumber="•• 2058"
-            name="John Petterson"
-            street="1st• street"
-            city="New York, NY 10001"
-          />
+    <View style={styles.container}>
+      <GradientScrollingWrapper thirdColor="#fff">
+        <Header onPressRight={() => setReloadDone(false)} />
+        {!reloadDone ? (
+          <View style={styles.subContainer}>
+            <Typography style={styles.screenTitle}>Reload Card</Typography>
+            <ReloadCardImage
+              CardLogo={
+                <CardImage
+                  cardTypeText={
+                    <Typography style={styles.primaryTxt}>PRIMARY</Typography>
+                  }
+                  CardImg={<CardImage2 style={{backgroundColor: '#004890'}} />}
+                />
+              }
+              cardNumber="More Card •• 5743"
+              balance="50.00"
+            />
 
-          <Typography style={styles.reloadWithTxt}>Security Code:</Typography>
+            <CardDetail
+              CardImg={<Card2 />}
+              amount="50.00"
+              cardNumber="•• 2058"
+              name="John Petterson"
+              street="1st• street"
+              city="New York, NY 10001"
+            />
 
-          <TextInput
-            style={styles.codeInput}
-            placeholder="CVV"
-            placeholderTextColor={COLORS.gray1}
-            editable={false}
-          />
-          <Button
-            title="Relead Card"
-            onPress={() => setReloadDone(true)}
-            style={styles.reloadBtn}
-          />
-        </View>
-      ) : (
-        <ReloadCardDone />
-      )}
+            <Typography style={styles.securityTxt}>Security Code:</Typography>
 
-      {/* <View style={styles.separatorCont}>
-          <View style={[styles.separator]} />
-        </View> */}
-    </GradientScrollingWrapper>
+            <TextInput
+              style={styles.codeInput}
+              placeholder="CVV"
+              placeholderTextColor={COLORS.gray1}
+              editable={false}
+            />
+            <Button
+              title="Relead Card"
+              onPress={() => setReloadDone(true)}
+              style={styles.reloadBtn}
+            />
+          </View>
+        ) : (
+          <ReloadCardDone loadedBalance="50" newBalance="100" />
+        )}
+      </GradientScrollingWrapper>
+      <View style={styles.separatorCont}>
+        <View style={[styles.separator]} />
+      </View>
+    </View>
   );
 };
 const styles = StyleSheet.create({
-  container: {
+  container: {flex: 1},
+  subContainer: {
     paddingHorizontal: 20,
-    width: '100%',
-    height: '85%',
   },
 
   screenTitle: {
@@ -96,17 +97,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik',
     zIndex: 10,
   },
-  reloadWithTxt: {
+  securityTxt: {
     fontFamily: 'Rubik',
     color: COLORS.black,
     fontWeight: '300',
-    fontSize: 20,
-    marginVertical: 20,
+    fontSize: 18,
+    marginVertical: 15,
     fontStyle: 'normal',
   },
   separatorCont: {
     position: 'absolute',
-    bottom: '-7%',
+    bottom: 40,
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -119,11 +120,11 @@ const styles = StyleSheet.create({
   },
   codeInput: {
     width: '100%',
-    height: '12%',
+    height: 60,
     borderWidth: 1,
     borderColor: COLORS.gray2,
     borderRadius: 15,
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
     fontSize: 24,
   },
   reloadBtn: {
