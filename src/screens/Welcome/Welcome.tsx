@@ -6,7 +6,7 @@ import {StyleSheet, View} from 'react-native';
 import {WelcomeScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-import {GradientScrollingWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrapper';
 
 const CarouselData = [
   {

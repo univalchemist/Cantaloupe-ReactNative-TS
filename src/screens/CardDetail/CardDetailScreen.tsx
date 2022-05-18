@@ -3,12 +3,12 @@ import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {CardDetailsScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-import {GradientScrollingWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
 import {
   CardImage1,
-  ManaullyReloadIcon,
+  ManuallyReloadIcon,
   RightArrow,
   WalletIcon,
 } from '@assets/icon';
@@ -33,15 +33,14 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
           <Text style={styles.cardNo}>CPay •• 5743</Text>
           <Text style={styles.cardTypeTxt}>This is the Primary Card</Text>
         </View>
-        <AutoReload
-          balance="50"
+        <AutoReload balance="50" onPress={() => {}} />
+        <TouchableOpacity
+          style={styles.manuallyReload}
           onPress={() => {
             navigation.navigate('ReloadCard');
-          }}
-        />
-        <TouchableOpacity style={styles.manuallyReload}>
-          <ManaullyReloadIcon />
-          <Text style={styles.ManaulReloadTxt}>Manaully Reload</Text>
+          }}>
+          <ManuallyReloadIcon />
+          <Text style={styles.ManualReloadTxt}>Manually Reload</Text>
           <RightArrow />
         </TouchableOpacity>
         <Button
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 18,
   },
-  ManaulReloadTxt: {
+  ManualReloadTxt: {
     fontWeight: '600',
     fontSize: 24,
     color: COLORS.black,
@@ -130,8 +129,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.black,
   },
   addToWalletTxt: {
-    // width: '90%',
-    // alignSelf: 'center',
     fontSize: 18,
   },
 });

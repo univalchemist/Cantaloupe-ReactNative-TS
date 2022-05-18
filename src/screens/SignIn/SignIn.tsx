@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Dimensions} from 'react-native';
 import {FloatLabelTextField} from '@components/FloatLabelTextField';
 import CheckBox from 'react-native-check-box';
-import {GradientScrollingWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const SignIn = () => {
@@ -57,20 +57,18 @@ const SignIn = () => {
             titleStyle={styles.inputTitle}
           />
           <View style={styles.checkbox_view}>
-          <CheckBox
-                
-                onClick={() => {
-                  setChecked(!checked);
-                }}
-                isChecked={checked}
-              />
-            <View >
-          
+            <CheckBox
+              onClick={() => setChecked(!checked)}
+              isChecked={checked}
+            />
+            <View>
               <Typography style={styles.label}>
                 I have read and aggree to Cabtalopes's:
               </Typography>
-            <Typography style={styles.label_orange}>Terms of Use</Typography>
-            <Typography style={styles.label_orange}>Privacy Policy</Typography>
+              <Typography style={styles.label_orange}>Terms of Use</Typography>
+              <Typography style={styles.label_orange}>
+                Privacy Policy
+              </Typography>
             </View>
           </View>
 
@@ -83,9 +81,8 @@ const SignIn = () => {
             <Button
               title="Back Home"
               onPress={() => navigation.navigate('Welcome')}
-              style={styles.btnBack }
-        titleStyle={styles.btnBackTitle}
-
+              style={styles.btnBack}
+              titleStyle={styles.btnBackTitle}
             />
           </View>
         </View>
@@ -120,9 +117,8 @@ const styles = StyleSheet.create({
   },
   btnBackTitle: {
     color: COLORS.primaryGray,
-  
   },
-  inputTitle:{
+  inputTitle: {
     color: COLORS.primaryGray,
     fontSize: 16,
     fontWeight: '500',
@@ -133,7 +129,6 @@ const styles = StyleSheet.create({
   },
   label_orange: {
     color: COLORS.orange,
-    
     fontSize: 18,
     paddingTop: 7,
   },
@@ -141,11 +136,9 @@ const styles = StyleSheet.create({
     width: width - 20,
     paddingLeft: 10,
     fontWeight: 700,
-    flexDirection: "row",
-
-
-justifyContent:'space-around',
-alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
 
   overlayBtnCont: {

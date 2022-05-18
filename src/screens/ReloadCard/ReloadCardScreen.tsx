@@ -3,7 +3,7 @@ import {Alert, StyleSheet, View} from 'react-native';
 import {ReloadCardScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-import {GradientScrollingWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
 import {CardImage2, VisaIcon, CardSymbolIcon} from '@assets/icon';
