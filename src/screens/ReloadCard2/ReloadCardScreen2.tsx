@@ -55,7 +55,7 @@ const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
               editable={false}
             />
             <Button
-              title="Relead Card"
+              title="Reload Card"
               onPress={() => setReloadDone(true)}
               style={styles.reloadBtn}
             />
