@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Button} from '@components/Button';
 import {StyleSheet, View} from 'react-native';
 import {SigninScreenProp} from '../../navigation/MainNavigator';
@@ -11,9 +11,35 @@ import CheckBox from 'react-native-check-box';
 import {GradientScrollingWrapper} from '@components/GradientWrpper';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
+//  Detect User
+import {
+  getIsExistingUser,
+  DetectExistingUserResponseParams,
+} from '@queries/detectExistingUser';
+
 const SignIn = () => {
   const navigation = useNavigation<SigninScreenProp>();
   const [checked, setChecked] = useState(false);
+  const [isExistingUserResponse, setIsExistingUserResponse] =
+    useState<DetectExistingUserResponseParams>();
+  const [shouldShowExistingUserText, setShouldShowExistingUserText] =
+    useState<boolean>();
+
+  useEffect(() => {
+    if (
+      isExistingUserResponse &&
+      isExistingUserResponse?.isExistingUser === true
+    ) {
+      setShouldShowExistingUserText(true);
+    }
+  }, [isExistingUserResponse]);
+
+  const detectIsExistingUser = useCallback(async (text: String) => {
+    await getIsExistingUser({email: text}).then(response => {
+      console.log(response);
+      setIsExistingUserResponse(response);
+    });
+  }, []);
 
   //const handleContinueWithEmail = useCallback(() => {}, []);
   // const handleBackHome = useCallback(() => navigation.goBack(), [navigation]);
@@ -24,53 +50,61 @@ const SignIn = () => {
           <Typography style={styles.title}>Create Account</Typography>
           <FloatLabelTextField
             title="Email"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
+            isValidated={
+              !!!shouldShowExistingUserText
+                ? shouldShowExistingUserText
+                : shouldShowExistingUserText
+            }
+            validate={text => {
+              detectIsExistingUser(text);
+            }}
           />
+          {!!!shouldShowExistingUserText && shouldShowExistingUserText && (
+            <Typography style={styles.label_orange}>
+              A user with this email exists
+            </Typography>
+          )}
           <Typography style={styles.subtitle}>
             Enter personal details
           </Typography>
 
           <FloatLabelTextField
             title="First Name *"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Last Name *"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Street Address"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Zip / Postal Code *"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <View style={styles.checkbox_view}>
-          <CheckBox
-                
-                onClick={() => {
-                  setChecked(!checked);
-                }}
-                isChecked={checked}
-              />
-            <View >
-          
+            <CheckBox
+              onClick={() => {
+                setChecked(!checked);
+              }}
+              isChecked={checked}
+            />
+            <View>
               <Typography style={styles.label}>
-                I have read and aggree to Cabtalopes's:
+                I have read and agree to Cantaloupes's:
               </Typography>
-            <Typography style={styles.label_orange}>Terms of Use</Typography>
-            <Typography style={styles.label_orange}>Privacy Policy</Typography>
+              <Typography style={styles.label_orange}>Terms of Use</Typography>
+              <Typography style={styles.label_orange}>
+                Privacy Policy
+              </Typography>
             </View>
           </View>
 
@@ -83,9 +117,8 @@ const SignIn = () => {
             <Button
               title="Back Home"
               onPress={() => navigation.navigate('Welcome')}
-              style={styles.btnBack }
-        titleStyle={styles.btnBackTitle}
-
+              style={styles.btnBack}
+              titleStyle={styles.btnBackTitle}
             />
           </View>
         </View>
@@ -120,9 +153,8 @@ const styles = StyleSheet.create({
   },
   btnBackTitle: {
     color: COLORS.primaryGray,
-  
   },
-  inputTitle:{
+  inputTitle: {
     color: COLORS.primaryGray,
     fontSize: 16,
     fontWeight: '500',
@@ -133,7 +165,7 @@ const styles = StyleSheet.create({
   },
   label_orange: {
     color: COLORS.orange,
-    
+
     fontSize: 18,
     paddingTop: 7,
   },
@@ -141,11 +173,10 @@ const styles = StyleSheet.create({
     width: width - 20,
     paddingLeft: 10,
     fontWeight: 700,
-    flexDirection: "row",
+    flexDirection: 'row',
 
-
-justifyContent:'space-around',
-alignItems: "center"
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
 
   overlayBtnCont: {

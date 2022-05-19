@@ -9,36 +9,39 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  useColorScheme,
-  useWindowDimensions,
-  StatusBar,
-  View,
-} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {COLORS} from './src/theme/color';
+import {BASE_URL} from './src/helpers/constants';
 
 import {Provider} from 'react-redux';
 import MainNavigator from './src/navigation/MainNavigator';
 import {store} from './src/store/store';
-import {GradientScrollingWrapper} from './src/components/GradientWrpper';
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  from,
+} from '@apollo/client';
+
+// Initialize Apollo Client
+const client = new ApolloClient({
+  uri: BASE_URL,
+  cache: new InMemoryCache(),
+});
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <Provider store={store}>
-      <SafeAreaView style={{flex: 0, backgroundColor: '#ffe1cc'}} />
-
-      <SafeAreaView style={[styles.Container]}>
-        <MainNavigator />
-      </SafeAreaView>
-    </Provider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <SafeAreaView style={{flex: 0, backgroundColor: '#ffe1cc'}} />
+        {/*Look into possibly adding gradient view around safe area to remove above spacer */}
+        <SafeAreaView style={[styles.Container]}>
+          <MainNavigator />
+        </SafeAreaView>
+      </Provider>
+    </ApolloProvider>
   );
 };
 

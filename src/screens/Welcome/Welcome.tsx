@@ -1,7 +1,7 @@
+import React, {useState} from 'react';
 import {Button} from '@components/Button';
 import {CardImage, LogoMore} from '@assets/icon';
 import {Carousel} from '@components/Carousel';
-import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {WelcomeScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
@@ -34,6 +34,8 @@ const CarouselData = [
 const Welcome = ({}: WelcomeScreenProp) => {
   const navigation = useNavigation<WelcomeScreenProp>();
 
+  const buttonTitle = 'Already Have An Account?';
+
   return (
     <GradientScrollingWrapper style={styles.container}>
       <View style={styles.logo}>
@@ -45,8 +47,9 @@ const Welcome = ({}: WelcomeScreenProp) => {
         onPress={() => navigation.navigate('AuthOption')}
         style={styles.btnCreate}
       />
+
       <Button
-        title="Already Have An Account?"
+        title={buttonTitle}
         onPress={() => {}}
         style={styles.btnHave}
         titleStyle={styles.btnHaveTitle}
