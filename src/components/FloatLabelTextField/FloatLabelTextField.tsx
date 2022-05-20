@@ -10,6 +10,10 @@ import {
 import React, {useEffect, useRef, useState} from 'react';
 import {Typography} from '../Typography';
 import {COLORS} from '@theme/color';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 interface FloatLabelTextFieldProps {
   onPress: () => void;
@@ -102,46 +106,47 @@ export const FloatLabelTextField = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+    marginBottom: hp('2.35%'),
     backgroundColor: COLORS.white,
-    paddingTop: 25,
-    paddingBottom: 18,
-    paddingHorizontal: 10,
-    width: '90%',
+    paddingTop: hp('2.95%'),
+    paddingBottom: hp('2.15%'),
+    paddingHorizontal: wp('1.2%'),
+
+    width: wp('90%'),
     alignSelf: 'center',
-    minHeight: 60,
+    minHeight: hp('7%'),
     shadowColor: COLORS.black,
     shadowRadius: 3,
     shadowOpacity: 0.1,
     borderRadius: 20,
   },
   input: {
-    fontSize: 18,
-    height: 30,
-    paddingLeft: 5,
-    marginTop: 10,
+    fontSize: hp('2.2%'),
+    height: hp('4%'),
+    paddingLeft: wp('0.5%'),
+    marginTop: hp('1.4%'),
     color: COLORS.orange,
-    width: '90%',
+    width: wp('90%'),
     fontWeight: 'bold',
     borderStartColor: 'red',
   },
   label: {
     color: 'grey',
-    fontSize: 10,
-    marginTop: 20,
+    fontSize: hp('1.4%'),
+    marginTop: hp('2.4%'),
   },
   animatedStyle: {
-    top: 20,
-    left: 15,
-    marginBottom: 10,
+    top: hp('2%'),
+    left: wp('4%'),
+    marginBottom: hp('1.5%'),
     position: 'absolute',
     borderRadius: 90,
     zIndex: 10000,
   },
   title: {
     fontWeight: '500',
-    fontSize: 24,
-    lineHeight: 28,
+    fontSize: hp('3%'),
+    lineHeight: hp('3.5%'),
     textAlign: 'center',
     color: COLORS.white,
     backgroundColor: COLORS.white,

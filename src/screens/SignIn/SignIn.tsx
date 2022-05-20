@@ -10,6 +10,10 @@ import {FloatLabelTextField} from '@components/FloatLabelTextField';
 import CheckBox from 'react-native-check-box';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const SignIn = () => {
   const navigation = useNavigation<SigninScreenProp>();
@@ -94,61 +98,57 @@ let width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     alignItems: 'center',
   },
 
   title: {
     fontWeight: '400',
-    fontSize: 40,
+    fontSize: hp('4.7%'),
     color: COLORS.secondaryGray,
-    marginBottom: 30,
+    marginBottom: hp('3.2%'),
   },
   subtitle: {
-    fontSize: 26,
-    paddingTop: 10,
-    paddingBottom: 30,
+    fontSize: hp('3%'),
+    paddingTop: hp('1%'),
+    paddingBottom: hp('3%'),
     fontWeight: '400',
   },
-  continue: {
-    fontWeight: '500',
-    fontSize: 16,
-    color: COLORS.primaryGray,
-  },
+
   btnBackTitle: {
     color: COLORS.primaryGray,
   },
   inputTitle: {
     color: COLORS.primaryGray,
-    fontSize: 16,
+    fontSize: hp('1.9%'),
     fontWeight: '500',
   },
   input: {},
   label: {
-    fontSize: 16,
+    fontSize: hp('1.9%'),
   },
   label_orange: {
     color: COLORS.orange,
-    fontSize: 18,
-    paddingTop: 7,
+    fontSize: hp('2.15%'),
+    paddingTop: hp('0.7%'),
   },
   checkbox_view: {
-    width: width - 20,
-    paddingLeft: 10,
-    fontWeight: 700,
+    width: wp('100%') - 20,
+    paddingLeft: wp('2.3%'),
+    fontWeight: '700',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
   },
 
   overlayBtnCont: {
-    width: '90%',
-    height: '17%',
+    width: wp('90%'),
+    height: hp('17%'),
     borderRadius: 20,
     backgroundColor: COLORS.white,
     alignSelf: 'center',
-    marginBottom: 60,
-    marginTop: 20,
+    marginBottom: hp('10%'),
+    marginTop: hp('2.3%'),
+
     shadowColor: COLORS.black,
     shadowRadius: 3,
     shadowOpacity: 0.1,
@@ -156,14 +156,14 @@ const styles = StyleSheet.create({
   completeBtn: {
     width: '90%',
     alignSelf: 'center',
-    marginTop: 12,
-    minHeight: 60,
+    marginTop: hp('1.4%'),
+    minHeight: hp('7%'),
   },
   btnBack: {
     width: '90%',
     alignSelf: 'center',
-    marginTop: 12,
-    minHeight: 60,
+    marginTop: hp('1.4%'),
+    minHeight: hp('7%'),
     backgroundColor: 'transparent',
   },
 });
