@@ -58,6 +58,8 @@ function BottomTabs() {
         headerShown: false,
         tabBarStyle: {
           borderTopColor: COLORS.white,
+          backgroundColor: COLORS.white,
+          height: 80,
         },
       }}>
       <BottomTab.Screen

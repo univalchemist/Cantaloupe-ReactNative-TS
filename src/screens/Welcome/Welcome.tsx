@@ -62,7 +62,6 @@ const Welcome = ({}: WelcomeScreenProp) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     paddingTop: hp('6%'),
   },
   logo: {
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
   btnCreate: {
     marginHorizontal: 15,
     marginTop: 30,
-    // paddingTop: hp('4%'),
   },
   btnHave: {
     marginHorizontal: 15,
