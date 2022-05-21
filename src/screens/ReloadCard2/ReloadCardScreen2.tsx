@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     height: 2,
     width: wp('85%'),
     alignSelf: 'center',
-    marginBottom: hp('4.5%'),
+    marginBottom: hp('2%'),
   },
   codeInput: {
     width: wp('90%'),
