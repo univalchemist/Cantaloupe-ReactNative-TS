@@ -16,7 +16,6 @@ export const CardImage = ({
   return (
     <View style={containerStyle}>
       {cardTypeText}
-
       <View style={[styles.cardImgContainer, style]}>{CardImg}</View>
     </View>
   );

@@ -11,4 +11,5 @@ export const COLORS = {
   green: '#43A047',
   gray1: '#909093',
   gray2: '#E7E6E6',
+  blue1: '#004890',
 };

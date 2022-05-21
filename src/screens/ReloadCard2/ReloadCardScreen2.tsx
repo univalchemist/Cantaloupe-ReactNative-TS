@@ -12,6 +12,10 @@ import {Typography} from '@components/Typography';
 import {CardDetail} from '@components/CardDetail';
 import {Button} from '@components/Button';
 import {ReloadCardDone} from '@components/ReloadCardDone';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
   const navigation = useNavigation<ReloadCardScreenProp2>();
@@ -19,80 +23,81 @@ const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
 
   return (
     <View style={styles.container}>
-      <GradientScrollingWrapper thirdColor="#fff">
+      <GradientScrollingWrapper thirdColor={COLORS.white}>
         <Header onPressRight={() => setReloadDone(false)} />
-        {!reloadDone ? (
-          <View style={styles.subContainer}>
-            <Typography style={styles.screenTitle}>Reload Card</Typography>
-            <ReloadCardImage
-              CardLogo={
-                <CardImage
-                  cardTypeText={
-                    <Typography style={styles.primaryTxt}>PRIMARY</Typography>
-                  }
-                  CardImg={<CardImage2 style={{backgroundColor: '#004890'}} />}
-                />
-              }
-              cardNumber="More Card •• 5743"
-              balance="50.00"
-            />
+        <View style={styles.subContainer}>
+          {!reloadDone ? (
+            <View>
+              <Typography style={styles.screenTitle}>Reload Card</Typography>
+              <ReloadCardImage
+                CardLogo={
+                  <CardImage
+                    cardTypeText={
+                      <Typography style={styles.primaryTxt}>PRIMARY</Typography>
+                    }
+                    CardImg={
+                      <CardImage2 style={{backgroundColor: COLORS.blue1}} />
+                    }
+                  />
+                }
+                cardNumber="More Card •• 5743"
+                balance="50.00"
+              />
 
-            <CardDetail
-              CardImg={<Card2 />}
-              amount="50.00"
-              cardNumber="•• 2058"
-              name="John Petterson"
-              street="1st• street"
-              city="New York, NY 10001"
-            />
+              <CardDetail
+                CardImg={<Card2 width={wp('16%')} />}
+                amount="50.00"
+                cardNumber="•• 2058"
+                name="John Petterson"
+                street="1st• street"
+                city="New York, NY 10001"
+              />
 
-            <Typography style={styles.securityTxt}>Security Code:</Typography>
+              <Typography style={styles.securityTxt}>Security Code:</Typography>
 
-            <TextInput
-              style={styles.codeInput}
-              placeholder="CVV"
-              placeholderTextColor={COLORS.gray1}
-              editable={false}
-            />
-            <Button
-              title="Reload Card"
-              onPress={() => setReloadDone(true)}
-              style={styles.reloadBtn}
-            />
-          </View>
-        ) : (
-          <ReloadCardDone loadedBalance="50" newBalance="100" />
-        )}
+              <TextInput
+                style={styles.codeInput}
+                placeholder="CVV"
+                placeholderTextColor={COLORS.gray1}
+                editable={false}
+              />
+              <Button
+                title="Reload Card"
+                onPress={() => setReloadDone(true)}
+                style={styles.reloadBtn}
+              />
+            </View>
+          ) : (
+            <ReloadCardDone loadedBalance="50" newBalance="100" />
+          )}
+        </View>
       </GradientScrollingWrapper>
-      <View style={styles.separatorCont}>
-        <View style={[styles.separator]} />
-      </View>
+      <View style={styles.separator} />
     </View>
   );
 };
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {flex: 1, backgroundColor: COLORS.white},
   subContainer: {
-    paddingHorizontal: 20,
+    paddingHorizontal: wp('5%'),
   },
 
   screenTitle: {
-    fontSize: 28,
+    fontSize: hp('3.8%'),
     fontWeight: '400',
     fontFamily: 'Rubik',
-    marginVertical: 20,
+    marginVertical: hp('2.3%'),
   },
   primaryTxt: {
     fontWeight: '500',
-    fontSize: 6,
+    fontSize: hp('0.7%'),
     color: COLORS.white,
-    marginLeft: 7,
     position: 'absolute',
-    top: -6,
-    right: -2,
+    top: hp('-1'),
+    right: wp('-0.5'),
     backgroundColor: COLORS.blue,
-    padding: 3,
-    borderRadius: 5,
+    padding: hp('0.4%'),
+    borderRadius: hp('0.6%'),
     overflow: 'hidden',
     fontFamily: 'Rubik',
     zIndex: 10,
@@ -116,21 +121,24 @@ const styles = StyleSheet.create({
   separator: {
     backgroundColor: COLORS.lightOrange,
     height: 2,
-    width: '85%',
+    width: wp('85%'),
+    alignSelf: 'center',
+    marginBottom: hp('4.5%'),
   },
   codeInput: {
-    width: '100%',
-    height: 60,
-    borderWidth: 1,
+    width: wp('90%'),
+    height: hp('7%'),
+    borderWidth: hp('0.15%'),
     borderColor: COLORS.gray2,
     borderRadius: 15,
-    paddingHorizontal: 12,
-    fontSize: 24,
+    paddingHorizontal: wp('3%'),
+    fontSize: hp('3%'),
   },
   reloadBtn: {
-    width: '100%',
-    height: 30,
-    marginTop: 20,
+    width: wp('90%'),
+    alignSelf: 'center',
+    marginTop: hp('2.5%'),
+    minHeight: hp('8%'),
   },
 });
 export default ReloadCardScreen2;

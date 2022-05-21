@@ -11,6 +11,10 @@ import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
 import {CardAmountDropDown} from '@components/CardAmountDropDown/CardAmountDropDown';
 import {PaymentMethodCard} from '@components/PaymentMethodCard';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
   const navigation = useNavigation<ReloadCardScreenProp>();
@@ -22,7 +26,7 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
 
   return (
     <View style={styles.container}>
-      <GradientScrollingWrapper thirdColor="#fff">
+      <GradientScrollingWrapper scrollable={false} thirdColor={COLORS.white}>
         <Header onPressRight={() => Alert.alert('Go to profile screen')} />
         <View style={styles.subContainer}>
           <Typography style={styles.screenTitle}>Reload Card</Typography>
@@ -32,7 +36,7 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
                 cardTypeText={
                   <Typography style={styles.primaryTxt}>PRIMARY</Typography>
                 }
-                CardImg={<CardImage2 style={{backgroundColor: '#004890'}} />}
+                CardImg={<CardImage2 style={{backgroundColor: COLORS.blue1}} />}
               />
             }
             cardNumber="More Card •• 5743"
@@ -47,8 +51,8 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
           <Typography style={styles.reloadWithTxt}>Payment Method:</Typography>
 
           <PaymentMethodCard
-            CardTypeIcon={<VisaIcon />}
-            CardIcon={<CardSymbolIcon />}
+            CardTypeIcon={<VisaIcon width={wp('13%')} />}
+            CardIcon={<CardSymbolIcon width={wp('11%')} />}
             phoneNumber="+1 (•••) •••-•567"
             onPressContinueTxt={() => {}}
             onPressContinueBtn={() => {
@@ -56,36 +60,34 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
             }}
           />
         </View>
-      </GradientScrollingWrapper>
-      <View style={styles.separatorCont}>
         <View style={[styles.separator]} />
-      </View>
+      </GradientScrollingWrapper>
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {flex: 1},
   subContainer: {
-    paddingHorizontal: 20,
+    paddingHorizontal: wp('5%'),
+    marginBottom: hp('3%'),
   },
 
   screenTitle: {
-    fontSize: 28,
+    fontSize: hp('3.8%'),
     fontWeight: '400',
     fontFamily: 'Rubik',
-    marginVertical: 20,
+    marginVertical: hp('2.3%'),
   },
   primaryTxt: {
     fontWeight: '500',
-    fontSize: 6,
+    fontSize: hp('0.7%'),
     color: COLORS.white,
-    marginLeft: 7,
     position: 'absolute',
-    top: -6,
-    right: -2,
+    top: hp('-1'),
+    right: wp('-0.5'),
     backgroundColor: COLORS.blue,
-    padding: 3,
-    borderRadius: 5,
+    padding: hp('0.4%'),
+    borderRadius: hp('0.6%'),
     overflow: 'hidden',
     fontFamily: 'Rubik',
     zIndex: 10,
@@ -94,13 +96,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik',
     color: COLORS.black,
     fontWeight: '300',
-    fontSize: 20,
-    marginVertical: 20,
+    fontSize: hp('2.3%'),
+    marginTop: hp('2.3%'),
+    marginBottom: hp('1.6%'),
+
     fontStyle: 'normal',
   },
   separatorCont: {
     position: 'absolute',
-    bottom: 40,
+    bottom: hp('4.7%'),
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -108,8 +112,9 @@ const styles = StyleSheet.create({
 
   separator: {
     backgroundColor: COLORS.lightOrange,
-    height: 2,
-    width: '85%',
+    height: hp('0.3%'),
+    width: wp('85%'),
+    alignSelf: 'center',
   },
 });
 export default ReloadCardScreen;

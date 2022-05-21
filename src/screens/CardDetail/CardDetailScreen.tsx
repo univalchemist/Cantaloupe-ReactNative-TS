@@ -14,16 +14,29 @@ import {
 } from '@assets/icon';
 import {AutoReload} from '@components/AutoReload';
 import {Button} from '@components/Button';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const CardDetailScreen = ({}: CardDetailsScreenProp) => {
   const navigation = useNavigation<CardDetailsScreenProp>();
 
   return (
     <View style={styles.container}>
-      <GradientScrollingWrapper thirdColor="#fff">
+      <GradientScrollingWrapper thirdColor={COLORS.white}>
         <Header onPressRight={() => Alert.alert('Go to profile screen')} />
+
         <CardImage
-          CardImg={<CardImage1 style={{backgroundColor: '#004890'}} />}
+          containerStyle={styles.cardImagContainer}
+          CardImg={
+            <CardImage1
+              width={wp('80%%')}
+              height={hp('25%')}
+              style={styles.cardImage1BG}
+              preserveAspectRatio="xMinYMin slice"
+            />
+          }
         />
         <View style={styles.balanceContainer}>
           <Text style={styles.balanceTxt}>Balance</Text>
@@ -41,19 +54,17 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
           }}>
           <ManuallyReloadIcon />
           <Text style={styles.ManualReloadTxt}>Manually Reload</Text>
-          <RightArrow />
+          <RightArrow width={wp('4%')} />
         </TouchableOpacity>
         <Button
           onPress={() => {}}
           title="Add to Apple Wallet"
           style={styles.addToWallet}
           titleStyle={styles.addToWalletTxt}
-          leftIcon={<WalletIcon />}
+          leftIcon={<WalletIcon width={wp('12%')} />}
         />
-      </GradientScrollingWrapper>
-      <View style={styles.separatorCont}>
         <View style={[styles.separator]} />
-      </View>
+      </GradientScrollingWrapper>
     </View>
   );
 };
@@ -64,39 +75,40 @@ const styles = StyleSheet.create({
   balanceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '72%',
+    width: wp('72%'),
     alignSelf: 'center',
-    marginVertical: 18,
+    marginVertical: hp('2%'),
   },
   balanceTxt: {
     fontWeight: '600',
-    fontSize: 26,
+    fontSize: hp('2.8%'),
     color: COLORS.black,
     flex: 1,
   },
   balanaceAmount: {
     fontWeight: '500',
-    fontSize: 26,
+    fontSize: hp('2.8%'),
     color: COLORS.orange,
   },
   cardNoContainer: {
-    width: '72%',
+    width: wp('72%'),
     alignSelf: 'center',
-    height: '10%',
+    height: hp('6%'),
+    marginBottom: hp('0.6%'),
   },
   cardNo: {
     fontWeight: '600',
-    fontSize: 20,
+    fontSize: hp('2.1%'),
     color: COLORS.black,
     flex: 1,
   },
   cardTypeTxt: {
-    fontSize: 16,
+    fontSize: hp('1.7%'),
     color: COLORS.primaryGray,
   },
   separatorCont: {
     position: 'absolute',
-    bottom: 40,
+    bottom: hp('4.7%'),
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -104,32 +116,38 @@ const styles = StyleSheet.create({
 
   separator: {
     backgroundColor: COLORS.lightOrange,
-    height: 2,
-    width: '85%',
+    height: hp('0.3%'),
+    width: wp('85%'),
+    alignSelf: 'center',
+    marginTop: hp('3%'),
   },
   manuallyReload: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '72%',
+    width: wp('72%'),
     alignSelf: 'center',
-    marginVertical: 18,
+    marginVertical: hp('2%'),
   },
   ManualReloadTxt: {
     fontWeight: '600',
-    fontSize: 24,
+    fontSize: hp('2.5%'),
     color: COLORS.black,
     flex: 1,
-    marginHorizontal: 15,
+    marginHorizontal: wp('3.8%'),
   },
   addToWallet: {
-    width: '90%',
+    width: wp('90%'),
     alignSelf: 'center',
-    marginTop: 12,
-    minHeight: 50,
+    marginTop: hp('1%'),
+    minHeight: hp('6.2%'),
     backgroundColor: COLORS.black,
   },
   addToWalletTxt: {
-    fontSize: 18,
+    fontSize: hp('2.15%'),
   },
+  cardImagContainer: {
+    marginTop: hp('2%'),
+  },
+  cardImage1BG: {backgroundColor: COLORS.blue1},
 });
 export default CardDetailScreen;

@@ -9,49 +9,57 @@ import {CardImage} from '@components/CardImage/CardImage';
 import {CardImage1, CardLogo, EmptyCardLogo, InfoIcon} from '@assets/icon';
 import {CardType} from '@components/CardType';
 import {Typography} from '@components/Typography';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const CardsScreen = ({}: CardsScreenProp) => {
   const navigation = useNavigation<CardsScreenProp>();
 
   return (
     <View style={styles.container}>
-      <GradientScrollingWrapper thirdColor="#fff">
+      <GradientScrollingWrapper thirdColor={COLORS.white}>
         <Header onPressRight={() => Alert.alert('Go to profile screen')} />
         <CardImage
-          containerStyle={{marginTop: 10}}
+          containerStyle={styles.cardImagContainer}
           cardTypeText={
             <Typography style={styles.primaryTxt}>PRIMARY</Typography>
           }
-          CardImg={<CardImage1 style={{backgroundColor: '#004890'}} />}
+          CardImg={
+            <CardImage1
+              width={wp('80%%')}
+              height={hp('25%')}
+              style={styles.cardImage1BG}
+              preserveAspectRatio="xMinYMin slice"
+            />
+          }
         />
         <CardType
-          style={{marginTop: 40, width: '75%'}}
+          style={styles.cardTypeStyle}
           balance="$50"
           cardNumber="More card •• 5743"
           onPress={() => navigation.navigate('CardDetail')}
-          CardLogo={null}
-          InfoIcon={null}
         />
         <View style={styles.separator} />
         <CardType
-          style={{marginTop: 40, width: '88%'}}
-          CardLogo={<CardLogo />}
+          style={styles.cardTypeStyle1}
+          CardLogo={<CardLogo width={wp('25.5%')} />}
           balance="$0"
           cardNumber="More card •• 9898"
           onPress={() => {}}
           InfoIcon={null}
         />
+
         <CardType
-          style={{marginTop: 40, width: '88%'}}
-          CardLogo={<EmptyCardLogo />}
+          style={styles.cardTypeStyle1}
+          CardLogo={<EmptyCardLogo width={wp('25.5%')} />}
           cardNumber="Add CPay Card"
           onPress={() => {}}
-          InfoIcon={<InfoIcon />}
+          InfoIcon={<InfoIcon width={wp('3.8%')} />}
         />
-      </GradientScrollingWrapper>
-      <View style={styles.separatorCont1}>
         <View style={[styles.separator1]} />
-      </View>
+      </GradientScrollingWrapper>
     </View>
   );
 };
@@ -59,75 +67,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  logo: {
-    alignSelf: 'center',
-  },
-  title: {
-    fontWeight: '400',
-    fontSize: 40,
-    color: COLORS.secondaryGray,
-    alignSelf: 'center',
-    marginBottom: 30,
-  },
-  subtitle: {
-    fontSize: 28,
-    fontWeight: '400',
-    alignSelf: 'center',
-  },
-  section: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  btnCreate: {
-    marginLeft: 15,
-    bottom: 0,
-    position: 'absolute',
-    width: '92%',
-    height: 50,
-  },
-  paragraph: {
-    fontSize: 16,
-    padding: 25,
-    textAlign: 'center',
-    color: COLORS.primaryGray,
-  },
-  paragraph_view: {},
-  email: {
-    color: COLORS.orange,
-  },
-  separatorCont: {
-    position: 'absolute',
-    bottom: '7%',
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-  },
+
   separator: {
     backgroundColor: COLORS.lightOrange,
-    height: 2,
-    width: '85%',
+    height: hp('0.3%'),
+    width: wp('85%'),
     alignSelf: 'center',
-    marginVertical: 25,
+    marginVertical: hp('3%'),
   },
   primaryTxt: {
     fontWeight: '500',
-    fontSize: 20,
+    fontSize: hp('2%'),
     color: COLORS.white,
-    marginLeft: 7,
     position: 'absolute',
-    top: -2,
-    right: 45,
+    top: hp('-2%'),
+    right: wp('7.5%'),
     backgroundColor: COLORS.blue,
-    padding: 10,
-    borderRadius: 20,
+    paddingHorizontal: wp('2%'),
+    paddingVertical: hp('0.8%'),
+    borderRadius: 13,
     overflow: 'hidden',
     fontFamily: 'Rubik',
     zIndex: 10,
   },
   separatorCont1: {
     position: 'absolute',
-    bottom: 40,
+    bottom: hp('4.8%'),
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -136,7 +101,15 @@ const styles = StyleSheet.create({
   separator1: {
     backgroundColor: COLORS.lightOrange,
     height: 2,
-    width: '85%',
+    width: wp('85%'),
+    alignSelf: 'center',
+    marginVertical: hp('10%'),
   },
+  cardImagContainer: {
+    marginTop: hp('3%'),
+  },
+  cardImage1BG: {backgroundColor: COLORS.blue1},
+  cardTypeStyle: {marginTop: hp('4.8%'), width: wp('75%')},
+  cardTypeStyle1: {marginTop: hp('4.8%'), width: wp('88%')},
 });
 export default CardsScreen;

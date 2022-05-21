@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
 import {COLORS} from '@theme/color';
 import {ArrowDown} from '@assets/icon';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 interface CardTypeProps {
   onPress?: any;
@@ -31,19 +35,19 @@ export const CardAmountDropDown = ({items, setItems}: CardTypeProps) => {
       textStyle={styles.label}
       style={styles.dropdown}
       dropDownDirection="BOTTOM"
-      ArrowDownIconComponent={() => <ArrowDown />}
+      ArrowDownIconComponent={() => <ArrowDown width={wp('8%')} />}
     />
   );
 };
 
 const styles = StyleSheet.create({
   dropdown: {
-    borderRadius: 18,
+    borderRadius: hp('2%'),
     borderColor: COLORS.gray2,
-    borderWidth: 1.5,
-    height: 60,
+    borderWidth: hp('0.1%'),
+    height: hp('7%'),
   },
   label: {
-    fontSize: 22,
+    fontSize: hp('2.7%'),
   },
 });

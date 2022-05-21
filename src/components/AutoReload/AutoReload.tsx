@@ -7,6 +7,10 @@ import {
 } from 'react-native';
 import {COLORS} from '@theme/color';
 import {RightArrow} from '@assets/icon';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 interface AutoReload {
   onPress?: () => void;
@@ -30,7 +34,7 @@ export const AutoReload = ({balance, style, onPress}: AutoReload) => {
           <Text style={styles.fallsBlnc}>Below $5</Text>
         </View>
         <View style={styles.rightTitle}>
-          <RightArrow />
+          <RightArrow width={wp('4%')} />
         </View>
       </View>
     </TouchableOpacity>
@@ -43,10 +47,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
     borderColor: COLORS.primaryGray,
-    borderWidth: 0.2,
-    borderRadius: 10,
-    padding: 20,
-    width: '75%',
+    borderWidth: hp('0.05%'),
+    borderRadius: hp('0.8'),
+    paddingHorizontal: wp('4%'),
+    paddingVertical: hp('1.8%'),
+    width: wp('75%'),
   },
   autoReloadTxtCont: {
     flexDirection: 'row',
@@ -55,31 +60,31 @@ const styles = StyleSheet.create({
   },
   autoReloadTxt: {
     fontWeight: '600',
-    fontSize: 22,
+    fontSize: hp('2.5%'),
     color: COLORS.black,
     flex: 1,
   },
 
   activeTxt: {
     fontWeight: '500',
-    fontSize: 18,
+    fontSize: hp('2.1%'),
     color: COLORS.green,
   },
   balanceCont: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: hp('2.4%'),
     justifyContent: 'space-between',
   },
   balanceTxtCont: {flex: 1, marginLeft: 10},
   balance: {
     fontWeight: '500',
-    fontSize: 28,
+    fontSize: hp('3.3%'),
     color: COLORS.orange,
   },
   fallsBlnc: {
-    fontSize: 14,
+    fontSize: hp('1.65%'),
     color: COLORS.gray1,
   },
 

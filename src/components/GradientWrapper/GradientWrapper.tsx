@@ -29,7 +29,9 @@ export const GradientScrollingWrapper = ({
       ]}
       style={[styles.linearGradient, style]}>
       {scrollable ? (
-        <ScrollView style={{flex: 1}}>{children}</ScrollView>
+        <ScrollView nestedScrollEnabled style={{flex: 1}}>
+          {children}
+        </ScrollView>
       ) : (
         children
       )}

@@ -1,6 +1,10 @@
 import {StyleSheet, View} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 interface CardDetailProps {
   amount?: string;
@@ -55,14 +59,14 @@ export const CardDetail = ({
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 0.2,
+    borderWidth: hp('0.05%'),
     borderColor: COLORS.primaryGray,
-    borderRadius: 5,
-    padding: 15,
-    marginTop: 20,
+    borderRadius: hp('0.5%'),
+    padding: hp('2%'),
+    marginTop: hp('2.4%'),
   },
   totalContainer: {
-    width: '100%',
+    width: wp('80%'),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -70,39 +74,39 @@ const styles = StyleSheet.create({
 
   totalTxt: {
     fontWeight: '600',
-    fontSize: 18,
+    fontSize: hp('1.8%'),
     color: COLORS.black,
   },
   amountTxt: {
-    fontSize: 18,
+    fontSize: hp('1.8%'),
     color: COLORS.black,
   },
   separator: {
     backgroundColor: COLORS.gray1,
-    width: '100%',
+    width: wp('70%'),
     alignSelf: 'center',
-    marginVertical: 10,
-    padding: 0.2,
+    marginVertical: hp('1.4%'),
+    padding: hp('0.038%'),
   },
   cardImgContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5,
-    width: '100%',
+    marginTop: hp('0.6%'),
+    width: wp('80%'),
   },
   cashBackCont: {
-    marginLeft: 20,
+    marginLeft: wp('5%'),
   },
   cashBack: {
-    fontSize: 18,
+    fontSize: hp('2.1%'),
     color: COLORS.black,
   },
   addressContainer: {
     flexDirection: 'row',
-    width: '100%',
+    width: wp('80%'),
   },
   address: {
-    fontSize: 18,
+    fontSize: hp('2.1%'),
     color: COLORS.black,
     marginRight: 20,
   },
