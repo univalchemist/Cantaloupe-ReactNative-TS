@@ -1,7 +1,11 @@
-import { Typography } from "@components/Typography";
-import React, { ReactElement, useState } from "react";
-import { useWindowDimensions, StyleSheet, View } from "react-native";
-import SnapCarousel, { Pagination } from "react-native-snap-carousel";
+import {Typography} from '@components/Typography';
+import React, {ReactElement, useState} from 'react';
+import {useWindowDimensions, StyleSheet, View} from 'react-native';
+import SnapCarousel, {Pagination} from 'react-native-snap-carousel';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 interface CarouselProps {
   data: {
     icon: ReactElement;
@@ -9,15 +13,15 @@ interface CarouselProps {
   }[];
 }
 
-export const Carousel = ({ data }: CarouselProps) => {
-  const { width: windowWidth } = useWindowDimensions();
+export const Carousel = ({data}: CarouselProps) => {
+  const {width: windowWidth} = useWindowDimensions();
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
     <View>
       <SnapCarousel
         data={data}
-        renderItem={({ item: { icon, title } }) => (
+        renderItem={({item: {icon, title}}) => (
           <View style={styles.carouselItem}>
             <View style={styles.iconWrapper}>{icon}</View>
             <Typography style={styles.title}>{title}</Typography>
@@ -29,7 +33,7 @@ export const Carousel = ({ data }: CarouselProps) => {
         loop
         autoplayInterval={6000}
         inactiveSlideScale={1}
-        onSnapToItem={(index) => setActiveSlide(index)}
+        onSnapToItem={index => setActiveSlide(index)}
       />
 
       <Pagination
@@ -47,36 +51,35 @@ export const Carousel = ({ data }: CarouselProps) => {
 };
 
 const CAROUSEL_ITEM_HEIGHT = 240;
-const CAROUSEL_PAGINATION_DOT_SIZE = 20;
-const CAROUSEL_PAGINATION_DOT_INACTIVE_SIZE = 12;
+const CAROUSEL_PAGINATION_DOT_SIZE = hp('1.2%');
+const CAROUSEL_PAGINATION_DOT_INACTIVE_SIZE = hp('1.5%');
 
-const CAROUSEL_ACTIVE_COLOR = "#FF7F32";
-const CAROUSEL_INACTIVE_COLOR = "#C0C6E9";
+const CAROUSEL_ACTIVE_COLOR = '#FF7F32';
+const CAROUSEL_INACTIVE_COLOR = '#C0C6E9';
 
 const styles = StyleSheet.create({
   carouselItem: {
     minHeight: CAROUSEL_ITEM_HEIGHT,
-    paddingHorizontal: 20,
+    paddingHorizontal: wp('5%'),
   },
   iconWrapper: {
-    alignItems: "center"
+    alignItems: 'center',
   },
   title: {
-    fontWeight: "300",
-    fontSize: 27,
-    lineHeight: 32,
-    marginBottom: 8,
-    textAlign: "center",
+    fontWeight: '300',
+    fontSize: hp('3.2%'),
+    lineHeight: hp('3.2%'),
+    marginBottom: hp('1%'),
+    textAlign: 'center',
   },
   subtitle: {
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 20,
+    fontWeight: '400',
+    fontSize: hp('2%'),
+    lineHeight: hp('2%'),
   },
   paginationContainer: {
-    marginTop: 40,
     paddingVertical: 0,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   paginationDotsContainer: {
     marginRight: 8,

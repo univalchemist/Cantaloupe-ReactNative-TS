@@ -6,7 +6,7 @@ import {DashboardScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {Typography} from '@components/Typography';
-import {GradientScrollingWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrapper';
 
 const Dashboard = ({}: DashboardScreenProp) => {
   const navigation = useNavigation<DashboardScreenProp>();

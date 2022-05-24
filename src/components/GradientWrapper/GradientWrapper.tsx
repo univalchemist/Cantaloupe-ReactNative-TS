@@ -1,14 +1,15 @@
+import React from 'react';
 import {StyleSheet, ScrollView, ViewStyle} from 'react-native';
 import {COLORS} from '@theme/color';
 import LinearGradient from 'react-native-linear-gradient';
 
 type GradientScrollingWrapperProps = {
-  style?: ViewStyle,
-  firstColor?: string,
-  secondColor?: string,
-  thirdColor?: string,
-  scrollable?: boolean
-}
+  style?: ViewStyle;
+  firstColor?: string;
+  secondColor?: string;
+  thirdColor?: string;
+  scrollable?: boolean;
+};
 
 export const GradientScrollingWrapper = ({
   children,
@@ -28,9 +29,13 @@ export const GradientScrollingWrapper = ({
         thirdColor ? thirdColor : COLORS.blue,
       ]}
       style={[styles.linearGradient, style]}>
-      {scrollable ?<ScrollView style={{ flex: 1 }}>
-        {children}
-      </ScrollView> : children}
+      {scrollable ? (
+        <ScrollView nestedScrollEnabled style={styles.scrollView}>
+          {children}
+        </ScrollView>
+      ) : (
+        children
+      )}
     </LinearGradient>
   );
 };
@@ -39,4 +44,5 @@ const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
   },
+  scrollView: {flex: 1},
 });

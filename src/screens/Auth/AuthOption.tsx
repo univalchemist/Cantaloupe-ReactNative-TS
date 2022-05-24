@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {AppleButton} from '@invertase/react-native-apple-authentication';
+// import {AppleButton} from '@invertase/react-native-apple-authentication';
 import {Button, SocialButton} from '@components/Button';
 import {Google, Facebook, Apple} from '@assets/icon';
 import {StyleSheet, View} from 'react-native';
@@ -7,7 +7,7 @@ import {AuthOptionScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {Typography} from '@components/Typography';
 import {useNavigation} from '@react-navigation/native';
-import {GradientScrollingWrapper} from '@components/GradientWrpper';
+import {GradientScrollingWrapper} from '@components/GradientWrapper';
 
 const AuthOption = () => {
   const navigation = useNavigation<AuthOptionScreenProp>();
@@ -45,7 +45,7 @@ const AuthOption = () => {
         icon={<Facebook width={24} />}
         onPress={() => {}}
       />
-      <View style={styles.contineContainer}>
+      <View style={styles.continueContainer}>
         <Typography style={styles.continue}>
           You can also{' '}
           <Typography onPress={handleContinueWithEmail} style={styles.email}>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     color: COLORS.secondaryGray,
     marginBottom: 30,
   },
-  contineContainer: {
+  continueContainer: {
     marginTop: 10,
   },
   continue: {
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
     bottom: 15,
     backgroundColor: 'transparent',
   },
-  btnBackTitle:{
+  btnBackTitle: {
     color: COLORS.primaryGray,
-  }
+  },
 });
 export default AuthOption;

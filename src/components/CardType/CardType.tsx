@@ -1,13 +1,18 @@
+import React from 'react';
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 import {RightArrow} from '@assets/icon';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 interface CardTypeProps {
-  CardLogo: any;
-  cardNumber: string;
-  onPressRight: () => void;
-  InfoIcon: any;
+  CardLogo?: any;
+  cardNumber?: string;
+  onPress?: () => void;
+  InfoIcon?: any;
   style?: ViewStyle;
   balance?: string;
 }
@@ -17,11 +22,13 @@ export const CardType = ({
   balance,
   cardNumber,
   style,
-  onPressRight,
+  onPress,
   InfoIcon,
 }: CardTypeProps) => {
   return (
-    <View style={[styles.CardTypeContainer, style]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.CardTypeContainer, style]}>
       {CardLogo}
       <View style={styles.cardInfoContainer}>
         {balance && <Typography style={styles.balance}>{balance}</Typography>}
@@ -30,10 +37,10 @@ export const CardType = ({
           {InfoIcon}
         </View>
       </View>
-      <TouchableOpacity onPress={onPressRight} style={styles.rightTitle}>
-        <RightArrow />
-      </TouchableOpacity>
-    </View>
+      <View style={styles.rightTitle}>
+        <RightArrow width={wp('4%')} />
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -47,7 +54,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   cardInfoContainer: {
-    marginLeft: 10,
+    marginLeft: wp('1.8%'),
+
     flex: 1,
   },
   rightTitle: {
@@ -56,17 +64,17 @@ const styles = StyleSheet.create({
   },
   balance: {
     fontWeight: '500',
-    fontSize: 28,
+    fontSize: hp('3.3%'),
     color: COLORS.orange,
-    marginLeft: 7,
+    marginLeft: wp('1.7%'),
   },
   cardNumber: {
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: hp('1.9%'),
     color: COLORS.primaryGray,
-    marginLeft: 7,
+    marginLeft: wp('1.7%'),
     marginTop: 2,
-    marginRight: 8,
+    marginRight: wp('1.9%'),
   },
   emptyCardContainer: {
     flexDirection: 'row',

@@ -1,3 +1,4 @@
+import React from 'react';
 import {StyleSheet, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -10,7 +11,6 @@ interface IButtonProps {
 }
 export const Checkbox = ({title, onPress, style, titleStyle}: IButtonProps) => {
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <TouchableOpacity
       onPress={onPress}
       style={[styles.container, style]}

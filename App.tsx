@@ -10,14 +10,11 @@
 
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-
 import {COLORS} from './src/theme/color';
 import {BASE_URL} from './src/helpers/constants';
-
 import {Provider} from 'react-redux';
 import MainNavigator from './src/navigation/MainNavigator';
 import {store} from './src/store/store';
-
 import {
   ApolloClient,
   InMemoryCache,

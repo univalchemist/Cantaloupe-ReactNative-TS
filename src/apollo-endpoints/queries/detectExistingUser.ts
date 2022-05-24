@@ -1,12 +1,11 @@
-import React from 'react';
-
-import {Query} from '@queries/query';
+import {Query} from '@apollo-endpoints/query';
 
 interface QueryProps {
   email: String;
 }
 
-export interface DetectExistingUserResponseParams {
+//  TODO: move to models
+export interface DetectExistingUserResponse {
   message: String;
   isExistingUser: boolean;
 }
