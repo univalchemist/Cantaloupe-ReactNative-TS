@@ -8,6 +8,7 @@ import {
   CardDetailScreen,
   ReloadCardScreen,
   ReloadCardScreen2,
+  SavedCardsScreen,
 } from '@screens/index';
 import {
   createStackNavigator,
@@ -37,6 +38,7 @@ export type CardScreensParamList = {
   CardDetail: undefined;
   ReloadCard: undefined;
   ReloadCard2: undefined;
+  SavedCards: undefined;
 };
 export type BottomTabParamList = {
   Map: undefined;
@@ -71,7 +73,7 @@ function BottomTabs() {
           ),
         }}
         name="CardScreenNavigator1"
-        component={CardScreenNavigator}
+        component={SavedCardsScreen}
       />
       <BottomTab.Screen
         options={{
@@ -129,7 +131,7 @@ const CardScreenStack = createStackNavigator<CardScreensParamList>();
 const CardScreenNavigator = () => {
   return (
     <CardScreenStack.Navigator
-      // initialRouteName="Cards"
+      // initialRouteName="SavedCards"
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,
@@ -141,6 +143,7 @@ const CardScreenNavigator = () => {
         name="ReloadCard2"
         component={ReloadCardScreen2}
       />
+      <CardScreenStack.Screen name="SavedCards" component={SavedCardsScreen} />
     </CardScreenStack.Navigator>
   );
 };
@@ -198,4 +201,8 @@ export type ReloadCardScreenProp = StackNavigationProp<
 export type ReloadCardScreenProp2 = StackNavigationProp<
   CardScreensParamList,
   'ReloadCard2'
+>;
+export type SavedCardsScreenProp = StackNavigationProp<
+  CardScreensParamList,
+  'SavedCards'
 >;

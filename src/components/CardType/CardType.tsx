@@ -15,6 +15,7 @@ interface CardTypeProps {
   InfoIcon?: any;
   style?: ViewStyle;
   balance?: string;
+  primaryTxt?: string;
 }
 
 export const CardType = ({
@@ -24,6 +25,7 @@ export const CardType = ({
   style,
   onPress,
   InfoIcon,
+  primaryTxt,
 }: CardTypeProps) => {
   return (
     <TouchableOpacity
@@ -31,7 +33,14 @@ export const CardType = ({
       style={[styles.CardTypeContainer, style]}>
       {CardLogo}
       <View style={styles.cardInfoContainer}>
-        {balance && <Typography style={styles.balance}>{balance}</Typography>}
+        <View style={styles.primaryTxtContainer}>
+          {balance && <Typography style={styles.balance}>{balance}</Typography>}
+          {primaryTxt && (
+            <View style={styles.primaryTxtView}>
+              <Typography style={styles.primaryTxt}>{primaryTxt}</Typography>
+            </View>
+          )}
+        </View>
         <View style={styles.emptyCardContainer}>
           <Typography style={styles.cardNumber}>{cardNumber}</Typography>
           {InfoIcon}
@@ -78,6 +87,26 @@ const styles = StyleSheet.create({
   },
   emptyCardContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
+  },
+  primaryTxtView: {
+    width: wp('18%'),
+    padding: hp('0.6%'),
+    borderRadius: 18,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.blue,
+  },
+  primaryTxt: {
+    color: COLORS.white,
+    fontSize: hp('1.6%'),
+    fontWeight: 'bold',
+  },
+  primaryTxtContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp('40%'),
     alignItems: 'center',
   },
 });
