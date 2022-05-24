@@ -24,6 +24,11 @@ import Card2 from './card2.svg';
 import TickIcon from './tickIcon.svg';
 import ArrowDown from './arrowDown.svg';
 import WalletIcon from './walletIcon.svg';
+import AddIcon from './addIcon.svg';
+import LocationIcon from './locationIcon.svg';
+import TransactionIcon from './transactionIcon.svg';
+import RewardsIcon from './rewardsIcon.svg';
+import FaqIcon from './faqIcon.svg';
 
 export {
   CardImage,
@@ -52,4 +57,9 @@ export {
   TickIcon,
   ArrowDown,
   WalletIcon,
+  AddIcon,
+  LocationIcon,
+  TransactionIcon,
+  RewardsIcon,
+  FaqIcon
 };
