@@ -21,6 +21,7 @@ import {
 } from '@assets/icon';
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import { Button, TouchableTextButton } from '@components/Button';
+import { cardArray, choiceToMove, termsANdConditions } from '../mock';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -28,21 +29,18 @@ const windowHeight = Dimensions.get('window').height;
 const AddCards = ({ }: AddCardsScreenProp) => {
   const navigation = useNavigation<AddCardsScreenProp>();
 
-  const array = [{ balance: "$50", cardNumber: "More card •• 5743" }, { balance: "", cardNumber: "CPay Card" }]
-  const termsANdConditions = ['Privacy Policy', 'Terms of Use', 'Cookie Policy']
-  const choiceToMove = ['Locations', 'Transactions', 'MORE rewards', 'FAQ']
-
+  
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={true}>
       <StatusBar translucent={true} backgroundColor={'transparent'} />
       <Header style={styles.header} onPressRight={() => { }} />
       <FlatList
         style={{ flex: 1 }}
-        data={array}
+        data={cardArray}
         renderItem={(item) => {
           return (
             <Card
-            onPress={()=>{}}
+              key={"index"}
               CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 8} style={styles.svgStyle} />}
               style={styles.cardTypeStyle}
               balance={item.item.balance != '' && item.item.balance}
@@ -60,8 +58,10 @@ const AddCards = ({ }: AddCardsScreenProp) => {
       <View style={styles.bottomBorder} />
       {choiceToMove.map((item, index) => {
         return <Card
+          key={"index"}
+          onPress={() => navigation.navigate('MapScreen')}
           CardLogo={<LocationIcon style={styles.locationIconStyle} />}
-          style={[styles.locationStyle, index === 3 && { marginBottom:20}]}
+          style={[styles.locationStyle, index === 3 && { marginBottom: 20 }]}
           balance={undefined}
           cardNumber={item}
         />
@@ -77,39 +77,33 @@ const AddCards = ({ }: AddCardsScreenProp) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: moderateScale(50),
   },
   mapBackgroundGradient: {
-    paddingTop: 40,
-    paddingBottom: 10
+    paddingTop: moderateScale(40),
+    paddingBottom: moderateScale(10)
   },
   btnCreate: {
     backgroundColor: "transparent",
-
-  },
-  dollarFont: {
-    fontSize: hp('3.5%'),
-    color: COLORS.orange,
   },
   locationIconStyle: {
-    marginLeft: 15,
+    marginLeft: moderateScale(15),
   },
   brandName: {
     textAlign: "center",
     fontSize: hp('3%'),
     color: COLORS.black,
     fontWeight: "300",
-    marginBottom: 20
+    marginBottom: moderateScale(20)
   },
   buttonTextStyle: {
     color: COLORS.gray1,
-    fontSize: 18,
-
+    fontSize: moderateScale(18),
   },
   locationStyle: {
-    paddingHorizontal: 25,
+    paddingHorizontal: moderateScale(25),
     justifyContent: "center",
-    marginTop: 20
+    marginTop: moderateScale(20)
   },
   buttonText: {
     color: COLORS.black,
@@ -118,58 +112,19 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomColor: COLORS.lightOrange,
-    borderBottomWidth: 2,
+    borderBottomWidth: moderateScale(2),
     width: "85%",
     alignSelf: "center",
-    marginTop: 20,
-    marginBottom: 18
+    marginTop: moderateScale(20),
+    marginBottom: moderateScale(18)
   },
   addCardButtonContainer: {
     backgroundColor: "transparent",
     justifyContent: "flex-start",
-    paddingLeft: 20
-  },
-  cardNumber: {
-    fontSize: hp('1.8%'),
-    color: COLORS.gray1,
-    fontWeight: "bold",
+    paddingLeft: moderateScale(20)
   },
   cardTypeStyle: {
     justifyContent: "flex-start",
-  },
-  logo: {
-    alignSelf: 'center',
-  },
-  title: {
-    fontWeight: '400',
-    fontSize: 40,
-    color: COLORS.secondaryGray,
-    alignSelf: 'center',
-    marginBottom: 30,
-  },
-  subtitle: {
-    fontSize: 28,
-    fontWeight: '400',
-    alignSelf: 'center',
-  },
-  section: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  cardImagContainer: {
-    marginTop: hp('2%'),
-  },
-  cardImage1BG: { backgroundColor: COLORS.blue1 },
-  paragraph: {
-    fontSize: 16,
-    padding: 25,
-    textAlign: 'center',
-    color: COLORS.primaryGray,
-  },
-  paragraph_view: {},
-  email: {
-    color: COLORS.orange,
   },
   cardImage: {
     width: "30%",
@@ -179,18 +134,7 @@ const styles = StyleSheet.create({
     width: wp('95%')
   },
   svgStyle: {
-    marginLeft: 0
-  },
-  cardRowStyle: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "green",
-    justifyContent: "space-between"
-  },
-  rightTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingRight: 15
+    marginLeft: moderateScale(0)
   },
 });
 export default AddCards;

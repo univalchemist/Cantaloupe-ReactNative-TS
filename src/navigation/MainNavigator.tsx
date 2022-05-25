@@ -34,6 +34,7 @@ export type MainStackParamList = {
   Signin: undefined;
   Dashboard: undefined;
   BottomTabs: undefined;
+  MapScreen:undefined
 };
 
 export type CardScreensParamList = {
@@ -45,7 +46,6 @@ export type CardScreensParamList = {
 };
 
 export type MapScreenParamList = {
-
   MapScreenP: undefined;
 };
 
@@ -144,7 +144,6 @@ const CardScreenStack = createStackNavigator<CardScreensParamList>();
 const CardScreenNavigator = () => {
   return (
     <CardScreenStack.Navigator
-      // initialRouteName="AddCards"
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,
@@ -175,6 +174,7 @@ const MainNavigator = () => {
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="AuthOption" component={AuthOptionScreen} />
         <Stack.Screen name="Signin" component={SignInScreen} />
+       <Stack.Screen name="MapScreen" component={MapScreen}/>
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="BottomTabs" component={BottomTabs} />
       </Stack.Navigator>

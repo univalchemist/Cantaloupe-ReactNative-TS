@@ -1,0 +1,1 @@
+export {SwitchComp} from './Switch';
