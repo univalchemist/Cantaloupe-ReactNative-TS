@@ -50,7 +50,7 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
         <TouchableOpacity
           style={styles.manuallyReload}
           onPress={() => {
-            navigation.navigate('ReloadCard');
+            navigation.navigate('MapScreen');
           }}>
           <ManuallyReloadIcon />
           <Text style={styles.ManualReloadTxt}>Manually Reload</Text>
