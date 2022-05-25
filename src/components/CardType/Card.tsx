@@ -13,7 +13,7 @@ interface CardTypeProps {
   onPress?: () => void;
   InfoIcon?: any;
   style?: ViewStyle;
-  balance?: string;
+  balance?: string | boolean;
 }
 
 export const Card = ({
@@ -45,15 +45,12 @@ export const Card = ({
 
 const styles = StyleSheet.create({
   CardTypeContainer: {
-    // width: '90%',
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
-    // marginVertical: 10,
   },
   cardInfoContainer: {
     marginLeft: wp('1.8%'),
-
     flex: 1,
   },
   rightTitle: {
