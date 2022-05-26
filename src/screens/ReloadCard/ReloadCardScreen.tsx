@@ -9,7 +9,7 @@ import {CardImage} from '@components/CardImage/CardImage';
 import {CardImage2, VisaIcon, CardSymbolIcon} from '@assets/icon';
 import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
-import {CardAmountDropDown} from '@components/CardAmountDropDown/CardAmountDropDown';
+import {CardAmountDropDown} from '@components/index';
 import {PaymentMethodCard} from '@components/PaymentMethodCard';
 import {
   widthPercentageToDP as wp,

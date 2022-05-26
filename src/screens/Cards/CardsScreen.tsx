@@ -3,19 +3,46 @@ import {Alert, StyleSheet, View} from 'react-native';
 import {CardsScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-import {GradientScrollingWrapper} from '@components/GradientWrapper';
-import {Header} from '@components/Header';
-import {CardImage} from '@components/CardImage/CardImage';
+
 import {CardImage1, CardLogo, EmptyCardLogo, InfoIcon} from '@assets/icon';
-import {CardType} from '@components/CardType';
-import {Typography} from '@components/Typography';
+import {
+  Typography,
+  CardImage,
+  Header,
+  CardType,
+  GradientScrollingWrapper,
+  Separator,
+} from '@components/index';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {PaymentMethod} from '@models/PaymentMethod';
+import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
 const CardsScreen = ({}: CardsScreenProp) => {
   const navigation = useNavigation<CardsScreenProp>();
+
+  //  Begin test data
+  const CARD_TYPE: CantaloupeMoreCardType =
+    CantaloupeMoreCardType.PAYROLL_DEDUCT_CARD;
+  const card: PaymentMethod = {
+    promoTotal: 0,
+    replenishTotal: 0,
+    discount: 0,
+    points: 0,
+    cardType: CARD_TYPE,
+    cardId: 100001,
+    cardNum: '',
+    balance: 0,
+    currencyCd: '',
+    primary: true,
+  };
+  //  End test data
+
+  const handleCardButtonPressed = () => {
+    //  handle pressed
+  };
 
   return (
     <View style={styles.container}>
@@ -39,15 +66,15 @@ const CardsScreen = ({}: CardsScreenProp) => {
           style={styles.cardTypeStyle}
           balance="$50"
           cardNumber="More card •• 5743"
-          onPress={() => navigation.navigate('CardDetail')}
+          onPress={() => navigation.navigate('CardDetail', {card})}
         />
-        <View style={styles.separator} />
+        <Separator />
         <CardType
           style={styles.cardTypeStyle1}
           CardLogo={<CardLogo width={wp('25.5%')} />}
           balance="$0"
           cardNumber="More card •• 9898"
-          onPress={() => {}}
+          onPress={() => handleCardButtonPressed()}
           InfoIcon={null}
         />
 
@@ -55,10 +82,10 @@ const CardsScreen = ({}: CardsScreenProp) => {
           style={styles.cardTypeStyle1}
           CardLogo={<EmptyCardLogo width={wp('25.5%')} />}
           cardNumber="Add CPay Card"
-          onPress={() => {}}
+          onPress={() => handleCardButtonPressed()}
           InfoIcon={<InfoIcon width={wp('3.8%')} />}
         />
-        <View style={[styles.separator1]} />
+        <Separator />
       </GradientScrollingWrapper>
     </View>
   );
@@ -68,13 +95,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  separator: {
-    backgroundColor: COLORS.lightOrange,
-    height: hp('0.3%'),
-    width: wp('85%'),
-    alignSelf: 'center',
-    marginVertical: hp('3%'),
-  },
   primaryTxt: {
     fontWeight: '500',
     fontSize: hp('2%'),
@@ -89,21 +109,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     fontFamily: 'Rubik',
     zIndex: 10,
-  },
-  separatorCont1: {
-    position: 'absolute',
-    bottom: hp('4.8%'),
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-  },
-
-  separator1: {
-    backgroundColor: COLORS.lightOrange,
-    height: 2,
-    width: wp('85%'),
-    alignSelf: 'center',
-    marginVertical: hp('10%'),
   },
   cardImagContainer: {
     marginTop: hp('3%'),

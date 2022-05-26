@@ -1,9 +1,32 @@
-import {gql} from '@apollo/client';
+import {Query} from '@apollo-endpoints/query';
 
-export const CREATE_OR_FIND_PRONTO_PASS = gql`
+interface QueryProps {
+  cardId: number;
+}
+
+//  TODO: move to models
+export interface CreateOrFindProntoPassResponse {
+  prontoPassURLiOS: string;
+}
+
+const CREATE_OR_FIND_PRONTO_PASS = `
   mutation CreateOrFindProntoPass($cardId: Int!) {
     createOrFindProntoPass(cardId: $cardId) {
       prontoPassURLiOS
     }
   }
 `;
+export const fetchProntoPass = async ({cardId}: QueryProps) => {
+  const results = await Query({
+    gqlQuery: CREATE_OR_FIND_PRONTO_PASS,
+    params: {cardId: cardId},
+  }).catch(error => {
+    console.log(error);
+  });
+
+  if (results.errors) {
+    console.log(results.errors);
+  }
+
+  return results?.data?.createOrFindProntoPass;
+};

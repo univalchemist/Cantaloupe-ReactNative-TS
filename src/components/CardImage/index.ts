@@ -1,1 +1,1 @@
-export {CardImage} from '@assets/icon';
+export {CardImage} from './CardImage';
