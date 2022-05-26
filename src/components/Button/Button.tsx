@@ -1,3 +1,4 @@
+import React from 'react';
 import {StyleSheet, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -22,9 +23,8 @@ export const Button = ({
       style={[
         styles.container,
         style,
-        {
-          flexDirection: leftIcon ? 'row' : 'column',
-        },
+        // eslint-disable-next-line react-native/no-inline-styles
+        {flexDirection: leftIcon ? 'row' : 'column'},
       ]}
       activeOpacity={0.8}>
       {leftIcon}

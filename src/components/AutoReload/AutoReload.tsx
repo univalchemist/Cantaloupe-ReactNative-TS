@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -12,13 +13,13 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-interface AutoReload {
+interface IAutoReloadProps {
   onPress?: () => void;
   style?: ViewStyle;
   balance?: string;
 }
 
-export const AutoReload = ({balance, style, onPress}: AutoReload) => {
+export const AutoReload = ({balance, style, onPress}: IAutoReloadProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}

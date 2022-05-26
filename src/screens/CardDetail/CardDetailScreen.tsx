@@ -50,7 +50,7 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
         <TouchableOpacity
           style={styles.manuallyReload}
           onPress={() => {
-            navigation.navigate('MapScreen');
+            navigation.navigate('ReloadCard');
           }}>
           <ManuallyReloadIcon />
           <Text style={styles.ManualReloadTxt}>Manually Reload</Text>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     flex: 1,
   },
-  balanaceAmount: {
+  balanceAmount: {
     fontWeight: '500',
     fontSize: hp('2.8%'),
     color: COLORS.orange,

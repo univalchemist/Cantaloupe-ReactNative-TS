@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         flex: 1,
         position:"absolute",
         justifyContent: "center",
-        width: "95%",
+        width: "100%",
         alignSelf: "center",
         backgroundColor:COLORS.blackWithOpacity,
         height:"100%"

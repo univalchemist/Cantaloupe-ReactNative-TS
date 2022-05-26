@@ -7,7 +7,7 @@ import { COLORS } from "@theme/color";
 
 const CustomSearchBar = () => {
     return (
-        <View style={styles.searchBox} >
+        <View style={[styles.searchBox]} >
             <TextInput
                 style={styles.input}
                 placeholder="Search Address"

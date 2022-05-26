@@ -45,7 +45,7 @@ const AuthOption = () => {
         icon={<Facebook width={24} />}
         onPress={() => {}}
       />
-      <View style={styles.contineContainer}>
+      <View style={styles.continueContainer}>
         <Typography style={styles.continue}>
           You can also{' '}
           <Typography onPress={handleContinueWithEmail} style={styles.email}>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     color: COLORS.secondaryGray,
     marginBottom: 30,
   },
-  contineContainer: {
+  continueContainer: {
     marginTop: 10,
   },
   continue: {

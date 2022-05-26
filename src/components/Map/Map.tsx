@@ -28,9 +28,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor:COLORS.extraLightGray,
+        backgroundColor:COLORS.transparent,
         marginTop:moderateScale(20),
-        
       },
       container: {
         height: windowHeight/1.55,

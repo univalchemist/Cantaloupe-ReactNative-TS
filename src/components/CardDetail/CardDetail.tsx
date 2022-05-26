@@ -1,3 +1,4 @@
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -6,7 +7,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-interface CardDetailProps {
+interface ICardDetailProps {
   amount?: string;
   CardImg?: any;
   cardNumber?: string;
@@ -22,7 +23,7 @@ export const CardDetail = ({
   name,
   street,
   city,
-}: CardDetailProps) => {
+}: ICardDetailProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.totalContainer}>

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import { Map } from '@components/Map/Map';
 import { GradientScrollingWrapper } from '@components/GradientWrapper';
 import { moderateScale } from 'react-native-size-matters';
@@ -12,11 +12,15 @@ import { ListView } from '@components/ListDetail';
 import { FilterModule } from '@components/ListDetail';
 import { CustomSearchBar } from '@components/SearchBar';
 import { LocationModal } from '@components/LocationModal';
+import { dummyArray } from '../mock';
+import { SvgProps } from 'react-native-svg';
 
 const MapScreen = ({navigation}:{navigation:any}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [filteredLocationIndex, setFilteredLocationIndex] = useState(-1);
+  
 
   const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState)
@@ -24,12 +28,20 @@ const MapScreen = ({navigation}:{navigation:any}) => {
 
   useEffect(()=>{
     setModalVisible(true)
+  
   },[])
+
+  const methodToShowFilterOptions= useCallback(()=>{
+    setIsFilterEnable(!isFilterEnable)
+  },[isFilterEnable])
+
+  
+
 
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={false}>
       <BackButton onPressRight={() => navigation.goBack()} />
-      <CustomSearchBar/>
+      <View style={styles.searchContainer}><CustomSearchBar /></View>
       <View style={styles.mapRow}>
         <View style={styles.mapAndList}>
           <Text style={[styles.mapButtonText, isEnabled ? { fontWeight: "400" } : { fontWeight: "700" }]}>Map</Text>
@@ -38,27 +50,28 @@ const MapScreen = ({navigation}:{navigation:any}) => {
             <Text style={[styles.mapButtonText, isEnabled ? { fontWeight: "700" } : { fontWeight: "400" }]}>List</Text>
           </View>
         </View>
-        <TouchableOpacity onPress={() => { setIsFilterEnable(!isFilterEnable) }} style={styles.filterContainer}>
+        <TouchableOpacity onPress={() => methodToShowFilterOptions()} style={styles.filterContainer}>
           <Filter />
           <Text style={styles.mapButtonText}>{!isFilterEnable? 'Filter':'Hide'}</Text>
         </TouchableOpacity>
       </View>
-      {isFilterEnable && <FilterModule/>}
+      {isFilterEnable && <FilterModule   filteredLocationIndex={filteredLocationIndex} />}
       {!isEnabled?<Map/>:
-      <ListView/>}
+       <ListView/>}
      {!isEnabled && <Text style={styles.infoText}>Tap a location on the map
         for more information</Text>}
-       {modalVisible && <LocationModal onBlock={()=>{setModalVisible(false)}} OnAllow={()=>{setModalVisible(false)}}/>}
+       {modalVisible && <LocationModal  onBlock={()=>{setModalVisible(false)}} OnAllow={()=>{setModalVisible(false)}}/>}
     </GradientScrollingWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  
   mapBackgroundGradient: {
     paddingTop: moderateScale(40),
-    paddingBottom: moderateScale(10),
-    paddingHorizontal: moderateScale(20)
+    paddingBottom: moderateScale(10)
+  },
+  searchContainer:{
+    paddingHorizontal: moderateScale(15)
   },
   container: {
     height: 300,
@@ -68,13 +81,14 @@ const styles = StyleSheet.create({
   mapRow: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    paddingHorizontal: moderateScale(15)
   },
   map: {
     flex: 1
   },
   mapButtonText: {
-    fontSize: moderateScale(25),
+    fontSize: moderateScale(20),
     color: COLORS.blue
   },
   filterContainer: {

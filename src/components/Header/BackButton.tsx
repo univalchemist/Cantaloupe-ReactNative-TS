@@ -17,7 +17,7 @@ interface HeaderProps {
 export const BackButton = ({ style, onPressRight }: HeaderProps) => {
     return (
         <View style={[styles.headerContainer, style]}>
-           <TouchableOpacity style={styles.backButtonContainer}>
+           <TouchableOpacity onPress={onPressRight} style={styles.backButtonContainer}>
                <Back style={styles.rightArrow} fill={COLORS.gray1}/>
                <Text style={styles.buttonText}>BACK</Text>
            </TouchableOpacity>

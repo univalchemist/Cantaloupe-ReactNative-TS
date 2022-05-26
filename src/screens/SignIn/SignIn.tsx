@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Button} from '@components/Button';
 import {StyleSheet, View} from 'react-native';
 import {SigninScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
 import {Typography} from '@components/Typography';
 import {useNavigation} from '@react-navigation/native';
-import {Dimensions} from 'react-native';
 import {FloatLabelTextField} from '@components/FloatLabelTextField';
 import CheckBox from 'react-native-check-box';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
@@ -15,9 +14,33 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+//  Detect User
+import {
+  getIsExistingUser,
+  DetectExistingUserResponse,
+} from '@apollo-endpoints/index';
+
 const SignIn = () => {
   const navigation = useNavigation<SigninScreenProp>();
   const [checked, setChecked] = useState(false);
+  const [isExistingUserResponse, setIsExistingUserResponse] =
+    useState<DetectExistingUserResponse>();
+  const [shouldShowExistingUserText, setShouldShowExistingUserText] =
+    useState<boolean>();
+
+  useEffect(() => {
+    if (isExistingUserResponse) {
+      setShouldShowExistingUserText(isExistingUserResponse?.isExistingUser);
+    }
+  }, [isExistingUserResponse]);
+
+  const detectIsExistingUser = useCallback(async (text: String) => {
+    await getIsExistingUser({email: text}).then(
+      (response: DetectExistingUserResponse) => {
+        setIsExistingUserResponse(response);
+      },
+    );
+  }, []);
 
   //const handleContinueWithEmail = useCallback(() => {}, []);
   // const handleBackHome = useCallback(() => navigation.goBack(), [navigation]);
@@ -28,36 +51,40 @@ const SignIn = () => {
           <Typography style={styles.title}>Create Account</Typography>
           <FloatLabelTextField
             title="Email"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
+            isValidated={shouldShowExistingUserText}
+            validate={text => {
+              detectIsExistingUser(text);
+            }}
           />
+          {shouldShowExistingUserText && (
+            <Typography style={styles.label_orange}>
+              A user with this email exists
+            </Typography>
+          )}
           <Typography style={styles.subtitle}>
             Enter personal details
           </Typography>
 
           <FloatLabelTextField
             title="First Name *"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Last Name *"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Street Address"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Zip / Postal Code *"
-            onPress={() => navigation.navigate('Dashboard')}
-            style={styles.input}
+            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <View style={styles.checkbox_view}>
@@ -67,7 +94,7 @@ const SignIn = () => {
             />
             <View>
               <Typography style={styles.label}>
-                I have read and aggree to Cabtalopes's:
+                I have read and agree to Cantaloupes's:
               </Typography>
               <Typography style={styles.label_orange}>Terms of Use</Typography>
               <Typography style={styles.label_orange}>
@@ -94,7 +121,6 @@ const SignIn = () => {
     </GradientScrollingWrapper>
   );
 };
-let width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

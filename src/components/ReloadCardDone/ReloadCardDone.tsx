@@ -1,3 +1,4 @@
+import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -30,6 +31,7 @@ export const ReloadCardDone = ({
         <Typography
           style={[
             styles.newBalanceTxt,
+            // eslint-disable-next-line react-native/no-inline-styles
             {fontWeight: 'bold', color: COLORS.black},
           ]}>
           ${newBalance}
