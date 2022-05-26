@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: moderateScale(15),
         overflow: "hidden",
         padding: moderateScale(15),
-        top: "29%",
+        top: "28%",
         alignSelf:"center"
       },
       filterView: {

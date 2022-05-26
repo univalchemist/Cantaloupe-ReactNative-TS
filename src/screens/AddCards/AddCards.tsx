@@ -41,7 +41,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
           return (
             <Card
               key={"index"}
-              CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 8} style={styles.svgStyle} />}
+              CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 9.5} style={styles.svgStyle} />}
               style={styles.cardTypeStyle}
               balance={item.item.balance != '' && item.item.balance}
               cardNumber={item.item.cardNumber}
@@ -91,19 +91,20 @@ const styles = StyleSheet.create({
   },
   brandName: {
     textAlign: "center",
-    fontSize: hp('3%'),
+    fontSize: moderateScale(20),
     color: COLORS.black,
     fontWeight: "300",
-    marginBottom: moderateScale(20)
+    marginBottom: moderateScale(15),
+    paddingHorizontal:moderateScale(10)
   },
   buttonTextStyle: {
     color: COLORS.gray1,
-    fontSize: moderateScale(18),
+    fontSize: moderateScale(15),
   },
   locationStyle: {
     paddingHorizontal: moderateScale(25),
     justifyContent: "center",
-    marginTop: moderateScale(20)
+    marginTop: moderateScale(10)
   },
   buttonText: {
     color: COLORS.black,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: moderateScale(2),
     width: "85%",
     alignSelf: "center",
-    marginTop: moderateScale(20),
+    marginTop: moderateScale(5),
     marginBottom: moderateScale(18)
   },
   addCardButtonContainer: {
@@ -131,7 +132,9 @@ const styles = StyleSheet.create({
     height: "30%"
   },
   header: {
-    width: wp('95%')
+    width: wp('95%'),
+    // paddingBottom:moderateScale(25),
+    // paddingTop:moderateScale(15)
   },
   svgStyle: {
     marginLeft: moderateScale(0)

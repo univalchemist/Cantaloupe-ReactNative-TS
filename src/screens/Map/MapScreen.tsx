@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: moderateScale(23),
     textAlign: "center",
-    marginTop: moderateScale(15)
+    marginTop: moderateScale(15),
+    color:COLORS.gray1
   },
   
   

@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
     },
     buttonText:{
         fontSize:moderateScale(16),
-        marginLeft:moderateScale(8)
+        marginLeft:moderateScale(8),
+        color:COLORS.gray1
     }
     
 });

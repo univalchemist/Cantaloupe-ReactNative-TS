@@ -16,9 +16,9 @@ export const ListView = ({}: ListProps) => {
             return <View style={styles.listContainerView}>
               <item.image />
               <View style={styles.locationText}>
-                 <Text>{item.machine_type}</Text>
-              <Text>{item.location}</Text>
-              <Text>{item.distance}</Text>
+                 <Text style={styles.machineText}>{item.machine_type}</Text>
+              <Text style={styles.locationTextStyles}>{item.location}</Text>
+              <Text style={styles.directionStyle}>{item.distance}</Text>
               </View>
               <View style={styles.directionsView}>
                  <Direction/>
@@ -46,6 +46,16 @@ const styles = StyleSheet.create({
       directionsText:{
         color:COLORS.blue,
         marginTop:moderateScale(5)
+      },
+      machineText:{
+        color:COLORS.orange
+      },
+      locationTextStyles:{
+        color:COLORS.black,
+        fontWeight:"bold"
+      },
+      directionStyle:{
+        color:COLORS.black
       }
     
 });
