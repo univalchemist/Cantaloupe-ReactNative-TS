@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, Text } from "react-native";
 import { Map } from '@components/Map/Map';
 import { GradientScrollingWrapper } from '@components/GradientWrapper';
@@ -17,9 +17,10 @@ const MapScreen = ({navigation}:{navigation:any}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const toggleSwitch = () => {
+
+  const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState)
-  };
+  }, [])
 
   useEffect(()=>{
     setModalVisible(true)

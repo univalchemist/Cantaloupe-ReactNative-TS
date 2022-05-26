@@ -6,7 +6,6 @@ import {
 } from 'react-native-responsive-screen';
 import {
     Back,
-    RightArrow,
 } from '@assets/icon';
 import { moderateScale } from 'react-native-size-matters';
 

@@ -15,8 +15,8 @@ export const SwitchComp = ({ toggleSwitch, isEnabled }: SwitchProps) => {
     return (
         <ToggleSwitch
             isOn={isEnabled ? true : false}
-            onColor={'#C0C6E9'}
-            offColor={'#C0C6E9'}
+            onColor={COLORS.lightBlue}
+            offColor={COLORS.lightBlue}
             size="small"
             onToggle={toggleSwitch}
             thumbOffStyle={[styles.tumb, { position: "absolute", left: moderateScale(-5) }]}

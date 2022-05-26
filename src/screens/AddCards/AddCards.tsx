@@ -32,7 +32,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
   
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={true}>
-      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <StatusBar translucent={true} backgroundColor={COLORS.transparent} />
       <Header style={styles.header} onPressRight={() => { }} />
       <FlatList
         style={{ flex: 1 }}
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     paddingBottom: moderateScale(10)
   },
   btnCreate: {
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.transparent,
   },
   locationIconStyle: {
     marginLeft: moderateScale(15),
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(18)
   },
   addCardButtonContainer: {
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.transparent,
     justifyContent: "flex-start",
     paddingLeft: moderateScale(20)
   },
@@ -133,8 +133,6 @@ const styles = StyleSheet.create({
   },
   header: {
     width: wp('95%'),
-    // paddingBottom:moderateScale(25),
-    // paddingTop:moderateScale(15)
   },
   svgStyle: {
     marginLeft: moderateScale(0)

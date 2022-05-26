@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, TouchableWithoutFeedback } from "react-native";
+import { COLORS } from "@theme/color";
 
 const LocationModal = ({onBlock,OnAllow}:{onBlock:()=>void,OnAllow:()=>void}) => {
    
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         width: "95%",
         alignSelf: "center",
-        backgroundColor:'rgba(52, 52, 52, 0.8)',
+        backgroundColor:COLORS.blackWithOpacity,
         height:"100%"
     },
     buttonContainer: {
@@ -47,12 +48,12 @@ const styles = StyleSheet.create({
     },
     modalView: {
         margin: 20,
-        backgroundColor: "white",
+        backgroundColor: COLORS.white,
         borderRadius: 5,
         paddingVertical: 20,
         paddingHorizontal: 12,
         alignItems: "center",
-        shadowColor: "#000",
+        shadowColor: COLORS.black,
         shadowOffset: {
             width: 0,
             height: 2
@@ -66,14 +67,14 @@ const styles = StyleSheet.create({
         fontWeight: 'normal',
         marginBottom: 16,
         fontSize: 16,
-        color: 'black',
+        color: COLORS.black,
         textAlign: "left"
     },
     buttonText: {
         fontFamily: 'Roboto',
         fontWeight: 'bold',
         fontSize: 16,
-        color: '#5576D1',
+        color: COLORS.blue,
         textAlign: "left"
     }
 });
