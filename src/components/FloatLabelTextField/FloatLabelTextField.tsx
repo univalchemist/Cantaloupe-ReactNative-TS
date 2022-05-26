@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import {
   Animated,
   StyleSheet,
@@ -16,24 +15,26 @@ import {
 } from 'react-native-responsive-screen';
 
 interface FloatLabelTextFieldProps {
-  onPress: () => void;
   title: string;
-  style?: ViewStyle;
   titleStyle?: TextStyle;
+  viewStyle?: ViewStyle;
+  validate?: (text: string) => void;
+  isValidated?: boolean;
 }
 export const FloatLabelTextField = ({
   title,
   titleStyle,
+  viewStyle,
+  validate,
+  isValidated,
 }: FloatLabelTextFieldProps) => {
   const [value, setValue] = useState('');
   const moveText = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // eslint-disable-next-line eqeqeq
-    if (value != '') {
+    if (value !== '') {
       moveTextTop();
-      // eslint-disable-next-line eqeqeq
-    } else if (value == '') {
+    } else if (value === '') {
       moveTextBottom();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,7 +51,10 @@ export const FloatLabelTextField = ({
   };
 
   const onBlurHandler = () => {
-    if (value === '') {
+    if (validate) {
+      validate(value);
+      return;
+    } else if (value !== '') {
       moveTextBottom();
     }
   };
@@ -86,21 +90,28 @@ export const FloatLabelTextField = ({
   };
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.animatedStyle, animStyle]}>
-        <Typography style={[styles.title, titleStyle]}>{title}</Typography>
-      </Animated.View>
-      <TextInput
-        autoCapitalize={'none'}
-        style={styles.input}
-        value={value}
-        onChangeText={(text: string) => onChangeText(text)}
-        editable={true}
-        onFocus={onFocusHandler}
-        onBlur={onBlurHandler}
-        blurOnSubmit
-      />
-    </View>
+    <>
+      <View style={styles.container}>
+        {/* The fields need adjusted to match the design. Should be centered before focus, with larger font */}
+        <Animated.View style={[styles.animatedStyle, animStyle]}>
+          <Typography style={[styles.title, titleStyle]}>{title}</Typography>
+        </Animated.View>
+        <TextInput
+          autoCapitalize={'none'}
+          style={[styles.input, viewStyle]}
+          value={value}
+          onChangeText={(text: string) => onChangeText(text)}
+          editable={true}
+          onFocus={onFocusHandler}
+          onBlur={onBlurHandler}
+          blurOnSubmit
+        />
+      </View>
+      {/* The below needs replaced with the validation checkmark or X */}
+      {/* {validate && isValidated === true && (
+        <Typography style={[styles.input]}>yay</Typography>
+      )} */}
+    </>
   );
 };
 

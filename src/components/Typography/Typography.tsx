@@ -1,5 +1,6 @@
-import { useMemo } from "react";
-import { Text, TextProps, TextStyle } from "react-native";
+import React from 'react';
+import {useMemo} from 'react';
+import {Text, TextProps, TextStyle} from 'react-native';
 
 export const Typography = ({
   children,
@@ -8,25 +9,25 @@ export const Typography = ({
   const getFontWeight = useMemo(() => {
     // TODO replace custom fonts
     switch ((props?.style as TextStyle)?.fontWeight) {
-      case "300":
-        return "Inter-Light";
-      case "400":
-        return "Inter-Regular";
-      case "500":
-        return "Inter-Medium";
-      case "600":
-        return "Inter-SemiBold";
-      case "700":
-        return "Inter-Bold";
-      case "bold":
-        return "Inter-Bold";
+      case '300':
+        return 'Inter-Light';
+      case '400':
+        return 'Inter-Regular';
+      case '500':
+        return 'Inter-Medium';
+      case '600':
+        return 'Inter-SemiBold';
+      case '700':
+        return 'Inter-Bold';
+      case 'bold':
+        return 'Inter-Bold';
       default:
-        return "Inter-Regular";
+        return 'Inter-Regular';
     }
   }, [props.style]);
 
   return (
-    <Text {...props} style={[props.style, { fontFamily: getFontWeight }]}>
+    <Text {...props} style={[props.style, {fontFamily: getFontWeight}]}>
       {children}
     </Text>
   );

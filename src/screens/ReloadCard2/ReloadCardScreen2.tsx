@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
 import {ReloadCardScreenProp2} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
@@ -18,7 +18,7 @@ import {
 } from 'react-native-responsive-screen';
 
 const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
-  const navigation = useNavigation<ReloadCardScreenProp2>();
+  // const navigation = useNavigation<ReloadCardScreenProp2>();
   const [reloadDone, setReloadDone] = useState(false);
 
   return (

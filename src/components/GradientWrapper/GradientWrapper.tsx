@@ -1,3 +1,4 @@
+import React from 'react';
 import {StyleSheet, ScrollView, ViewStyle} from 'react-native';
 import {COLORS} from '@theme/color';
 import LinearGradient from 'react-native-linear-gradient';
@@ -29,7 +30,7 @@ export const GradientScrollingWrapper = ({
       ]}
       style={[styles.linearGradient, style]}>
       {scrollable ? (
-        <ScrollView nestedScrollEnabled style={{flex: 1}}>
+        <ScrollView nestedScrollEnabled style={styles.scrollView}>
           {children}
         </ScrollView>
       ) : (
@@ -43,4 +44,5 @@ const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
   },
+  scrollView: {flex: 1},
 });

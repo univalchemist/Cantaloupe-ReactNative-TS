@@ -27,7 +27,6 @@ import {
 } from '@assets/icon';
 import {COLORS} from '@theme/color';
 
-
 export type MainStackParamList = {
   Welcome: undefined;
   AuthOption: undefined;
@@ -81,7 +80,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({color, size, focused}) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={MapIcon} label="Map" active={focused} />
           ),
         }}
@@ -92,7 +91,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({color, size, focused}) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon
               Icon={HistoryIcon}
               label="History"
@@ -107,7 +106,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({color, size, focused}) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={CardIcon} label="Cards" active={focused} />
           ),
         }}
@@ -118,7 +117,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({color, size, focused}) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={RewardIcon} label="Rewards" active={focused} />
           ),
         }}
@@ -129,7 +128,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({color, size, focused}) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={HelpIcon} label="Help" active={focused} />
           ),
         }}

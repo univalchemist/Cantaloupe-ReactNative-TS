@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
 import {COLORS} from '@theme/color';
 import {ArrowDown} from '@assets/icon';
