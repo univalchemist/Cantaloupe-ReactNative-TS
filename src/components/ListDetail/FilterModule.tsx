@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         position: "absolute",
-        zIndex: 1,
+        zIndex: 2,
         backgroundColor: COLORS.white,
         alignItems: "center",
         borderBottomLeftRadius: moderateScale(15),

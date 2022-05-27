@@ -43,8 +43,17 @@ const MapScreen = ({navigation}:{navigation:any}) => {
         </TouchableOpacity>
       </View>
       {isFilterEnable && <FilterModule/>}
-      {!isEnabled?<Map/>:
-      <ListView/>}
+      {!isEnabled?<View style={{flex:1}}> 
+          {/* <View style={styles.mapLabels}>
+              <TouchableOpacity style={{borderRightColor:COLORS.gray1, borderRightWidth:1,}} onPress={()=>{}}>
+                <Text style={[styles.mapText,!isEnabled && {fontWeight:"bold"}]}>Map</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.satelliteText}>Satellite</Text>
+              </TouchableOpacity>
+          </View> */}
+            <Map/>
+            </View>:<ListView/>}
      {!isEnabled && <Text style={styles.infoText}>Tap a location on the map
         for more information</Text>}
        {modalVisible && <LocationModal onBlock={()=>{setModalVisible(false)}} OnAllow={()=>{setModalVisible(false)}}/>}
@@ -59,6 +68,14 @@ const styles = StyleSheet.create({
     paddingBottom: moderateScale(10),
     paddingHorizontal: moderateScale(20)
   },
+  mapText:{
+    paddingRight:moderateScale(5),
+    paddingVertical:moderateScale(5),
+    color:COLORS.black
+  },
+  satelliteText:{
+   marginLeft:moderateScale(5)
+  },
   container: {
     height: 300,
     width: 300,
@@ -68,6 +85,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
+  },
+  mapLabels:{
+    position:"absolute",
+   flexDirection:"row", 
+   alignItems:"center", 
+   backgroundColor:COLORS.white, 
+   paddingHorizontal:moderateScale(8), 
+   zIndex:1,
+   top:moderateScale(25),
+   left:moderateScale(5)
   },
   map: {
     flex: 1

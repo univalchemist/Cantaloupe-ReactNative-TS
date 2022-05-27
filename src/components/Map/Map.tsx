@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text,  Image, ViewStyle, Dimensions } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import { moderateScale, moderateVerticalScale } from 'react-native-size-matters';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -16,7 +17,7 @@ export const Map = ({}: MapProps) => {
   return (
     <View style={styles.page}>
           <View style={styles.container}>
-            <MapboxGL.MapView style={styles.map} />
+            <MapboxGL.MapView zoomEnabled={true} style={styles.map} />
           </View>
         </View>
   );
@@ -32,12 +33,13 @@ const styles = StyleSheet.create({
         
       },
       container: {
-        height: windowHeight/1.55,
+        height: "100%",
         width: windowWidth,
         backgroundColor: "transparent",
         paddingHorizontal:moderateScale(20)
       },
       map: {
-        flex: 1
+        flex: 1,
+        
       }
 });

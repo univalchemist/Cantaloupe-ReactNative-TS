@@ -54,12 +54,12 @@ const AuthOption = () => {
           .
         </Typography>
       </View>
-      <Button
+      {/* <Button
         title="Back Home"
         onPress={handleBackHome}
         style={styles.btnBack}
         titleStyle={styles.btnBackTitle}
-      />
+      /> */}
     </GradientScrollingWrapper>
   );
 };
