@@ -44,6 +44,7 @@ import OrangeEmptyIcon from './orange_empty_circle.svg';
 import StreetImage from './street_icon.svg';
 import Direction from './directions.svg';
 import Search from './search.svg';
+import AddtoAppleWallet from './addtoAppleWallet.svg';
 
 export {
   CardImage,
@@ -91,5 +92,6 @@ export {
   OrangeEmptyIcon,
   StreetImage,
   Direction,
-  Search
+  Search,
+  AddtoAppleWallet,
 };

@@ -18,6 +18,7 @@ interface FloatLabelTextFieldProps {
   title: string;
   titleStyle?: TextStyle;
   viewStyle?: ViewStyle;
+  onTextChange?: (text: string) => void;
   validate?: (text: string) => void;
   isValidated?: boolean;
 }
@@ -25,9 +26,10 @@ export const FloatLabelTextField = ({
   title,
   titleStyle,
   viewStyle,
+  onTextChange,
   validate,
-  isValidated,
-}: FloatLabelTextFieldProps) => {
+}: //  isValidated,
+FloatLabelTextFieldProps) => {
   const [value, setValue] = useState('');
   const moveText = useRef(new Animated.Value(0)).current;
 
@@ -42,6 +44,9 @@ export const FloatLabelTextField = ({
 
   const onChangeText = (text: string) => {
     setValue(text);
+    if (onTextChange) {
+      onTextChange(text);
+    }
   };
 
   const onFocusHandler = () => {

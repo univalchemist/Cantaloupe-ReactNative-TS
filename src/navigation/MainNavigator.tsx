@@ -2,6 +2,7 @@ import React from 'react';
 import {
   WelcomeScreen,
   AuthOptionScreen,
+  LoginScreen,
   SignInScreen,
   DashboardScreen,
   CardsScreen,
@@ -14,6 +15,7 @@ import {
 import {
   createStackNavigator,
   StackNavigationProp,
+  StackScreenProps,
 } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,11 +27,13 @@ import {
   MapIcon,
   RewardIcon,
 } from '@assets/icon';
-import { COLORS } from '@theme/color';
+import {COLORS} from '@theme/color';
+import {PaymentMethod} from '@models/PaymentMethod';
 
 export type MainStackParamList = {
   Welcome: undefined;
   AuthOption: undefined;
+  Login: undefined;
   Signin: undefined;
   Dashboard: undefined;
   BottomTabs: undefined;
@@ -38,7 +42,7 @@ export type MainStackParamList = {
 
 export type CardScreensParamList = {
   Cards: undefined;
-  CardDetail: undefined;
+  CardDetail: {card: PaymentMethod};
   ReloadCard: undefined;
   ReloadCard2: undefined;
   MapScreen: undefined;
@@ -168,6 +172,7 @@ const MainNavigator = () => {
           gestureEnabled: false,
         }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="AuthOption" component={AuthOptionScreen} />
         <Stack.Screen name="Signin" component={SignInScreen} />
         <Stack.Screen name="MapScreen" component={MapScreen} />
@@ -188,6 +193,7 @@ export type AuthOptionScreenProp = StackNavigationProp<
   MainStackParamList,
   'AuthOption'
 >;
+export type LoginScreenProp = StackNavigationProp<MainStackParamList, 'Login'>;
 export type SigninScreenProp = StackNavigationProp<
   MainStackParamList,
   'Signin'
@@ -200,7 +206,7 @@ export type CardsScreenProp = StackNavigationProp<
   CardScreensParamList,
   'Cards'
 >;
-export type CardDetailsScreenProp = StackNavigationProp<
+export type CardDetailsScreenProp = StackScreenProps<
   CardScreensParamList,
   'CardDetail'
 >;

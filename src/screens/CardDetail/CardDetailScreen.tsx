@@ -1,26 +1,61 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {CardDetailsScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
-import {GradientScrollingWrapper} from '@components/GradientWrapper';
-import {Header} from '@components/Header';
-import {CardImage} from '@components/CardImage/CardImage';
+
+import {CardImage1, ManuallyReloadIcon, RightArrow} from '@assets/icon';
 import {
-  CardImage1,
-  ManuallyReloadIcon,
-  RightArrow,
-  WalletIcon,
-} from '@assets/icon';
-import {AutoReload} from '@components/AutoReload';
-import {Button} from '@components/Button';
+  AutoReload,
+  AddToWalletButton,
+  Header,
+  CardImage,
+  GradientScrollingWrapper,
+} from '@components/index';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {
+  fetchProntoPass,
+  CreateOrFindProntoPassResponse,
+} from '@apollo-endpoints/index';
+import {handlePassFromURL} from '@helpers/passManager';
 
-const CardDetailScreen = ({}: CardDetailsScreenProp) => {
-  const navigation = useNavigation<CardDetailsScreenProp>();
+const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
+  // const navigation = useNavigation<CardDetailsScreenProp>();
+  const [passURL, setPassURL] = useState<string>();
+  const {
+    params: {
+      card: {cardId},
+    },
+  } = route;
+
+  useEffect(() => {
+    if (passURL && passURL?.length > 0) {
+      handlePassFromURL(passURL);
+    }
+  }, [passURL]);
+
+  const handleAutoReloadButtonPressed = () => {
+    //  handle auto-reload
+  };
+
+  const didPressAddToWallet = () => {
+    console.log(cardId);
+    fetchProntoPass({cardId: cardId})
+      .then((response: CreateOrFindProntoPassResponse) => {
+        if (response && response?.prontoPassURLiOS) {
+          const url = response.prontoPassURLiOS;
+          setPassURL(url);
+        } else {
+          //  Surface error
+          console.log('PROBLEM WITH REQUEST');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   return (
     <View style={styles.container}>
@@ -46,7 +81,10 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
           <Text style={styles.cardNo}>CPay •• 5743</Text>
           <Text style={styles.cardTypeTxt}>This is the Primary Card</Text>
         </View>
-        <AutoReload balance="50" onPress={() => {}} />
+        <AutoReload
+          balance="50"
+          onPress={() => handleAutoReloadButtonPressed()}
+        />
         <TouchableOpacity
           style={styles.manuallyReload}
           onPress={() => {
@@ -56,14 +94,13 @@ const CardDetailScreen = ({}: CardDetailsScreenProp) => {
           <Text style={styles.ManualReloadTxt}>Manually Reload</Text>
           <RightArrow width={wp('4%')} />
         </TouchableOpacity>
-        <Button
-          onPress={() => {}}
-          title="Add to Apple Wallet"
-          style={styles.addToWallet}
-          titleStyle={styles.addToWalletTxt}
-          leftIcon={<WalletIcon width={wp('12%')} />}
-        />
-        <View style={[styles.separator]} />
+        <View style={styles.appleWalletContainer}>
+          <AddToWalletButton
+            onPress={() => {
+              didPressAddToWallet();
+            }}
+          />
+        </View>
       </GradientScrollingWrapper>
     </View>
   );
@@ -106,20 +143,12 @@ const styles = StyleSheet.create({
     fontSize: hp('1.7%'),
     color: COLORS.primaryGray,
   },
-  separatorCont: {
-    position: 'absolute',
-    bottom: hp('4.7%'),
-    left: 0,
-    right: 0,
+  appleWalletContainer: {
+    alignContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
-  },
-
-  separator: {
-    backgroundColor: COLORS.lightOrange,
-    height: hp('0.3%'),
-    width: wp('85%'),
-    alignSelf: 'center',
-    marginTop: hp('3%'),
+    marginTop: 40,
+    marginBottom: 30,
   },
   manuallyReload: {
     flexDirection: 'row',
@@ -134,16 +163,6 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     flex: 1,
     marginHorizontal: wp('3.8%'),
-  },
-  addToWallet: {
-    width: wp('90%'),
-    alignSelf: 'center',
-    marginTop: hp('1%'),
-    minHeight: hp('6.2%'),
-    backgroundColor: COLORS.black,
-  },
-  addToWalletTxt: {
-    fontSize: hp('2.15%'),
   },
   cardImagContainer: {
     marginTop: hp('2%'),

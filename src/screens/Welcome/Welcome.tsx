@@ -54,7 +54,7 @@ const Welcome = ({}: WelcomeScreenProp) => {
 
       <Button
         title={buttonTitle}
-        onPress={() => {}}
+        onPress={() => navigation.navigate('Login')}
         style={styles.btnHave}
         titleStyle={styles.btnHaveTitle}
       />

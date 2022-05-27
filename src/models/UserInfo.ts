@@ -6,6 +6,7 @@ export enum BakktStatus {
 }
 
 export interface UserInfo {
+  accessToken: string;
   email: string;
   firstName: string;
   lastName: string;
