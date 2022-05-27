@@ -20,22 +20,24 @@ const MapScreen = ({navigation}:{navigation:any}) => {
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredLocationIndex, setFilteredLocationIndex] = useState(-1);
-  
+
 
   const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState)
   }, [])
 
   useEffect(()=>{
+
+   
     setModalVisible(true)
-  
+
   },[])
 
   const methodToShowFilterOptions= useCallback(()=>{
     setIsFilterEnable(!isFilterEnable)
   },[isFilterEnable])
 
-  
+
 
 
   return (
@@ -55,7 +57,7 @@ const MapScreen = ({navigation}:{navigation:any}) => {
           <Text style={styles.mapButtonText}>{!isFilterEnable? 'Filter':'Hide'}</Text>
         </TouchableOpacity>
       </View>
-      {isFilterEnable && <FilterModule   filteredLocationIndex={filteredLocationIndex} />}
+      {isFilterEnable && <FilterModule   />}
       {!isEnabled?<Map/>:
        <ListView/>}
      {!isEnabled && <Text style={styles.infoText}>Tap a location on the map
@@ -111,8 +113,8 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(15),
     color:COLORS.gray1
   },
-  
-  
+
+
 });
 
 export default MapScreen;
