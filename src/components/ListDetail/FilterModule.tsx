@@ -53,19 +53,27 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
     setSelectedItem(new_array)
   }, [])
 
+  const handleUnselectClick = () => {
+    var newArray = selectedItem.map((item) => ({
+      ...item, isSelected: false
+    }))
+    setSelectedItem(newArray)
+  }
+
+
 
   return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: moderateScale(15) }]}>
     {selectedItem.map((item, index) => {
       return <View style={styles.filterView}>
         <TouchableOpacity onPress={() => methodToSelectLocation(index, selectedItem)}>
-          {item.isSelected === true  ? <item.selectedImage /> : <item.image width={moderateScale(20)} height={moderateScale(20)} />}
+          {item.isSelected === true ? <item.selectedImage /> : <item.image width={moderateScale(20)} height={moderateScale(20)} />}
         </TouchableOpacity>
         <Text style={styles.foodVending}>
           {item.title}
         </Text>
       </View>
     })}
-    <TouchableOpacity style={styles.deselectButton} onPress={() => { }}>
+    <TouchableOpacity style={styles.deselectButton} onPress={() => { handleUnselectClick() }}>
       <Text style={styles.deselectText}>Deselect All</Text>
     </TouchableOpacity>
   </View>

@@ -30,7 +30,7 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
     setIsFilterEnable(!isFilterEnable)
   }, [isFilterEnable])
 
-
+  
 
 
   return (
