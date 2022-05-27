@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, ViewStyle, Alert } from "react-native";
-import MapboxGL from "@react-native-mapbox-gl/maps";
+import { StyleSheet } from "react-native";
 import { COLORS } from '@theme/color';
 import { moderateScale } from 'react-native-size-matters';
 import ToggleSwitch from 'toggle-switch-react-native'
-import { Filter } from '@/assets/icon';
 
 interface SwitchProps {
     toggleSwitch: any

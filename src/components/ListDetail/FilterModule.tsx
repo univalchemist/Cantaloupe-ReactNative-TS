@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { COLORS } from '@theme/color';
 import React, { useCallback, useEffect, useState } from 'react';
 import { moderateScale } from 'react-native-size-matters';
-import { dummyArray } from '../../screens/mock';
+import { dummyArray, dummyLocation } from '../../screens/mock';
 
 interface ListProps {
   isEnabled: boolean
@@ -17,10 +17,10 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
       console.log("eAfter" + JSON.stringify(e))
     })
   }, [])
-  const methodToSelectLocation = useCallback((index: number, selectedItem: []) => {
+  const methodToSelectLocation = useCallback((index: number, selectedItem: dummyLocation[]) => {
     var item1: (any) = selectedItem[index]
-    var newItem = {}
-    var new_array = selectedItem.map(function (e) {
+    var newItem: (dummyLocation)
+    var new_array: (dummyLocation[]) = selectedItem.map(function (e: dummyLocation) {
       return {
         id: e.id,
         image: e.image,
@@ -56,6 +56,7 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
     })
     setSelectedItem(new_array)
     console.log("After" + JSON.stringify(selectedItem))
+
   }, [])
 
 
@@ -63,7 +64,7 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
     {selectedItem.map((item, index) => {
       return <View style={styles.filterView}>
         <TouchableOpacity onPress={() => methodToSelectLocation(index, selectedItem)}>
-          {item.isSelected === true ? <item.selectedImage /> : <item.image width={moderateScale(20)} height={moderateScale(20)} />}
+          {item.isSelected === true  ? <item.selectedImage /> : <item.image width={moderateScale(20)} height={moderateScale(20)} />}
         </TouchableOpacity>
         <Text style={styles.foodVending}>
           {item.title}

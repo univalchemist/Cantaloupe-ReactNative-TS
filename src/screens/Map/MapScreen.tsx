@@ -16,7 +16,6 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [filteredLocationIndex, setFilteredLocationIndex] = useState(-1);
 
 
   const toggleSwitch = useCallback(() => {

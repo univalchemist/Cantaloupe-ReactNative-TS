@@ -15,9 +15,9 @@ import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {BottomTabIcon} from '@components/BottomTabIcon';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabIcon } from '@components/BottomTabIcon';
 import {
   CardIcon,
   HelpIcon,
@@ -25,7 +25,7 @@ import {
   MapIcon,
   RewardIcon,
 } from '@assets/icon';
-import {COLORS} from '@theme/color';
+import { COLORS } from '@theme/color';
 
 export type MainStackParamList = {
   Welcome: undefined;
@@ -33,7 +33,7 @@ export type MainStackParamList = {
   Signin: undefined;
   Dashboard: undefined;
   BottomTabs: undefined;
-  MapScreen:undefined
+  MapScreen: undefined
 };
 
 export type CardScreensParamList = {
@@ -42,12 +42,8 @@ export type CardScreensParamList = {
   ReloadCard: undefined;
   ReloadCard2: undefined;
   MapScreen: undefined;
+  AddCards: undefined;
 };
-
-export type MapScreenParamList = {
-  MapScreenP: undefined;
-};
-
 
 export type BottomTabParamList = {
   Map: undefined;
@@ -60,8 +56,9 @@ export type BottomTabParamList = {
   CardScreenNavigator4: undefined;
   CardScreenNavigator5: undefined;
 };
-export type AddCardsScreenParamList ={
-  AddCards:undefined
+
+export type AddCardsScreenParamList = {
+  AddCards: undefined
 }
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -80,7 +77,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <BottomTabIcon Icon={MapIcon} label="Map" active={focused} />
           ),
         }}
@@ -91,7 +88,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <BottomTabIcon
               Icon={HistoryIcon}
               label="History"
@@ -106,7 +103,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <BottomTabIcon Icon={CardIcon} label="Cards" active={focused} />
           ),
         }}
@@ -117,7 +114,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <BottomTabIcon Icon={RewardIcon} label="Rewards" active={focused} />
           ),
         }}
@@ -128,7 +125,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <BottomTabIcon Icon={HelpIcon} label="Help" active={focused} />
           ),
         }}
@@ -150,7 +147,7 @@ const CardScreenNavigator = () => {
       <CardScreenStack.Screen name="Cards" component={CardsScreen} />
       <CardScreenStack.Screen name="CardDetail" component={CardDetailScreen} />
       <CardScreenStack.Screen name="ReloadCard" component={ReloadCardScreen} />
-       <CardScreenStack.Screen name="MapScreen" component={MapScreen}/>
+      <CardScreenStack.Screen name="MapScreen" component={MapScreen} />
       <CardScreenStack.Screen name="AddCards" component={AddCardsScreen} />
       <CardScreenStack.Screen
         name="ReloadCard2"
@@ -173,7 +170,7 @@ const MainNavigator = () => {
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="AuthOption" component={AuthOptionScreen} />
         <Stack.Screen name="Signin" component={SignInScreen} />
-       <Stack.Screen name="MapScreen" component={MapScreen}/>
+        <Stack.Screen name="MapScreen" component={MapScreen} />
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="BottomTabs" component={BottomTabs} />
       </Stack.Navigator>
@@ -220,6 +217,6 @@ export type MapScreenScreenProp = StackNavigationProp<
   'MapScreen'
 >;
 export type AddCardsScreenProp = StackNavigationProp<
-AddCardsScreenParamList,
+  CardScreensParamList,
   'AddCards'
 >;

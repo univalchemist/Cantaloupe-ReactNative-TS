@@ -12,7 +12,7 @@ interface CardTypeProps {
   cardNumber?: string;
   onPress?: () => void;
   InfoIcon?: any;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   balance?: string | boolean;
   cardStyle?:ViewStyle
 }

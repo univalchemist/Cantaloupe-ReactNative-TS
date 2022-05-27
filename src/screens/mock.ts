@@ -1,5 +1,6 @@
-import { BlueEmptyCircle, BlueIcon, GreenEmptyIcon,StreetImage, GreenIcon, OrangeEmptyIcon, OrangeIcon, PurpleEmptyIcon, PurpleIcon, redEmptyIcon, RedIcon, InfoIcon } from '@assets/icon';
+import { BlueEmptyCircle, BlueIcon, GreenEmptyIcon,StreetImage, GreenIcon, OrangeEmptyIcon, OrangeIcon, PurpleEmptyIcon, PurpleIcon, redEmptyIcon, RedIcon } from '@assets/icon';
 import React from 'react';
+import { SvgProps } from 'react-native-svg';
 
 const cardArray = [
   {
@@ -12,6 +13,12 @@ const cardArray = [
   }
 ]
 
+export type placesArrayTypes={
+  image: React.FC<SvgProps>;
+  machine_type: string;
+  location: string;
+  distance: string;
+}
 
 const placesArray = [
   {
@@ -40,6 +47,14 @@ const placesArray = [
   }
 
 ]
+
+export type dummyLocation={
+  id: number;
+  image: React.FC<SvgProps>;
+  selectedImage: React.FC<SvgProps>;
+  title: string;
+  isSelected: boolean;
+}
 
 const dummyArray = [
   {
@@ -76,13 +91,7 @@ const dummyArray = [
 ]
 
 const termsANdConditions = ['Privacy Policy', 'Terms of Use', 'Cookie Policy']
-  const choiceToMove = [
-    'Locations', 
-    'Transactions', 
-    'MORE rewards', 
-    'FAQ'
-  ]
 
 
 
-export { cardArray, placesArray, dummyArray, termsANdConditions, choiceToMove }
+export { cardArray, placesArray, dummyArray, termsANdConditions }

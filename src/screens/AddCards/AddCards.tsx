@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(15),
   },
   locationStyle: {
-    // paddingHorizontal: moderateScale(25),
     justifyContent: "center",
     marginTop: moderateScale(10),
     width:"90%"

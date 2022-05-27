@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View, TouchableWithoutFeedback } from "react-native";
+import React from "react";
+import { Modal, StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import { COLORS } from "@theme/color";
 
 const LocationModal = ({onBlock,OnAllow}:{onBlock:()=>void,OnAllow:()=>void}) => {
-   
+
     return (
            <Modal
             presentationStyle="overFullScreen"
