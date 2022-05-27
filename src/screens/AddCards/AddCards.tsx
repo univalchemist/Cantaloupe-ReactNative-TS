@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Dimensions, Text, FlatList, ScrollView, Alert } from 'react-native';
+import { StatusBar, StyleSheet, View, Dimensions, Text, FlatList } from 'react-native';
 import { AddCardsScreenProp } from '../../navigation/MainNavigator';
 import { COLORS } from '@theme/color';
 import { useNavigation } from '@react-navigation/native';
@@ -12,16 +12,15 @@ import {
 import { Card } from '@components/CardType/Card';
 import {
   CardImage,
-  RightArrow,
   AddIcon,
   LocationIcon,
   TransactionIcon,
   RewardsIcon,
   FaqIcon
 } from '@assets/icon';
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import {moderateScale } from 'react-native-size-matters';
 import { Button, TouchableTextButton } from '@components/Button';
-import { cardArray, choiceToMove, termsANdConditions } from '../mock';
+import { cardArray, termsANdConditions } from '../mock';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -32,7 +31,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
   
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={true}>
-      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <StatusBar translucent={true} backgroundColor={COLORS.transparent} />
       <Header style={styles.header} onPressRight={() => { }} />
       <FlatList
         style={{ flex: 1 }}
@@ -41,7 +40,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
           return (
             <Card
               key={"index"}
-              CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 8} style={styles.svgStyle} />}
+              CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 9.5} style={styles.svgStyle} />}
               style={styles.cardTypeStyle}
               balance={item.item.balance != '' && item.item.balance}
               cardNumber={item.item.cardNumber}
@@ -56,16 +55,35 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         titleStyle={styles.buttonText}
         onPress={() => { }} />
       <View style={styles.bottomBorder} />
-      {choiceToMove.map((item, index) => {
-        return <Card
+       <Card
           key={"index"}
           onPress={() => navigation.navigate('MapScreen')}
           CardLogo={<LocationIcon style={styles.locationIconStyle} />}
-          style={[styles.locationStyle, index === 3 && { marginBottom: 20 }]}
+          style={styles.locationStyle}
           balance={undefined}
-          cardNumber={item}
-        />
-      })}
+          cardNumber={'Location'}
+        /><Card
+        key={"index"}
+        onPress={() => navigation.navigate('MapScreen')}
+        CardLogo={<FaqIcon style={styles.locationIconStyle} />}
+        style={styles.locationStyle}
+        balance={undefined}
+        cardNumber={'Transactions'}
+      /><Card
+      key={"index"}
+      onPress={() => navigation.navigate('MapScreen')}
+      CardLogo={<RewardsIcon style={styles.locationIconStyle} />}
+      style={styles.locationStyle}
+      balance={undefined}
+      cardNumber={'MORE rewards'}
+    /><Card
+    key={"index"}
+    onPress={() => navigation.navigate('MapScreen')}
+    CardLogo={<TransactionIcon style={styles.locationIconStyle} />}
+    style={[styles.locationStyle,  { marginBottom: 20 }]}
+    balance={undefined}
+    cardNumber={'FAQ'}
+  />
       <View style={styles.bottomBorder} />
       <Text style={styles.brandName}>©2021 Cantaloupe, Inc. All Rights Reserved.</Text>
       {termsANdConditions.map(((item, index) => {
@@ -84,26 +102,27 @@ const styles = StyleSheet.create({
     paddingBottom: moderateScale(10)
   },
   btnCreate: {
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.transparent,
   },
   locationIconStyle: {
     marginLeft: moderateScale(15),
   },
   brandName: {
     textAlign: "center",
-    fontSize: hp('3%'),
+    fontSize: moderateScale(20),
     color: COLORS.black,
     fontWeight: "300",
-    marginBottom: moderateScale(20)
+    marginBottom: moderateScale(15),
+    paddingHorizontal:moderateScale(10)
   },
   buttonTextStyle: {
     color: COLORS.gray1,
-    fontSize: moderateScale(18),
+    fontSize: moderateScale(15),
   },
   locationStyle: {
     paddingHorizontal: moderateScale(25),
     justifyContent: "center",
-    marginTop: moderateScale(20)
+    marginTop: moderateScale(10)
   },
   buttonText: {
     color: COLORS.black,
@@ -115,11 +134,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: moderateScale(2),
     width: "85%",
     alignSelf: "center",
-    marginTop: moderateScale(20),
+    marginTop: moderateScale(5),
     marginBottom: moderateScale(18)
   },
   addCardButtonContainer: {
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.transparent,
     justifyContent: "flex-start",
     paddingLeft: moderateScale(20)
   },
@@ -131,7 +150,7 @@ const styles = StyleSheet.create({
     height: "30%"
   },
   header: {
-    width: wp('95%')
+    width: wp('95%'),
   },
   svgStyle: {
     marginLeft: moderateScale(0)

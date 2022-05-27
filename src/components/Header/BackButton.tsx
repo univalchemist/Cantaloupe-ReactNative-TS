@@ -6,7 +6,6 @@ import {
 } from 'react-native-responsive-screen';
 import {
     Back,
-    RightArrow,
 } from '@assets/icon';
 import { moderateScale } from 'react-native-size-matters';
 
@@ -46,7 +45,8 @@ const styles = StyleSheet.create({
     },
     buttonText:{
         fontSize:moderateScale(16),
-        marginLeft:moderateScale(8)
+        marginLeft:moderateScale(8),
+        color:COLORS.gray1
     }
     
 });

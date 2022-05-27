@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text,  Image, ViewStyle, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
-import { moderateScale, moderateVerticalScale } from 'react-native-size-matters';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { moderateScale } from 'react-native-size-matters';
+import { COLORS } from '@theme/color';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -28,14 +28,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#F5FCFF",
+        backgroundColor:COLORS.transparent,
         marginTop:moderateScale(20),
-        
       },
       container: {
         height: "100%",
         width: windowWidth,
-        backgroundColor: "transparent",
+        backgroundColor: COLORS.transparent,
         paddingHorizontal:moderateScale(20)
       },
       map: {

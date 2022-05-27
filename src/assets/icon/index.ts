@@ -37,7 +37,7 @@ import PurpleIcon from './purple_radio_button.svg';
 import RedIcon from './red_radio_button.svg';
 import GreenIcon from './green_radio_button.svg';
 import BlueEmptyCircle from './blue_empty_circle.svg';
-import GreenEmptyIcon from './green_radio_button.svg';
+import GreenEmptyIcon from './green_empty_circle.svg';
 import redEmptyIcon from './red_empty_circle.svg';
 import PurpleEmptyIcon from './purple_empty_circle.svg';
 import OrangeEmptyIcon from './orange_empty_circle.svg';
