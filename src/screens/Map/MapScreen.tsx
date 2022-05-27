@@ -17,22 +17,24 @@ const MapScreen = ({navigation}:{navigation:any}) => {
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredLocationIndex, setFilteredLocationIndex] = useState(-1);
-  
+
 
   const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState)
   }, [])
 
   useEffect(()=>{
+
+   
     setModalVisible(true)
-  
+
   },[])
 
   const methodToShowFilterOptions= useCallback(()=>{
     setIsFilterEnable(!isFilterEnable)
   },[isFilterEnable])
 
-  
+
 
 
   return (
@@ -52,10 +54,11 @@ const MapScreen = ({navigation}:{navigation:any}) => {
           <Text style={styles.mapButtonText}>{!isFilterEnable? 'Filter':'Hide'}</Text>
         </TouchableOpacity>
       </View>
-      {isFilterEnable && <FilterModule isEnabled={isEnabled} filteredLocationIndex={filteredLocationIndex}/>}
+      {isFilterEnable && <FilterModule  isEnabled={isEnabled} />}
       {!isEnabled?<View style={{flex:1}}> 
-            <Map/>
-            </View>:<ListView/>}
+      <Map/>
+      </View>:
+       <ListView/>}
      {!isEnabled && <Text style={styles.infoText}>Tap a location on the map
         for more information</Text>}
        {modalVisible && <LocationModal  onBlock={()=>{setModalVisible(false)}} OnAllow={()=>{setModalVisible(false)}}/>}
@@ -125,10 +128,11 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(23),
     textAlign: "center",
     marginTop: moderateScale(15),
-    color:COLORS.gray1
+    color:COLORS.gray1,
+    marginHorizontal:moderateScale(5)
   },
-  
-  
+
+
 });
 
 export default MapScreen;
