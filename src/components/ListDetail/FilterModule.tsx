@@ -11,12 +11,12 @@ interface ListProps {
 export const FilterModule = ({ isEnabled }: ListProps) => {
   const [selectedItem, setSelectedItem] = useState(dummyArray);
 
-
   useEffect(() => {
     selectedItem.forEach(function (e) {
       console.log("eAfter" + JSON.stringify(e))
     })
   }, [])
+
   const methodToSelectLocation = useCallback((index: number, selectedItem: dummyLocation[]) => {
     var item1: (any) = selectedItem[index]
     var newItem: (dummyLocation)
@@ -60,8 +60,6 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
     setSelectedItem(newArray)
   }
 
-
-
   return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: moderateScale(15) }]}>
     {selectedItem.map((item, index) => {
       return <View style={styles.filterView}>
@@ -93,8 +91,6 @@ const styles = StyleSheet.create({
     padding: moderateScale(15),
     top: moderateScale(195),
     alignSelf: "center",
-
-
   },
   filterView: {
     flexDirection: "row",
@@ -103,9 +99,7 @@ const styles = StyleSheet.create({
     width: "50%",
     borderBottomLeftRadius: moderateScale(8),
     zIndex: 1,
-
   },
-
   foodVending: {
     fontSize: moderateScale(11),
     color: COLORS.black,
