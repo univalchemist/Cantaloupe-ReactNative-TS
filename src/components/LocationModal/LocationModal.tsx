@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     modalText: {
-        fontFamily: 'Roboto',
         fontWeight: 'normal',
         marginBottom: 16,
         fontSize: 16,
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
         textAlign: "left"
     },
     buttonText: {
-        fontFamily: 'Roboto',
         fontWeight: 'bold',
         fontSize: 16,
         color: COLORS.blue,

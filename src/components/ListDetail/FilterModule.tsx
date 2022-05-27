@@ -62,7 +62,7 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
 
   return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: moderateScale(15) }]}>
     {selectedItem.map((item, index) => {
-      return <View style={styles.filterView}>
+      return <View key={item.id} style={styles.filterView}>
         <TouchableOpacity onPress={() => methodToSelectLocation(index, selectedItem)}>
           {item.isSelected === true ? <item.selectedImage /> : <item.image width={moderateScale(20)} height={moderateScale(20)} />}
         </TouchableOpacity>

@@ -33,21 +33,15 @@ const AddCards = ({ }: AddCardsScreenProp) => {
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={true}>
       <StatusBar translucent={true} backgroundColor={COLORS.transparent} />
       <Header style={styles.header} onPressRight={() => { }} />
-      <FlatList
-        style={{ flex: 1 }}
-        data={cardArray}
-        renderItem={(item) => {
-          return (
-            <Card
-              key={"index"}
+      {cardArray.map((item)=>{
+        return <Card
+              key={item.cardNumber}
               CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 9.5} style={styles.svgStyle} />}
               style={styles.cardTypeStyle}
-              balance={item.item.balance != '' && item.item.balance}
-              cardNumber={item.item.cardNumber}
+              balance={item.balance != '' && item.balance}
+              cardNumber={item.cardNumber}
             />
-          )
-        }}
-      />
+      })}
       <Button
         style={styles.addCardButtonContainer}
         leftIcon={<AddIcon width={windowWidth / 9} />}
@@ -56,7 +50,6 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         onPress={() => { }} />
       <View style={styles.bottomBorder} />
       <Card
-        key={"index"}
         onPress={() => navigation.navigate('MapScreen')}
         CardLogo={<LocationIcon style={styles.locationIconStyle} />}
         style={styles.locationStyle}
@@ -65,7 +58,6 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         cardStyle={styles.cardStyle}
       />
       <Card
-        key={"index"}
         onPress={() => navigation.navigate('MapScreen')}
         CardLogo={<FaqIcon style={styles.locationIconStyle} />}
         style={styles.locationStyle}
@@ -74,7 +66,6 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         cardStyle={styles.cardStyle}
       />
       <Card
-        key={"index"}
         onPress={() => navigation.navigate('MapScreen')}
         CardLogo={<RewardsIcon style={styles.locationIconStyle} />}
         style={styles.locationStyle}
@@ -83,7 +74,6 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         cardStyle={styles.cardStyle}
       />
       <Card
-        key={"index"}
         onPress={() => navigation.navigate('MapScreen')}
         CardLogo={<TransactionIcon style={styles.locationIconStyle} />}
         style={[styles.locationStyle, { marginBottom: 20 }]}
@@ -93,8 +83,8 @@ const AddCards = ({ }: AddCardsScreenProp) => {
       />
       <View style={styles.bottomBorder} />
       <Text style={styles.brandName}>©2021 Cantaloupe, Inc. All Rights Reserved.</Text>
-      {termsANdConditions.map(((item, index) => {
-        return <TouchableTextButton key={index} style={styles.btnCreate} titleStyle={styles.buttonTextStyle} onPress={() => { }} title={item} />
+      {termsANdConditions.map(((item) => {
+        return <TouchableTextButton key={item} style={styles.btnCreate} titleStyle={styles.buttonTextStyle} onPress={() => { }} title={item} />
       }))}
     </GradientScrollingWrapper>
   );
