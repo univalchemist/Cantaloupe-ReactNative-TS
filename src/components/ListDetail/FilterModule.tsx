@@ -30,7 +30,6 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
       }
     })
     if (item1.isSelected == true) {
-      console.log("seletedItemTrue" + item1.isSelected)
       newItem = {
         id: item1.id,
         image: item1.image,
@@ -39,7 +38,6 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
         isSelected: false
       }
     } else {
-      console.log("seletedItemFalse" + item1.isSelected)
       newItem = {
         id: item1.id,
         image: item1.image,
@@ -48,15 +46,11 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
         isSelected: true
       }
     }
-    console.log("abc1" + JSON.stringify(newItem))
-    console.log("index" + index)
     new_array[index] = newItem
     new_array.forEach(function (e) {
       console.log("eAfter" + JSON.stringify(e))
     })
     setSelectedItem(new_array)
-    console.log("After" + JSON.stringify(selectedItem))
-
   }, [])
 
 
