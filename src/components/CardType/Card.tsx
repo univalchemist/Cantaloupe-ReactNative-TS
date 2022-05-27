@@ -14,6 +14,7 @@ interface CardTypeProps {
   InfoIcon?: any;
   style?: ViewStyle;
   balance?: string | boolean;
+  cardStyle?:ViewStyle
 }
 
 export const Card = ({
@@ -23,12 +24,13 @@ export const Card = ({
   style,
   onPress,
   InfoIcon,
+  cardStyle
 }: CardTypeProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.CardTypeContainer, style]}>
-      {CardLogo}
+      <View style={cardStyle}>{CardLogo}</View>
       <View style={styles.cardInfoContainer}>
         {balance && <Typography style={styles.balance}>{balance}</Typography>}
         <View style={styles.emptyCardContainer}>
@@ -48,6 +50,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
+    width:"100%",
   },
   cardInfoContainer: {
     marginLeft: wp('1.8%'),

@@ -21,6 +21,7 @@
     "@react-navigation/stack": "^6.2.1",
     "@reduxjs/toolkit": "^1.8.1",
     "babel-plugin-module-resolver": "^4.1.0",
+    "eslint-plugin-import": "^2.26.0",
     "graphql": "^16.4.0",
     "husky": "^8.0.1",
     "react": "17.0.2",
@@ -41,8 +42,8 @@
     "react-native-svg": "^12.3.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-redux": "^7.2.8",
-    "toggle-switch-react-native": "^3.3.0",
-    "react-toastify": "^9.0.1"
+    "react-toastify": "^9.0.1",
+    "toggle-switch-react-native": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

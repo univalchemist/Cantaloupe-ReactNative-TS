@@ -1,2 +1,2 @@
-import CustomSearchBar from "./SearchBar";
+import CustomSearchBar from './SearchBar';
 export {CustomSearchBar as CustomSearchBar};

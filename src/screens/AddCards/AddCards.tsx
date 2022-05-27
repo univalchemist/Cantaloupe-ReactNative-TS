@@ -18,7 +18,7 @@ import {
   RewardsIcon,
   FaqIcon
 } from '@assets/icon';
-import {moderateScale } from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 import { Button, TouchableTextButton } from '@components/Button';
 import { cardArray, termsANdConditions } from '../mock';
 
@@ -28,7 +28,7 @@ const windowHeight = Dimensions.get('window').height;
 const AddCards = ({ }: AddCardsScreenProp) => {
   const navigation = useNavigation<AddCardsScreenProp>();
 
-  
+
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={true}>
       <StatusBar translucent={true} backgroundColor={COLORS.transparent} />
@@ -55,35 +55,42 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         titleStyle={styles.buttonText}
         onPress={() => { }} />
       <View style={styles.bottomBorder} />
-       <Card
-          key={"index"}
-          onPress={() => navigation.navigate('MapScreen')}
-          CardLogo={<LocationIcon style={styles.locationIconStyle} />}
-          style={styles.locationStyle}
-          balance={undefined}
-          cardNumber={'Location'}
-        /><Card
+      <Card
+        key={"index"}
+        onPress={() => navigation.navigate('MapScreen')}
+        CardLogo={<LocationIcon style={styles.locationIconStyle} />}
+        style={styles.locationStyle}
+        balance={undefined}
+        cardNumber={'Location'}
+        cardStyle={styles.cardStyle}
+      />
+      <Card
         key={"index"}
         onPress={() => navigation.navigate('MapScreen')}
         CardLogo={<FaqIcon style={styles.locationIconStyle} />}
         style={styles.locationStyle}
         balance={undefined}
         cardNumber={'Transactions'}
-      /><Card
-      key={"index"}
-      onPress={() => navigation.navigate('MapScreen')}
-      CardLogo={<RewardsIcon style={styles.locationIconStyle} />}
-      style={styles.locationStyle}
-      balance={undefined}
-      cardNumber={'MORE rewards'}
-    /><Card
-    key={"index"}
-    onPress={() => navigation.navigate('MapScreen')}
-    CardLogo={<TransactionIcon style={styles.locationIconStyle} />}
-    style={[styles.locationStyle,  { marginBottom: 20 }]}
-    balance={undefined}
-    cardNumber={'FAQ'}
-  />
+        cardStyle={styles.cardStyle}
+      />
+      <Card
+        key={"index"}
+        onPress={() => navigation.navigate('MapScreen')}
+        CardLogo={<RewardsIcon style={styles.locationIconStyle} />}
+        style={styles.locationStyle}
+        balance={undefined}
+        cardNumber={'MORE rewards'}
+        cardStyle={styles.cardStyle}
+      />
+      <Card
+        key={"index"}
+        onPress={() => navigation.navigate('MapScreen')}
+        CardLogo={<TransactionIcon style={styles.locationIconStyle} />}
+        style={[styles.locationStyle, { marginBottom: 20 }]}
+        balance={undefined}
+        cardNumber={'FAQ'}
+        cardStyle={styles.cardStyle}
+      />
       <View style={styles.bottomBorder} />
       <Text style={styles.brandName}>©2021 Cantaloupe, Inc. All Rights Reserved.</Text>
       {termsANdConditions.map(((item, index) => {
@@ -101,6 +108,9 @@ const styles = StyleSheet.create({
     paddingTop: moderateScale(40),
     paddingBottom: moderateScale(10)
   },
+  cardStyle:{
+    width:"15%",
+  },
   btnCreate: {
     backgroundColor: COLORS.transparent,
   },
@@ -113,16 +123,17 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     fontWeight: "300",
     marginBottom: moderateScale(15),
-    paddingHorizontal:moderateScale(10)
+    paddingHorizontal: moderateScale(10)
   },
   buttonTextStyle: {
     color: COLORS.gray1,
     fontSize: moderateScale(15),
   },
   locationStyle: {
-    paddingHorizontal: moderateScale(25),
+    // paddingHorizontal: moderateScale(25),
     justifyContent: "center",
-    marginTop: moderateScale(10)
+    marginTop: moderateScale(10),
+    width:"90%"
   },
   buttonText: {
     color: COLORS.black,

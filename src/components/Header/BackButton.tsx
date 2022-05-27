@@ -17,10 +17,10 @@ interface HeaderProps {
 export const BackButton = ({ style, onPressRight }: HeaderProps) => {
     return (
         <View style={[styles.headerContainer, style]}>
-           <TouchableOpacity onPress={onPressRight} style={styles.backButtonContainer}>
-               <Back style={styles.rightArrow} fill={COLORS.gray1}/>
-               <Text style={styles.buttonText}>BACK</Text>
-           </TouchableOpacity>
+            <TouchableOpacity onPress={onPressRight} style={styles.backButtonContainer}>
+                <Back style={styles.rightArrow} fill={COLORS.gray1} />
+                <Text style={styles.buttonText}>BACK</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -36,17 +36,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginVertical: hp('1.2%'),
     },
-    rightArrow:{
+    rightArrow: {
 
     },
-    backButtonContainer:{
-        flexDirection:"row",
-        alignItems:"center"
+    backButtonContainer: {
+        flexDirection: "row",
+        alignItems: "center"
     },
-    buttonText:{
-        fontSize:moderateScale(16),
-        marginLeft:moderateScale(8),
-        color:COLORS.gray1
+    buttonText: {
+        fontSize: moderateScale(16),
+        marginLeft: moderateScale(8),
+        color: COLORS.gray1
     }
-    
+
 });

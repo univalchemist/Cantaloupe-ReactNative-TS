@@ -6,13 +6,13 @@ import { moderateScale } from 'react-native-size-matters';
 import { BackButton } from '@components/Header/BackButton';
 import { COLORS } from '@theme/color';
 import { SwitchComp } from '@components/Switch/Switch'
-import {Filter} from '@assets/icon';
+import { Filter } from '@assets/icon';
 import { ListView } from '@components/ListDetail';
 import { FilterModule } from '@components/ListDetail';
 import { CustomSearchBar } from '@components/SearchBar';
 import { LocationModal } from '@components/LocationModal';
 
-const MapScreen = ({navigation}:{navigation:any}) => {
+const MapScreen = ({ navigation }: { navigation: any }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,16 +23,13 @@ const MapScreen = ({navigation}:{navigation:any}) => {
     setIsEnabled(previousState => !previousState)
   }, [])
 
-  useEffect(()=>{
-
-   
+  useEffect(() => {
     setModalVisible(true)
+  }, [])
 
-  },[])
-
-  const methodToShowFilterOptions= useCallback(()=>{
+  const methodToShowFilterOptions = useCallback(() => {
     setIsFilterEnable(!isFilterEnable)
-  },[isFilterEnable])
+  }, [isFilterEnable])
 
 
 
@@ -51,17 +48,17 @@ const MapScreen = ({navigation}:{navigation:any}) => {
         </View>
         <TouchableOpacity onPress={() => methodToShowFilterOptions()} style={styles.filterContainer}>
           <Filter />
-          <Text style={styles.mapButtonText}>{!isFilterEnable? 'Filter':'Hide'}</Text>
+          <Text style={styles.mapButtonText}>{!isFilterEnable ? 'Filter' : 'Hide'}</Text>
         </TouchableOpacity>
       </View>
-      {isFilterEnable && <FilterModule  isEnabled={isEnabled} />}
-      {!isEnabled?<View style={{flex:1}}> 
-      <Map/>
-      </View>:
-       <ListView/>}
-     {!isEnabled && <Text style={styles.infoText}>Tap a location on the map
+      {isFilterEnable && <FilterModule isEnabled={isEnabled} />}
+      {!isEnabled ? <View style={{ flex: 1 }}>
+        <Map />
+      </View> :
+        <ListView />}
+      {!isEnabled && <Text style={styles.infoText}>Tap a location on the map
         for more information</Text>}
-       {modalVisible && <LocationModal  onBlock={()=>{setModalVisible(false)}} OnAllow={()=>{setModalVisible(false)}}/>}
+      {modalVisible && <LocationModal onBlock={() => { setModalVisible(false) }} OnAllow={() => { setModalVisible(false) }} />}
     </GradientScrollingWrapper>
   );
 };
@@ -71,16 +68,16 @@ const styles = StyleSheet.create({
     paddingTop: moderateScale(40),
     paddingBottom: moderateScale(10)
   },
-  searchContainer:{
+  searchContainer: {
     paddingHorizontal: moderateScale(15)
   },
-  mapText:{
-    paddingRight:moderateScale(5),
-    paddingVertical:moderateScale(5),
-    color:COLORS.black
+  mapText: {
+    paddingRight: moderateScale(5),
+    paddingVertical: moderateScale(5),
+    color: COLORS.black
   },
-  satelliteText:{
-   marginLeft:moderateScale(5)
+  satelliteText: {
+    marginLeft: moderateScale(5)
   },
   container: {
     height: 300,
@@ -93,15 +90,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: moderateScale(15)
   },
-  mapLabels:{
-    position:"absolute",
-   flexDirection:"row", 
-   alignItems:"center", 
-   backgroundColor:COLORS.white, 
-   paddingHorizontal:moderateScale(8), 
-   zIndex:1,
-   top:moderateScale(25),
-   left:moderateScale(5)
+  mapLabels: {
+    position: "absolute",
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+    paddingHorizontal: moderateScale(8),
+    zIndex: 1,
+    top: moderateScale(25),
+    left: moderateScale(5)
   },
   map: {
     flex: 1
@@ -128,8 +125,8 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(23),
     textAlign: "center",
     marginTop: moderateScale(15),
-    color:COLORS.gray1,
-    marginHorizontal:moderateScale(5)
+    color: COLORS.gray1,
+    marginHorizontal: moderateScale(5)
   },
 
 
