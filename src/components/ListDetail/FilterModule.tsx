@@ -45,7 +45,6 @@ console.log("seletedItem" + JSON.stringify(item1))
 
 
     if (item1.isSelected == true) {
-
       console.log("seletedItemTrue" + item1.isSelected)
       newItem = {
         id: item1.id,
@@ -83,7 +82,16 @@ console.log("seletedItem" + JSON.stringify(item1))
     setSelectedItem(new_array)
   }, [])
 
-  return <View style={[styles.filterPropContainer,!isEnabled && {marginHorizontal: moderateScale(15)}]}>
+  const handleUnselectClick = () => {
+    var newArray = selectedItem.map((item) => ({
+      ...item, isSelected: false
+    }))
+    setSelectedItem(newArray)
+  }
+  
+  
+
+  return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: moderateScale(15) }]}>
     {selectedItem.map((item, index) => {
       return <View key={item.id} style={styles.filterView}>
         <TouchableOpacity onPress={() => methodToSelectLocation(index, selectedItem)}>
@@ -94,7 +102,7 @@ console.log("seletedItem" + JSON.stringify(item1))
         </Text>
       </View>
     })}
-    <TouchableOpacity style={styles.deselectButton} onPress={() => { }}>
+    <TouchableOpacity style={styles.deselectButton} onPress={() => {handleUnselectClick() }}>
       <Text style={styles.deselectText}>Deselect All</Text>
     </TouchableOpacity>
   </View>
