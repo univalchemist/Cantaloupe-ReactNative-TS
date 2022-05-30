@@ -30,12 +30,12 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
     setIsFilterEnable(!isFilterEnable)
   }, [isFilterEnable])
 
-  
+
 
 
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={false}>
-      <BackButton onPressRight={() => navigation.goBack()} />
+      <BackButton onPressLeft={() => navigation.goBack()} />
       <View style={styles.searchContainer}><CustomSearchBar /></View>
       <View style={styles.mapRow}>
         <View style={styles.mapAndList}>

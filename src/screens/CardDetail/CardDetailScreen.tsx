@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {CardDetailsScreenProp} from '../../navigation/MainNavigator';
-import {COLORS} from '@theme/color';
+import React, { useState, useEffect } from 'react';
+import { Alert, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { CardDetailsScreenProp } from '../../navigation/MainNavigator';
+import { COLORS } from '@theme/color';
 
-import {CardImage1, ManuallyReloadIcon, RightArrow} from '@assets/icon';
+import { CardImage1, ManuallyReloadIcon, RightArrow } from '@assets/icon';
 import {
   AutoReload,
   AddToWalletButton,
@@ -19,14 +19,14 @@ import {
   fetchProntoPass,
   CreateOrFindProntoPassResponse,
 } from '@apollo-endpoints/index';
-import {handlePassFromURL} from '@helpers/passManager';
+import { handlePassFromURL } from '@helpers/passManager';
 
-const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
+const CardDetailScreen = ({ route, navigation }: CardDetailsScreenProp) => {
   // const navigation = useNavigation<CardDetailsScreenProp>();
   const [passURL, setPassURL] = useState<string>();
   const {
     params: {
-      card: {cardId},
+      card: { cardId },
     },
   } = route;
 
@@ -42,7 +42,7 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
 
   const didPressAddToWallet = () => {
     console.log(cardId);
-    fetchProntoPass({cardId: cardId})
+    fetchProntoPass({ cardId: cardId })
       .then((response: CreateOrFindProntoPassResponse) => {
         if (response && response?.prontoPassURLiOS) {
           const url = response.prontoPassURLiOS;
@@ -75,7 +75,7 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
         />
         <View style={styles.balanceContainer}>
           <Text style={styles.balanceTxt}>Balance</Text>
-          <Text style={styles.balanaceAmount}>$50</Text>
+          <Text>$50</Text>
         </View>
         <View style={styles.cardNoContainer}>
           <Text style={styles.cardNo}>CPay •• 5743</Text>
@@ -167,6 +167,6 @@ const styles = StyleSheet.create({
   cardImagContainer: {
     marginTop: hp('2%'),
   },
-  cardImage1BG: {backgroundColor: COLORS.blue1},
+  cardImage1BG: { backgroundColor: COLORS.blue1 },
 });
 export default CardDetailScreen;

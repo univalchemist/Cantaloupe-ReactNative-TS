@@ -2,6 +2,10 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { COLORS } from '@theme/color';
 import React, { useCallback, useEffect, useState } from 'react';
 import { moderateScale } from 'react-native-size-matters';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import { dummyArray, dummyLocation } from '../../screens/mock';
 
 interface ListProps {
@@ -53,19 +57,19 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
     setSelectedItem(new_array)
   }, [])
 
-  const handleUnselectClick = () => {
+  const handleUnselectClick = useCallback(() => {
     var newArray = selectedItem.map((item) => ({
       ...item, isSelected: false
     }))
     setSelectedItem(newArray)
-  }
+  }, [])
 
 
-  return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: moderateScale(15) }]}>
+  return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: 15 }]}>
     {selectedItem.map((item, index) => {
       return <View key={item.id} style={styles.filterView}>
         <TouchableOpacity onPress={() => methodToSelectLocation(index, selectedItem)}>
-          {item.isSelected === true ? <item.selectedImage /> : <item.image width={moderateScale(20)} height={moderateScale(20)} />}
+          {item.isSelected === true ? <item.selectedImage width={wp('5%')} height={hp('3%')} /> : <item.image width={wp('5%')} height={hp('3%')} />}
         </TouchableOpacity>
         <Text style={styles.foodVending}>
           {item.title}
@@ -86,33 +90,33 @@ const styles = StyleSheet.create({
     zIndex: 2,
     backgroundColor: COLORS.white,
     alignItems: "center",
-    borderBottomLeftRadius: moderateScale(15),
-    borderBottomRightRadius: moderateScale(15),
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
     overflow: "hidden",
-    padding: moderateScale(15),
-    top: moderateScale(195),
+    padding: 15,
+    top: moderateScale(195, 0.5),
     alignSelf: "center",
   },
   filterView: {
     flexDirection: "row",
     alignItems: "center",
-    padding: moderateScale(8),
+    padding: 8,
     width: "50%",
-    borderBottomLeftRadius: moderateScale(8),
+    borderBottomLeftRadius: 8,
     zIndex: 1,
   },
   foodVending: {
-    fontSize: moderateScale(11),
+    fontSize: 11,
     color: COLORS.black,
-    marginLeft: moderateScale(5)
+    marginLeft: wp('1%'),
   },
   deselectButton: {
     justifyContent: "flex-end",
     alignSelf: "center",
     alignItems: "center",
     borderColor: COLORS.orange,
-    borderWidth: moderateScale(3),
-    paddingHorizontal: moderateScale(35),
+    borderWidth: 3,
+    paddingHorizontal: wp('5%'),
     paddingVertical: moderateScale(0),
     borderRadius: moderateScale(20),
   },

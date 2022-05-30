@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
-import {ProfileIcon, LogoMoreSmall} from '@assets/icon';
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Typography } from '@components/Typography';
+import { COLORS } from '@theme/color';
+import { ProfileIcon, LogoMoreSmall } from '@assets/icon';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -13,7 +13,7 @@ interface HeaderProps {
   style?: ViewStyle;
 }
 
-export const Header = ({style, onPressRight}: HeaderProps) => {
+export const Header = ({ style, onPressRight }: HeaderProps) => {
   return (
     <View style={[styles.headerContainer, style]}>
       <LogoMoreSmall width={wp('27%')} />
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: wp('90%'),
     alignSelf: 'center',
+    height: hp('3.5%'),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

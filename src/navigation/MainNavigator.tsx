@@ -27,8 +27,8 @@ import {
   MapIcon,
   RewardIcon,
 } from '@assets/icon';
-import {COLORS} from '@theme/color';
-import {PaymentMethod} from '@models/PaymentMethod';
+import { COLORS } from '@theme/color';
+import { PaymentMethod } from '@models/PaymentMethod';
 
 export type MainStackParamList = {
   Welcome: undefined;
@@ -42,7 +42,7 @@ export type MainStackParamList = {
 
 export type CardScreensParamList = {
   Cards: undefined;
-  CardDetail: {card: PaymentMethod};
+  CardDetail: { card: PaymentMethod };
   ReloadCard: undefined;
   ReloadCard2: undefined;
   MapScreen: undefined;

@@ -7,17 +7,16 @@ import {
 import {
     Back,
 } from '@assets/icon';
-import { moderateScale } from 'react-native-size-matters';
 
 interface HeaderProps {
-    onPressRight: () => void;
+    onPressLeft: () => void;
     style?: ViewStyle;
 }
 
-export const BackButton = ({ style, onPressRight }: HeaderProps) => {
+export const BackButton = ({ style, onPressLeft }: HeaderProps) => {
     return (
         <View style={[styles.headerContainer, style]}>
-            <TouchableOpacity onPress={onPressRight} style={styles.backButtonContainer}>
+            <TouchableOpacity onPress={onPressLeft} style={styles.backButtonContainer}>
                 <Back style={styles.rightArrow} fill={COLORS.gray1} />
                 <Text style={styles.buttonText}>BACK</Text>
             </TouchableOpacity>
@@ -29,24 +28,19 @@ const styles = StyleSheet.create({
     headerContainer: {
         width: wp('90%'),
         alignSelf: 'center',
-        height: hp('3.5%'),
-
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical: hp('1.2%'),
     },
-    rightArrow: {
-
-    },
+    rightArrow: {},
     backButtonContainer: {
         flexDirection: "row",
         alignItems: "center"
     },
     buttonText: {
-        fontSize: moderateScale(16),
-        marginLeft: moderateScale(8),
-        color: COLORS.gray1
+        fontSize: 16,
+        marginLeft: 8,
+        color: COLORS.gray1,
     }
-
 });

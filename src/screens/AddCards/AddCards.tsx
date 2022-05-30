@@ -85,7 +85,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
         cardStyle={styles.cardStyle}
       />
       <View style={styles.bottomBorder} />
-      <Text style={styles.brandName}>©2021 Cantaloupe, Inc. All Rights Reserved.</Text>
+      <Text style={styles.brandName}>©2022 Cantaloupe, Inc. All Rights Reserved.</Text>
       {termsAndConditions.map(((item) => {
         return <TouchableTextButton key={item} style={styles.btnCreate} titleStyle={styles.buttonTextStyle} onPress={() => { }} title={item} />
       }))}

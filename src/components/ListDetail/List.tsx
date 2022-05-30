@@ -4,14 +4,14 @@ import {
   Direction
 } from '@assets/icon';
 import { moderateScale } from 'react-native-size-matters';
-import { placesArray } from '@screens/mock';
+import { placesArray, placesArrayTypes } from '@screens/mock';
 
 interface ListProps {
   onPressRight?: () => void;
   style?: ViewStyle;
 }
 
-const _renderItem = (item: any, index: number) => {
+const _renderItem = (item: placesArrayTypes, index: number) => {
   return <View key={item.location} style={[styles.listContainerView, { backgroundColor: index % 2 != 0 ? COLORS.gray2 : COLORS.transparent }]}>
     <View style={styles.image}>
       <item.image width={moderateScale(90)} height={moderateScale(67)} />
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingVertical: moderateScale(10),
     marginVertical: moderateScale(10),
     paddingHorizontal: moderateScale(20),
-   },
+  },
   locationText: {
     width: "50%",
     justifyContent: "flex-end",

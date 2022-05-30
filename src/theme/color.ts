@@ -11,9 +11,9 @@ export const COLORS = {
   green: '#43A047',
   gray1: '#909093',
   gray2: '#E7E6E6',
+  gray3: '#64656A',
   blue1: '#004890',
-  blackWithOpacity:'rgba(52, 52, 52, 0.8)',
-  lightBlue:'#C0C6E9',
-  gray3:'#64656A',
-  extraLightGray:'#F5FCFF'
+  blackWithOpacity: 'rgba(52, 52, 52, 0.8)',
+  lightBlue: '#C0C6E9',
+  extraLightGray: '#F5FCFF'
 };
