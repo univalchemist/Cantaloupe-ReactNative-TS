@@ -1,10 +1,8 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { COLORS } from '@theme/color';
 import React, { useCallback, useEffect, useState } from 'react';
-import { moderateScale, s } from 'react-native-size-matters';
-import { ReactElement } from 'react';
-import { dummyArray } from '../../screens/mock';
-import { print } from 'graphql';
+import { moderateScale } from 'react-native-size-matters';
+import { dummyArray, dummyLocation } from '../../screens/mock';
 
 interface ListProps {
   isEnabled:boolean
@@ -24,11 +22,11 @@ export const FilterModule = ({ isEnabled}: ListProps) => {
   },[])
 
 
-  const methodToSelectLocation = useCallback((index: number,selectedItem:[]) => {
+  const methodToSelectLocation = useCallback((index: number,selectedItem:dummyLocation[]) => {
   console.log("onPress");
     var item1: (any) = selectedItem[index]
-    var newItem = {}
-  var new_array = selectedItem.map(function(e) {
+    var newItem:(dummyLocation) 
+  var new_array = selectedItem.map(function(e:dummyLocation) {
 
 return {
   id: e.id,
