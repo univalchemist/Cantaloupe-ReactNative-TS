@@ -86,7 +86,7 @@ function BottomTabs() {
           ),
         }}
         name="CardScreenNavigator1"
-        component={AddCardsScreen}
+        component={MapScreen}
       />
       <BottomTab.Screen
         options={{
@@ -175,7 +175,6 @@ const MainNavigator = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="AuthOption" component={AuthOptionScreen} />
         <Stack.Screen name="Signin" component={SignInScreen} />
-        <Stack.Screen name="MapScreen" component={MapScreen} />
         <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="BottomTabs" component={BottomTabs} />
       </Stack.Navigator>

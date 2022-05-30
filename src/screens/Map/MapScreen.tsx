@@ -23,15 +23,14 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
   }, [])
 
   useEffect(() => {
-    setModalVisible(true)
+    // TODO
+    // ask permission to allow location
+    setModalVisible(false)
   }, [])
 
   const methodToShowFilterOptions = useCallback(() => {
     setIsFilterEnable(!isFilterEnable)
   }, [isFilterEnable])
-
-
-
 
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={false}>
