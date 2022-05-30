@@ -11,12 +11,6 @@ interface ListProps {
 export const FilterModule = ({ isEnabled }: ListProps) => {
   const [selectedItem, setSelectedItem] = useState(dummyArray);
 
-  useEffect(() => {
-    selectedItem.forEach(function (e) {
-      console.log("eAfter" + JSON.stringify(e))
-    })
-  }, [])
-
   const methodToSelectLocation = useCallback((index: number, selectedItem: dummyLocation[]) => {
     var item1: (any) = selectedItem[index]
     var newItem: (dummyLocation)
@@ -47,9 +41,6 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
       }
     }
     new_array[index] = newItem
-    new_array.forEach(function (e) {
-      console.log("eAfter" + JSON.stringify(e))
-    })
     setSelectedItem(new_array)
   }, [])
 

@@ -23,7 +23,9 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
   }, [])
 
   useEffect(() => {
-    setModalVisible(true)
+    // TODO
+    // ask permission to allow location
+    setModalVisible(false)
   }, [])
 
   const methodToShowFilterOptions = useCallback(() => {
@@ -35,7 +37,7 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
 
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={false}>
-      <BackButton onPressRight={() => navigation.goBack()} />
+      {/* <BackButton onPressRight={() => navigation.goBack()} /> */}
       <View style={styles.searchContainer}><CustomSearchBar /></View>
       <View style={styles.mapRow}>
         <View style={styles.mapAndList}>
