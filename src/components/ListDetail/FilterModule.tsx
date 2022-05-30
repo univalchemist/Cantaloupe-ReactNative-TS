@@ -52,7 +52,7 @@ export const FilterModule = ({ isEnabled }: ListProps) => {
     })
     setSelectedItem(new_array)
   }, [])
-
+  
   const handleUnselectClick = () => {
     var newArray = selectedItem.map((item) => ({
       ...item, isSelected: false
