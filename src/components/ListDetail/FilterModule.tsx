@@ -5,45 +5,31 @@ import { moderateScale } from 'react-native-size-matters';
 import { dummyArray, dummyLocation } from '../../screens/mock';
 
 interface ListProps {
-  isEnabled:boolean
+  isEnabled: boolean
 }
 
-
-export const FilterModule = ({ isEnabled}: ListProps) => {
+export const FilterModule = ({ isEnabled }: ListProps) => {
   const [selectedItem, setSelectedItem] = useState(dummyArray);
 
-
-  useEffect(()=>{
-
-    selectedItem.forEach(function(e) {
+  useEffect(() => {
+    selectedItem.forEach(function (e) {
       console.log("eAfter" + JSON.stringify(e))
-        })
+    })
+  }, [])
 
-  },[])
-
-
-  const methodToSelectLocation = useCallback((index: number,selectedItem:dummyLocation[]) => {
-  console.log("onPress");
+  const methodToSelectLocation = useCallback((index: number, selectedItem: dummyLocation[]) => {
     var item1: (any) = selectedItem[index]
-    var newItem:(dummyLocation) 
-  var new_array = selectedItem.map(function(e:dummyLocation) {
-
-return {
-  id: e.id,
-  image: e.image,
-  selectedImage: e.selectedImage,
-  title: e.title,
-  isSelected: e.isSelected
-}
-
-  })
-
-
-console.log("seletedItem" + JSON.stringify(item1))
-
-
+    var newItem: (dummyLocation)
+    var new_array = selectedItem.map(function (e: dummyLocation) {
+      return {
+        id: e.id,
+        image: e.image,
+        selectedImage: e.selectedImage,
+        title: e.title,
+        isSelected: e.isSelected
+      }
+    })
     if (item1.isSelected == true) {
-      console.log("seletedItemTrue" + item1.isSelected)
       newItem = {
         id: item1.id,
         image: item1.image,
@@ -51,11 +37,7 @@ console.log("seletedItem" + JSON.stringify(item1))
         title: item1.title,
         isSelected: false
       }
-
     } else {
-
-      console.log("seletedItemFalse" + item1.isSelected)
-
       newItem = {
         id: item1.id,
         image: item1.image,
@@ -63,20 +45,11 @@ console.log("seletedItem" + JSON.stringify(item1))
         title: item1.title,
         isSelected: true
       }
-
     }
-
-    console.log("abc1" + JSON.stringify(newItem))
-    console.log("index" + index)
     new_array[index] = newItem
-
-
-    new_array.forEach(function(e) {
-
+    new_array.forEach(function (e) {
       console.log("eAfter" + JSON.stringify(e))
-      
-        })
-
+    })
     setSelectedItem(new_array)
   }, [])
 
@@ -86,8 +59,7 @@ console.log("seletedItem" + JSON.stringify(item1))
     }))
     setSelectedItem(newArray)
   }
-  
-  
+
 
   return <View style={[styles.filterPropContainer, !isEnabled && { marginHorizontal: moderateScale(15) }]}>
     {selectedItem.map((item, index) => {
@@ -100,40 +72,35 @@ console.log("seletedItem" + JSON.stringify(item1))
         </Text>
       </View>
     })}
-    <TouchableOpacity style={styles.deselectButton} onPress={() => {handleUnselectClick() }}>
+    <TouchableOpacity style={styles.deselectButton} onPress={() => { handleUnselectClick() }}>
       <Text style={styles.deselectText}>Deselect All</Text>
     </TouchableOpacity>
   </View>
-
 };
 
 const styles = StyleSheet.create({
-    filterPropContainer: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        position: "absolute",
-        zIndex: 2,
-        backgroundColor: COLORS.white,
-        alignItems: "center",
-        borderBottomLeftRadius: moderateScale(15),
-        borderBottomRightRadius: moderateScale(15),
-        overflow: "hidden",
-        padding: moderateScale(15),
-        top: moderateScale(195),
-        alignSelf:"center",
-        
-        
-      },
-      filterView: {
-        flexDirection: "row",
-        alignItems: "center",
-        padding: moderateScale(8),
-        width: "50%",
-        borderBottomLeftRadius: moderateScale(8),
-        zIndex:1,
-        
-      },
-
+  filterPropContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    position: "absolute",
+    zIndex: 2,
+    backgroundColor: COLORS.white,
+    alignItems: "center",
+    borderBottomLeftRadius: moderateScale(15),
+    borderBottomRightRadius: moderateScale(15),
+    overflow: "hidden",
+    padding: moderateScale(15),
+    top: moderateScale(195),
+    alignSelf: "center",
+  },
+  filterView: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: moderateScale(8),
+    width: "50%",
+    borderBottomLeftRadius: moderateScale(8),
+    zIndex: 1,
+  },
   foodVending: {
     fontSize: moderateScale(11),
     color: COLORS.black,
