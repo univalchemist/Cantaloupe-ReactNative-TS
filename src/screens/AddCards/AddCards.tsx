@@ -20,7 +20,7 @@ import {
 } from '@assets/icon';
 import { moderateScale } from 'react-native-size-matters';
 import { Button, TouchableTextButton } from '@components/Button';
-import { cardArray, termsANdConditions } from '../mock';
+import { cardArray, termsAndConditions } from '../mock';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -86,7 +86,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
       />
       <View style={styles.bottomBorder} />
       <Text style={styles.brandName}>©2021 Cantaloupe, Inc. All Rights Reserved.</Text>
-      {termsANdConditions.map(((item) => {
+      {termsAndConditions.map(((item) => {
         return <TouchableTextButton key={item} style={styles.btnCreate} titleStyle={styles.buttonTextStyle} onPress={() => { }} title={item} />
       }))}
     </GradientScrollingWrapper>

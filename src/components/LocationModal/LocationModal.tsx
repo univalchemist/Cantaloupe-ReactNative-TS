@@ -1,6 +1,8 @@
 import React from "react";
 import { Modal, StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import { COLORS } from "@theme/color";
+import { moderateScale } from "react-native-size-matters";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const LocationModal = ({onBlock,OnAllow}:{onBlock:()=>void,OnAllow:()=>void}) => {
 
@@ -14,12 +16,12 @@ const LocationModal = ({onBlock,OnAllow}:{onBlock:()=>void,OnAllow:()=>void}) =>
                     <View style={styles.modalView}>
                         <Text style={styles.modalText}>more.cantaloupe.com wants to use your device’s location</Text>
                         <View style={styles.buttonContainer}>
-                            <TouchableWithoutFeedback onPress={onBlock} >
+                            <TouchableOpacity style={styles.blockButton} onPress={onBlock} >
                                 <Text style={styles.buttonText}>Block</Text>
-                            </TouchableWithoutFeedback>
-                            <TouchableWithoutFeedback onPress={OnAllow}  >
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.allowButton} onPress={OnAllow}  >
                                 <Text style={styles.buttonText}>Allow</Text>
-                            </TouchableWithoutFeedback>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -37,21 +39,25 @@ const styles = StyleSheet.create({
         backgroundColor:COLORS.blackWithOpacity,
         height:"100%"
     },
+    blockButton:{
+        minWidth:"30%"
+    },
     buttonContainer: {
         alignSelf: 'flex-end',
-        marginHorizontal: 20,
+        marginHorizontal: moderateScale(10),
         flexDirection: 'row',
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
         alignItems: "flex-end",
         marginTop: 10,
-        width: "35%"
+        width: "80%",
     },
+    allowButton:{},
     modalView: {
         margin: 20,
         backgroundColor: COLORS.white,
         borderRadius: 5,
         paddingVertical: 20,
-        paddingHorizontal: 12,
+        paddingHorizontal: moderateScale(10),
         alignItems: "center",
         shadowColor: COLORS.black,
         shadowOffset: {
@@ -60,14 +66,16 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
+        width:"80%",
+        alignSelf:"center"
     },
     modalText: {
         fontWeight: 'normal',
         marginBottom: 16,
         fontSize: 16,
         color: COLORS.black,
-        textAlign: "left"
+        textAlign: "left",
     },
     buttonText: {
         fontWeight: 'bold',
