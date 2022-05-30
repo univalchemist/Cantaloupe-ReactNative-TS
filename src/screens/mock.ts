@@ -22,24 +22,28 @@ export type placesArrayTypes={
 
 const placesArray = [
   {
+    id:1,
     image: StreetImage,
     machine_type: "Vending Machine Type",
     location: "Cantaloupe Location Birmingham, AL, USA",
     distance: '0.4 miles away',
   },
   {
+    id:2,
     image: StreetImage,
     machine_type: "Vending Machine Type",
     location: "Cantaloupe Location Birmingham, AL, USA",
     distance: '0.4 miles away'
   },
   {
+    id:3,
     image: StreetImage,
     machine_type: "Vending Machine Type",
     location: "Cantaloupe Location Birmingham, AL, USA",
     distance: '0.4 miles away'
   },
   {
+    id:4,
     image: StreetImage,
     machine_type: "Vending Machine Type",
     location: "Cantaloupe Location Birmingham, AL, USA",
@@ -90,8 +94,8 @@ const dummyArray = [
   },
 ]
 
-const termsANdConditions = ['Privacy Policy', 'Terms of Use', 'Cookie Policy']
+const termsAndConditions = ['Privacy Policy', 'Terms of Use', 'Cookie Policy']
 
 
 
-export { cardArray, placesArray, dummyArray, termsANdConditions }
+export { cardArray, placesArray, dummyArray, termsAndConditions }

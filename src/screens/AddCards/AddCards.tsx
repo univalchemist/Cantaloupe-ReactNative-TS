@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View, Dimensions, Text, FlatList } from 'react-native';
+import { StatusBar, StyleSheet, View, Dimensions, Text } from 'react-native';
 import { AddCardsScreenProp } from '../../navigation/MainNavigator';
 import { COLORS } from '@theme/color';
 import { useNavigation } from '@react-navigation/native';
@@ -20,7 +20,7 @@ import {
 } from '@assets/icon';
 import { moderateScale } from 'react-native-size-matters';
 import { Button, TouchableTextButton } from '@components/Button';
-import { cardArray, termsANdConditions } from '../mock';
+import { cardArray, termsAndConditions } from '../mock';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -33,15 +33,18 @@ const AddCards = ({ }: AddCardsScreenProp) => {
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={true}>
       <StatusBar translucent={true} backgroundColor={COLORS.transparent} />
       <Header style={styles.header} onPressRight={() => { }} />
-      {cardArray.map((item)=>{
-        return <Card
-              key={item.cardNumber}
-              CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 9.5} style={styles.svgStyle} />}
-              style={styles.cardTypeStyle}
-              balance={item.balance != '' && item.balance}
-              cardNumber={item.cardNumber}
-            />
-      })}
+      {cardArray.map((item) => {
+        return (
+          <Card
+            key={item.balance}
+            CardLogo={<CardImage width={windowWidth / 3} height={windowHeight / 9.5} style={styles.svgStyle} />}
+            style={styles.cardTypeStyle}
+            balance={item.balance != '' && item.balance}
+            cardNumber={item.cardNumber}
+          />
+        )
+      })
+      }
       <Button
         style={styles.addCardButtonContainer}
         leftIcon={<AddIcon width={windowWidth / 9} />}
@@ -83,7 +86,7 @@ const AddCards = ({ }: AddCardsScreenProp) => {
       />
       <View style={styles.bottomBorder} />
       <Text style={styles.brandName}>©2021 Cantaloupe, Inc. All Rights Reserved.</Text>
-      {termsANdConditions.map(((item) => {
+      {termsAndConditions.map(((item) => {
         return <TouchableTextButton key={item} style={styles.btnCreate} titleStyle={styles.buttonTextStyle} onPress={() => { }} title={item} />
       }))}
     </GradientScrollingWrapper>
@@ -98,8 +101,8 @@ const styles = StyleSheet.create({
     paddingTop: moderateScale(40),
     paddingBottom: moderateScale(10)
   },
-  cardStyle:{
-    width:"15%",
+  cardStyle: {
+    width: "15%",
   },
   btnCreate: {
     backgroundColor: COLORS.transparent,
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
   locationStyle: {
     justifyContent: "center",
     marginTop: moderateScale(10),
-    width:"90%"
+    width: "90%"
   },
   buttonText: {
     color: COLORS.black,
