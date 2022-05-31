@@ -31,16 +31,8 @@ import RewardsIcon from './rewardsIcon.svg';
 import FaqIcon from './faqIcon.svg';
 import Back from './back.svg';
 import Filter from './filter.svg';
-import OrangeIcon from './orange_radio_button.svg';
-import BlueIcon from './blue_radio_button.svg';
-import PurpleIcon from './purple_radio_button.svg';
-import RedIcon from './red_radio_button.svg';
-import GreenIcon from './green_radio_button.svg';
-import BlueEmptyCircle from './blue_empty_circle.svg';
-import GreenEmptyIcon from './green_empty_circle.svg';
-import redEmptyIcon from './red_empty_circle.svg';
-import PurpleEmptyIcon from './purple_empty_circle.svg';
-import OrangeEmptyIcon from './orange_empty_circle.svg';
+import RadioButton from './radioButton.svg';
+import EmptyCircle from './emptyCircle.svg';
 import StreetImage from './street_icon.svg';
 import Direction from './directions.svg';
 import Search from './search.svg';
@@ -80,16 +72,8 @@ export {
   FaqIcon,
   Back,
   Filter,
-  OrangeIcon,
-  BlueIcon,
-  PurpleIcon,
-  RedIcon,
-  GreenIcon,
-  BlueEmptyCircle,
-  GreenEmptyIcon,
-  redEmptyIcon,
-  PurpleEmptyIcon,
-  OrangeEmptyIcon,
+  RadioButton,
+  EmptyCircle,
   StreetImage,
   Direction,
   Search,
