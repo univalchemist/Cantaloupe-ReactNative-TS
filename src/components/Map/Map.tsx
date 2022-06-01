@@ -4,12 +4,13 @@ import MapboxGL from '@react-native-mapbox-gl/maps';
 import {moderateScale} from 'react-native-size-matters';
 import {COLORS} from '@theme/color';
 const windowWidth = Dimensions.get('window').width;
-import {MAPBOX_ACCESS_TOKEN} from 'react-native-dotenv';
+import {MAPBOX_ACCESS_TOKEN} from '@env';
 
 MapboxGL.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 interface MapProps {}
 export const Map = ({}: MapProps) => {
+  console.log('MAPBOX_ACCESS_TOKEN ', MAPBOX_ACCESS_TOKEN);
   return (
     <View style={styles.page}>
       <View style={styles.container}>
