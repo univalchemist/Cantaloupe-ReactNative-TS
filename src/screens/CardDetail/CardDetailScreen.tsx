@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {CardDetailsScreenProp} from '../../navigation/MainNavigator';
+import {CardDetailsScreenProp} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
 
 import {CardImage1, ManuallyReloadIcon, RightArrow} from '@assets/icon';
@@ -166,6 +166,6 @@ const styles = StyleSheet.create({
   cardImagContainer: {
     marginTop: hp('2%'),
   },
-  cardImage1BG: {backgroundColor: COLORS.blue1},
+  cardImage1BG: {backgroundColor: COLORS.blueDark},
 });
 export default CardDetailScreen;

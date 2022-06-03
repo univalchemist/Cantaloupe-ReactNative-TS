@@ -38,7 +38,7 @@ export const CardDetail = ({
         {CardImg}
         <View style={styles.cashBackCont}>
           <Typography style={styles.cashBack}>Cash Back Mastercard</Typography>
-          <Typography style={[styles.cashBack, {color: COLORS.gray1}]}>
+          <Typography style={[styles.cashBack, {color: COLORS.gray}]}>
             {cardNumber}
           </Typography>
         </View>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     color: COLORS.black,
   },
   separator: {
-    backgroundColor: COLORS.gray1,
+    backgroundColor: COLORS.gray,
     width: wp('70%'),
     alignSelf: 'center',
     marginVertical: hp('1.4%'),

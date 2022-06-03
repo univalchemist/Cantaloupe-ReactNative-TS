@@ -43,7 +43,7 @@ export const CardAmountDropDown = ({items, setItems}: CardTypeProps) => {
 const styles = StyleSheet.create({
   dropdown: {
     borderRadius: hp('2%'),
-    borderColor: COLORS.gray2,
+    borderColor: COLORS.grayLight,
     borderWidth: hp('0.1%'),
     height: hp('7%'),
   },

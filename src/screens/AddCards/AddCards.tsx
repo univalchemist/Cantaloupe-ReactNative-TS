@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar, StyleSheet, View, Dimensions, Text } from 'react-native';
-import { AddCardsScreenProp } from '../../navigation/MainNavigator';
+import { AddCardsScreenProp } from '../../navigation/TabNavigator';
 import { COLORS } from '@theme/color';
 import { useNavigation } from '@react-navigation/native';
 import { GradientScrollingWrapper } from '@components/GradientWrapper';
@@ -95,11 +95,11 @@ const AddCards = ({ }: AddCardsScreenProp) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: moderateScale(50),
+    paddingTop: 50,
   },
   mapBackgroundGradient: {
-    paddingTop: moderateScale(40),
-    paddingBottom: moderateScale(10)
+    paddingTop: 40,
+    paddingBottom: 10
   },
   cardStyle: {
     width: "15%",
@@ -108,23 +108,23 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.transparent,
   },
   locationIconStyle: {
-    marginLeft: moderateScale(15),
+    marginLeft: 15,
   },
   brandName: {
     textAlign: "center",
-    fontSize: moderateScale(20),
+    fontSize: 20,
     color: COLORS.black,
     fontWeight: "300",
-    marginBottom: moderateScale(15),
-    paddingHorizontal: moderateScale(10)
+    marginBottom: 15,
+    paddingHorizontal: 10
   },
   buttonTextStyle: {
-    color: COLORS.gray1,
-    fontSize: moderateScale(15),
+    color: COLORS.gray,
+    fontSize: 15,
   },
   locationStyle: {
     justifyContent: "center",
-    marginTop: moderateScale(10),
+    marginTop: 10,
     width: "90%"
   },
   buttonText: {
@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: moderateScale(2),
     width: "85%",
     alignSelf: "center",
-    marginTop: moderateScale(5),
-    marginBottom: moderateScale(18)
+    marginTop: 5,
+    marginBottom: 18
   },
   addCardButtonContainer: {
     backgroundColor: COLORS.transparent,
     justifyContent: "flex-start",
-    paddingLeft: moderateScale(20)
+    paddingLeft: 20
   },
   cardTypeStyle: {
     justifyContent: "flex-start",
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     width: wp('95%'),
   },
   svgStyle: {
-    marginLeft: moderateScale(0)
+    marginLeft: 0
   },
 });
 export default AddCards;

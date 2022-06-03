@@ -1,7 +1,6 @@
 import React from "react";
-import { Modal, StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
+import { Modal, StyleSheet, Text, View } from "react-native";
 import { COLORS } from "@theme/color";
-import { moderateScale } from "react-native-size-matters";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const LocationModal = ({onBlock,OnAllow}:{onBlock:()=>void,OnAllow:()=>void}) => {
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         alignSelf: 'flex-end',
-        marginHorizontal: moderateScale(10),
+        marginHorizontal: 10,
         flexDirection: 'row',
         justifyContent: "flex-end",
         alignItems: "flex-end",
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         borderRadius: 5,
         paddingVertical: 20,
-        paddingHorizontal: moderateScale(10),
+        paddingHorizontal: 10,
         alignItems: "center",
         shadowColor: COLORS.black,
         shadowOffset: {

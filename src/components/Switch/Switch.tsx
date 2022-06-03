@@ -17,7 +17,7 @@ export const SwitchComp = ({ toggleSwitch, isEnabled }: SwitchProps) => {
             offColor={COLORS.lightBlue}
             size="small"
             onToggle={toggleSwitch}
-            thumbOffStyle={[styles.tumb, { position: "absolute", left: moderateScale(-5) }]}
+            thumbOffStyle={[styles.tumb, { position: "absolute", left: -5 }]}
             thumbOnStyle={styles.tumb}
             trackOffStyle={styles.tumb}
             trackOnStyle={styles.tumb}

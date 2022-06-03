@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
-import {ReloadCardScreenProp} from '../../navigation/MainNavigator';
+import {ReloadCardScreenProp} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
@@ -36,7 +36,7 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
                 cardTypeText={
                   <Typography style={styles.primaryTxt}>PRIMARY</Typography>
                 }
-                CardImg={<CardImage2 style={{backgroundColor: COLORS.blue1}} />}
+                CardImg={<CardImage2 style={{backgroundColor: COLORS.blueDark}} />}
               />
             }
             cardNumber="More Card •• 5743"

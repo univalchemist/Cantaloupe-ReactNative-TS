@@ -3,20 +3,15 @@ import {COLORS} from '@theme/color';
 import {Direction} from '@assets/icon';
 import {moderateScale} from 'react-native-size-matters';
 import {placesArray} from '@screens/mock';
-import {placesArrayTypes} from './type';
+import { PlaceProp, ListViewProp } from './type';
 
-interface ListProps {
-  onPressRight?: () => void;
-  style?: ViewStyle;
-}
-
-const _renderItem = (item: placesArrayTypes, index: number) => {
+const _renderItem = (item: PlaceProp, index: number) => {
   return (
     <View
       key={item.location}
       style={[
         styles.listContainerView,
-        {backgroundColor: index % 2 != 0 ? COLORS.gray2 : COLORS.transparent},
+        {backgroundColor: index % 2 != 0 ? COLORS.grayLight : COLORS.transparent},
       ]}>
       <View style={styles.image}>
         <item.image width={moderateScale(90)} height={moderateScale(67)} />
@@ -34,7 +29,7 @@ const _renderItem = (item: placesArrayTypes, index: number) => {
   );
 };
 
-export const ListView = ({}: ListProps) => {
+export const ListView = ({}: ListViewProp) => {
   return (
     <View style={styles.mainContainer}>
       <FlatList
@@ -53,20 +48,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    paddingVertical: moderateScale(10),
-    marginVertical: moderateScale(10),
-    paddingHorizontal: moderateScale(20),
+    paddingVertical: 10,
+    marginVertical: 10,
+    paddingHorizontal: 20,
   },
   locationText: {
     width: '50%',
     justifyContent: 'flex-end',
-    paddingLeft: moderateScale(10),
+    paddingLeft: 10,
   },
   image: {
-    borderRadius: moderateScale(5),
+    borderRadius: 5,
   },
   mainContainer: {
-    marginTop: moderateScale(30),
+    marginTop: 30,
     flex: 1,
   },
   directionsView: {
@@ -75,7 +70,7 @@ const styles = StyleSheet.create({
   },
   directionsText: {
     color: COLORS.blue,
-    marginTop: moderateScale(5),
+    marginTop: 5,
     fontWeight: 'bold',
   },
   flatlist: {

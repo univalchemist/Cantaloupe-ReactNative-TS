@@ -1,20 +1,28 @@
 import React from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-import {moderateScale} from 'react-native-size-matters';
-import {COLORS} from '@theme/color';
+import { COLORS } from '@theme/color';
+import { MAPBOX_ACCESS_TOKEN } from '@env';
+import { MapPinGreen } from '@assets/icon';
+
 const windowWidth = Dimensions.get('window').width;
-import {MAPBOX_ACCESS_TOKEN} from '@env';
 
 MapboxGL.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 interface MapProps {}
 export const Map = ({}: MapProps) => {
-  console.log('MAPBOX_ACCESS_TOKEN ', MAPBOX_ACCESS_TOKEN);
   return (
     <View style={styles.page}>
       <View style={styles.container}>
-        <MapboxGL.MapView zoomEnabled={true} style={styles.map} />
+        <MapboxGL.MapView zoomEnabled={true} style={styles.map} >
+          <MapboxGL.Camera
+            zoomLevel={9}
+            centerCoordinate={[-73.970895, 40.723279]}
+          />
+          <MapboxGL.MarkerView id={'pin-1'} coordinate={[-73.970895, 40.723279]}>
+            <MapPinGreen />
+          </MapboxGL.MarkerView>
+        </MapboxGL.MapView>
       </View>
     </View>
   );
@@ -26,13 +34,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.transparent,
-    marginTop: moderateScale(20),
+    marginTop: 20,
   },
   container: {
     height: '100%',
     width: windowWidth,
     backgroundColor: COLORS.transparent,
-    paddingHorizontal: moderateScale(20),
+    paddingHorizontal: 20,
   },
   map: {
     flex: 1,

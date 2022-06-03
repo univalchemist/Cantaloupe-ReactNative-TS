@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
   laodedBalanceTxt: {
     fontWeight: '400',
     fontSize: hp('3%'),
-    color: COLORS.gray1,
+    color: COLORS.gray,
   },
   newBalanceTxt: {
     fontWeight: '400',
     fontSize: hp('2%'),
-    color: COLORS.gray1,
+    color: COLORS.gray,
     marginVertical: hp('2.5%'),
   },
 });

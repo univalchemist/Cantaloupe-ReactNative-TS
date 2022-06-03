@@ -1,6 +1,6 @@
 import React from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
-import {CardsScreenProp} from '../../navigation/MainNavigator';
+import {CardsScreenProp} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
 
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   cardImagContainer: {
     marginTop: hp('3%'),
   },
-  cardImage1BG: {backgroundColor: COLORS.blue1},
+  cardImage1BG: {backgroundColor: COLORS.blueDark},
   cardTypeStyle: {marginTop: hp('4.8%'), width: wp('75%')},
   cardTypeStyle1: {marginTop: hp('4.8%'), width: wp('88%')},
 });

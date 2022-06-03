@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   activeTxt: {
     fontWeight: '500',
     fontSize: hp('2.1%'),
-    color: COLORS.green,
+    color: COLORS.greenDark,
   },
   balanceCont: {
     flexDirection: 'row',
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   fallsBlnc: {
     fontSize: hp('1.65%'),
-    color: COLORS.gray1,
+    color: COLORS.gray,
   },
 
   rightTitle: {

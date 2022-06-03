@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Map } from '@components/Map/Map';
 import { GradientScrollingWrapper } from '@components/GradientWrapper';
-import { moderateScale } from 'react-native-size-matters';
-import { BackButton } from '@components/Header/BackButton';
 import { COLORS } from '@theme/color';
 import { SwitchComp } from '@components/Switch/Switch'
 import { Filter } from '@assets/icon';
@@ -12,11 +10,10 @@ import { FilterModule } from '@components/ListDetail';
 import { CustomSearchBar } from '@components/SearchBar';
 import { LocationModal } from '@components/LocationModal';
 
-const MapScreen = ({ navigation }: { navigation: any }) => {
+const MapScreen = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isFilterEnable, setIsFilterEnable] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-
 
   const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState)
@@ -34,7 +31,6 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
 
   return (
     <GradientScrollingWrapper style={styles.mapBackgroundGradient} scrollable={false}>
-      <BackButton onPressLeft={() => navigation.goBack()} />
       <View style={styles.searchContainer}><CustomSearchBar /></View>
       <View style={styles.mapRow}>
         <View style={styles.mapAndList}>
@@ -63,19 +59,19 @@ const MapScreen = ({ navigation }: { navigation: any }) => {
 
 const styles = StyleSheet.create({
   mapBackgroundGradient: {
-    paddingTop: moderateScale(40),
-    paddingBottom: moderateScale(10)
+    paddingTop: 20,
+    paddingBottom: 10
   },
   searchContainer: {
-    paddingHorizontal: moderateScale(15)
+    paddingHorizontal: 15
   },
   mapText: {
-    paddingRight: moderateScale(5),
-    paddingVertical: moderateScale(5),
+    paddingRight: 5,
+    paddingVertical: 5,
     color: COLORS.black
   },
   satelliteText: {
-    marginLeft: moderateScale(5)
+    marginLeft: 5
   },
   container: {
     height: 300,
@@ -86,23 +82,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: moderateScale(15)
+    paddingHorizontal: 15
   },
   mapLabels: {
     position: "absolute",
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: COLORS.white,
-    paddingHorizontal: moderateScale(8),
+    paddingHorizontal: 8,
     zIndex: 1,
-    top: moderateScale(25),
-    left: moderateScale(5)
+    top: 25,
+    left: 5
   },
   map: {
     flex: 1
   },
   mapButtonText: {
-    fontSize: moderateScale(20),
+    fontSize: 20,
     color: COLORS.blue
   },
   filterContainer: {
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   listContainer: {
-    paddingRight: moderateScale(20),
+    paddingRight: 20,
   },
   mapAndList: {
     flexDirection: "row",
@@ -120,11 +116,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   infoText: {
-    fontSize: moderateScale(23),
+    fontSize: 23,
     textAlign: "center",
-    marginTop: moderateScale(15),
-    color: COLORS.gray1,
-    marginHorizontal: moderateScale(5)
+    marginTop: 15,
+    color: COLORS.gray,
+    marginHorizontal: 5
   },
 
 

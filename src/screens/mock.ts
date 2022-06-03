@@ -45,22 +45,13 @@ const placesArray = [
   },
 ];
 
-export type dummyLocation = {
-  id: number;
-  image: React.FC<SvgProps>;
-  selectedImage: React.FC<SvgProps>;
-  title: string;
-  isSelected: boolean;
-  color: string;
-};
-
 const dummyArray = [
   {
     id: 1,
     image: EmptyCircle,
     selectedImage: RadioButton,
     title: 'Food Vending',
-    isSelected: false,
+    isSelected: true,
     color: COLORS.orange,
   },
   {
@@ -68,15 +59,15 @@ const dummyArray = [
     image: EmptyCircle,
     selectedImage: RadioButton,
     title: 'Beverage Vendin',
-    isSelected: false,
-    color: COLORS.green1,
+    isSelected: true,
+    color: COLORS.greenDark,
   },
   {
     id: 3,
     image: EmptyCircle,
     selectedImage: RadioButton,
     title: 'Massage Chair',
-    isSelected: false,
+    isSelected: true,
     color: COLORS.blue,
   },
   {
@@ -84,7 +75,7 @@ const dummyArray = [
     image: EmptyCircle,
     selectedImage: RadioButton,
     title: 'Mini Mart',
-    isSelected: false,
+    isSelected: true,
     color: COLORS.red,
   },
   {
@@ -92,7 +83,7 @@ const dummyArray = [
     image: EmptyCircle,
     selectedImage: RadioButton,
     title: 'Electric Car Charging',
-    isSelected: false,
+    isSelected: true,
     color: COLORS.purple,
   },
 ];

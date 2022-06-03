@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     width: wp('80%'),
     height: hp('6%'),
     borderWidth: 1,
-    borderColor: COLORS.gray2,
+    borderColor: COLORS.grayLight,
     borderRadius: 8,
     paddingHorizontal: 15,
     fontSize: hp('3%'),

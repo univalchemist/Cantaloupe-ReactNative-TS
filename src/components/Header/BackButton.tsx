@@ -17,7 +17,7 @@ export const BackButton = ({ style, onPressLeft }: HeaderProps) => {
     return (
         <View style={[styles.headerContainer, style]}>
             <TouchableOpacity onPress={onPressLeft} style={styles.backButtonContainer}>
-                <Back style={styles.rightArrow} fill={COLORS.gray1} />
+                <Back style={styles.rightArrow} fill={COLORS.gray} />
                 <Text style={styles.buttonText}>BACK</Text>
             </TouchableOpacity>
         </View>
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 16,
         marginLeft: 8,
-        color: COLORS.gray1,
+        color: COLORS.gray,
     }
 });

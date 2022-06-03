@@ -6,50 +6,25 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {dummyArray, dummyLocation} from '../../screens/mock';
+import { dummyArray } from '../../screens/mock';
+import { ListViewProp, LocationProp } from './type';
 
-interface ListProps {
-  isEnabled: boolean;
-}
-
-export const FilterModule = ({isEnabled}: ListProps) => {
+export const FilterModule = ({isEnabled}: ListViewProp) => {
   const [selectedItem, setSelectedItem] = useState(dummyArray);
 
   const methodToSelectLocation = useCallback(
-    (index: number, selectedItem: dummyLocation[]) => {
-      var item1: any = selectedItem[index];
-      var newItem: dummyLocation;
-      var new_array = selectedItem.map(function (e: dummyLocation) {
-        return {
-          id: e.id,
-          image: e.image,
-          selectedImage: e.selectedImage,
-          title: e.title,
-          isSelected: e.isSelected,
-          color: e.color,
-        };
-      });
-      if (item1.isSelected == true) {
-        newItem = {
-          id: item1.id,
-          image: item1.image,
-          selectedImage: item1.selectedImage,
-          title: item1.title,
-          isSelected: false,
-          color: item1.color,
-        };
-      } else {
-        newItem = {
-          id: item1.id,
-          image: item1.image,
-          selectedImage: item1.selectedImage,
-          title: item1.title,
-          isSelected: true,
-          color: item1.color,
-        };
-      }
+    (index: number, selectedItem: LocationProp[]) => {
+      const item1: any = selectedItem[index];
+      const new_array = [...selectedItem];
+      const newItem: LocationProp = {
+        id: item1.id,
+        image: item1.image,
+        selectedImage: item1.selectedImage,
+        title: item1.title,
+        isSelected: !item1.isSelected,
+        color: item1.color,
+      };
       new_array[index] = newItem;
-
       setSelectedItem(new_array);
     },
     [],
@@ -115,7 +90,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     overflow: 'hidden',
     padding: 15,
-    top: moderateScale(195, 0.5),
+    top: moderateScale(120, 0.5),
     alignSelf: 'center',
   },
   filterView: {
@@ -138,8 +113,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.orange,
     borderWidth: 3,
     paddingHorizontal: wp('5%'),
-    paddingVertical: moderateScale(0),
-    borderRadius: moderateScale(20),
+    paddingVertical: 0,
+    borderRadius: 20,
   },
   deselectText: {
     color: COLORS.black,

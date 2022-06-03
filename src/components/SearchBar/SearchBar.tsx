@@ -2,7 +2,6 @@ import React from "react";
 import { Search } from '@assets/icon';
 import { StyleSheet, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { moderateScale } from "react-native-size-matters";
 import { COLORS } from "@theme/color";
 
 const CustomSearchBar = () => {
@@ -11,7 +10,7 @@ const CustomSearchBar = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Search Address"
-                placeholderTextColor={COLORS.gray3}
+                placeholderTextColor={COLORS.grayDark}
                 keyboardType="default"
             />
             <TouchableOpacity>
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         width: '100%',
         height: 45,
-        marginVertical:moderateScale(15)
+        marginVertical: 15
     },
     searchIconBox: {
         height: '100%',
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     searchIcon: {
-        color: COLORS.gray3,
+        color: COLORS.grayDark,
       },
 });
 

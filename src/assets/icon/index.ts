@@ -37,6 +37,11 @@ import StreetImage from './street_icon.svg';
 import Direction from './directions.svg';
 import Search from './search.svg';
 import AddtoAppleWallet from './addtoAppleWallet.svg';
+import MapPinBlue from './map-pin-blue.svg';
+import MapPinGreen from './map-pin-green.svg';
+import MapPinOrange from './map-pin-orange.svg';
+import MapPinPurple from './map-pin-purple.svg';
+import MapPinRed from './map-pin-red.svg';
 
 export {
   CardImage,
@@ -78,4 +83,9 @@ export {
   Direction,
   Search,
   AddtoAppleWallet,
+  MapPinBlue,
+  MapPinGreen,
+  MapPinOrange,
+  MapPinPurple,
+  MapPinRed,
 };
