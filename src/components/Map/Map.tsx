@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-import { COLORS } from '@theme/color';
-import { MAPBOX_ACCESS_TOKEN } from '@env';
-import { MapPinGreen } from '@assets/icon';
-
+import {COLORS} from '@theme/color';
+import {MAPBOX_ACCESS_TOKEN} from '@env';
+import {MapPinGreen} from '@assets/icon';
+import MapView, {Marker} from 'react-native-maps';
 const windowWidth = Dimensions.get('window').width;
 
 MapboxGL.setAccessToken(MAPBOX_ACCESS_TOKEN);
@@ -14,15 +14,20 @@ export const Map = ({}: MapProps) => {
   return (
     <View style={styles.page}>
       <View style={styles.container}>
-        <MapboxGL.MapView zoomEnabled={true} style={styles.map} >
-          <MapboxGL.Camera
-            zoomLevel={9}
-            centerCoordinate={[-73.970895, 40.723279]}
-          />
-          <MapboxGL.MarkerView id={'pin-1'} coordinate={[-73.970895, 40.723279]}>
-            <MapPinGreen />
-          </MapboxGL.MarkerView>
-        </MapboxGL.MapView>
+        <View style={styles.mapContainer}>
+          <MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}>
+            <Marker coordinate={{latitude: 37.78825, longitude: -122.4324}}>
+              <MapPinGreen />
+            </Marker>
+          </MapView>
+        </View>
       </View>
     </View>
   );
@@ -43,6 +48,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  mapContainer: {
     flex: 1,
   },
 });
