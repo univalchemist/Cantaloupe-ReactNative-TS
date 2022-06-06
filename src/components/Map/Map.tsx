@@ -1,13 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
-import MapboxGL from '@react-native-mapbox-gl/maps';
 import {COLORS} from '@theme/color';
-import {MAPBOX_ACCESS_TOKEN} from '@env';
 import {MapPinGreen} from '@assets/icon';
 import MapView, {Marker} from 'react-native-maps';
 const windowWidth = Dimensions.get('window').width;
-
-MapboxGL.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 interface MapProps {}
 export const Map = ({}: MapProps) => {
