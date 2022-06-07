@@ -1,83 +1,74 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {Typography} from '@components/Typography';
+import {Typography, CardImage} from '@components/index';
 import {COLORS} from '@theme/color';
 import {RightArrow} from '@assets/icon';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+
+import {PaymentMethod} from '@models/PaymentMethod';
 
 interface CardTypeProps {
-  CardLogo?: any;
+  card: PaymentMethod;
+  shouldShowLogo?: boolean;
   cardNumber?: string;
   onPress?: () => void;
-  InfoIcon?: any;
   style?: ViewStyle;
-  balance?: string;
 }
 
 export const CardType = ({
-  CardLogo,
-  balance,
-  cardNumber,
+  card,
+  shouldShowLogo = true,
   style,
   onPress,
-  InfoIcon,
 }: CardTypeProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.CardTypeContainer, style]}>
-      {CardLogo}
+      style={[styles.cardTypeContainer, style]}>
       <View style={styles.cardInfoContainer}>
-        {balance && <Typography style={styles.balance}>{balance}</Typography>}
+        {shouldShowLogo && <CardImage cardType={card.cardType} width={100} />}
         <View style={styles.emptyCardContainer}>
-          <Typography style={styles.cardNumber}>{cardNumber}</Typography>
-          {InfoIcon}
+          <Typography style={styles.balance}>${card.balance}</Typography>
+
+          <Typography style={styles.cardNumber}>{card.cardNum}</Typography>
         </View>
       </View>
-      <View style={styles.rightTitle}>
-        <RightArrow width={wp('4%')} />
-      </View>
+
+      <RightArrow width={44} />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  CardTypeContainer: {
-    width: '90%',
-    alignSelf: 'center',
-    height: 30,
+  cardTypeContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 10,
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    width: '100%',
   },
   cardInfoContainer: {
-    marginLeft: wp('1.8%'),
-
-    flex: 1,
-  },
-  rightTitle: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
+
   balance: {
     fontWeight: '500',
-    fontSize: hp('3.3%'),
+    fontSize: 28,
+    lineHeight: 32,
     color: COLORS.orange,
-    marginLeft: wp('1.7%'),
+    marginLeft: 5,
   },
   cardNumber: {
     fontWeight: '600',
-    fontSize: hp('1.9%'),
+    fontSize: 13,
+    lineHeight: 16,
     color: COLORS.primaryGray,
-    marginLeft: wp('1.7%'),
+    marginLeft: 5,
     marginTop: 2,
-    marginRight: wp('1.9%'),
+    marginRight: 5,
   },
   emptyCardContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginLeft: 10,
   },
 });

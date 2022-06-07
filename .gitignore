@@ -2,6 +2,10 @@
 #
 .DS_Store
 
+# Project
+#
+.env
+
 # Xcode
 #
 build/
@@ -20,6 +24,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+ios/cantaloupe.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
 
 # Android/IntelliJ
 #
@@ -64,3 +69,4 @@ yarn.lock
 ios/Podfile.lock
 ios/cantaloupe.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 ios/cantaloupe.xcworkspace/contents.xcworkspacedata
+.env

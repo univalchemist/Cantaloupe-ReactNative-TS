@@ -9,6 +9,7 @@ module.exports = {
     '@react-native-community',
     'plugin:prettier/recommended',
     'plugin:import/typescript',
+    'plugin:import/recommended',
   ],
   plugins: ['react-native', '@typescript-eslint', 'react', 'prettier'],
   overrides: [

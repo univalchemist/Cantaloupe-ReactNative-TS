@@ -1,13 +1,9 @@
 import WalletManager from 'react-native-wallet-manager';
 
 export const handlePassFromURL = async (url: string) => {
-  console.log('trying');
   try {
     const result = await WalletManager.addPassFromUrl(url);
-    console.log(result);
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };
 
 //  FUTURE USE
@@ -17,9 +13,9 @@ export const handlePassFromURL = async (url: string) => {
 //         'pass.family.dev.stage.beerpoint-master',
 //         'serial-xxx',
 //       );
-//       console.log(result);
+//
 //     } catch (e) {
-//       console.log(e);
+//
 //     }
 // }
 
@@ -29,8 +25,8 @@ export const handlePassFromURL = async (url: string) => {
 //         'pass.family.dev.stage.beerpoint-master',
 //         'serial-xxx',
 //       );
-//       console.log(result);
+//
 //     } catch (e) {
-//       console.log(e);
+//
 //     }
 // }

@@ -1,23 +1,34 @@
 import React from 'react';
-import {StyleSheet, View, ViewStyle} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {
+  CryptoCardLogo,
+  PrepaidCardLogo,
+  PayrollDeductCardLogo,
+} from '@assets/icon';
+import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
 interface CardImageProps {
-  CardImg?: any;
-  style?: ViewStyle;
-  cardTypeText?: any;
-  containerStyle?: any;
+  cardType: CantaloupeMoreCardType;
+  width: number;
 }
 
-export const CardImage = ({
-  style,
-  CardImg,
-  containerStyle,
-  cardTypeText,
-}: CardImageProps) => {
+export const CardImage = ({cardType, width}: CardImageProps) => {
+  const cardToDisplay = () => {
+    const height = Math.round(width * 0.67);
+    switch (cardType) {
+      case 'PREPAID CARD':
+        return <PrepaidCardLogo width={width} height={height} />;
+      case 'PAYROLL DEDUCT CARD':
+        return <PayrollDeductCardLogo width={width} height={height} />;
+      case 'CRYPTO CARD':
+        return <CryptoCardLogo width={width} height={height} />;
+      default:
+        return <PrepaidCardLogo width={width} height={height} />;
+    }
+  };
   return (
-    <View style={containerStyle}>
-      {cardTypeText}
-      <View style={[styles.cardImgContainer, style]}>{CardImg}</View>
+    <View style={[styles.cardImgContainer]}>
+      <View style={styles.card}>{cardToDisplay()}</View>
     </View>
   );
 };
@@ -25,8 +36,8 @@ export const CardImage = ({
 const styles = StyleSheet.create({
   cardImgContainer: {
     alignItems: 'center',
-    alignSelf: 'center',
-    borderRadius: 15,
-    overflow: 'hidden',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
+  card: {width: '100%'},
 });

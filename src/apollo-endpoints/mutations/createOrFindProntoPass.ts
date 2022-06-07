@@ -21,11 +21,11 @@ export const fetchProntoPass = async ({cardId}: QueryProps) => {
     gqlQuery: CREATE_OR_FIND_PRONTO_PASS,
     params: {cardId: cardId},
   }).catch(error => {
-    console.log(error);
+    //  handle error
   });
 
   if (results.errors) {
-    console.log(results.errors);
+    //  handle error
   }
 
   return results?.data?.createOrFindProntoPass;

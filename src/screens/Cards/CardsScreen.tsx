@@ -1,10 +1,7 @@
-import React from 'react';
-import {Alert, StyleSheet, View} from 'react-native';
-import {CardsScreenProp} from '../../navigation/MainNavigator';
+import React, {useState, useEffect} from 'react';
+import {Alert, StyleSheet, View, Dimensions} from 'react-native';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
-
-import {CardImage1, CardLogo, EmptyCardLogo, InfoIcon} from '@assets/icon';
 import {
   Typography,
   CardImage,
@@ -13,79 +10,95 @@ import {
   GradientScrollingWrapper,
   Separator,
 } from '@components/index';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {getPaymentMethods} from '@apollo-endpoints/index';
 import {PaymentMethod} from '@models/PaymentMethod';
-import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
+
+import {AddMoreCard} from '@components/AddMoreCard/AddMoreCard';
+import {CardsScreenProp} from '@navigation/TabNavigator';
 
 const CardsScreen = ({}: CardsScreenProp) => {
   const navigation = useNavigation<CardsScreenProp>();
 
-  //  Begin test data
-  const CARD_TYPE: CantaloupeMoreCardType =
-    CantaloupeMoreCardType.PAYROLL_DEDUCT_CARD;
-  const card: PaymentMethod = {
-    promoTotal: 0,
-    replenishTotal: 0,
-    discount: 0,
-    points: 0,
-    cardType: CARD_TYPE,
-    cardId: 100001,
-    cardNum: '',
-    balance: 0,
-    currencyCd: '',
-    primary: true,
-  };
-  //  End test data
+  const [primary, setPrimary] = useState<PaymentMethod>();
+  const [cards, setCards] = useState<[PaymentMethod]>();
 
-  const handleCardButtonPressed = () => {
-    //  handle pressed
+  useEffect(() => {
+    getCards();
+  }, []);
+
+  const getCards = async () => {
+    await getPaymentMethods().then(response => {
+      if (response && response.length > 0) {
+        setCards(response);
+        setPrimary(response[0]); // Will primary always be the first or do we need to filter first?
+      } else {
+        console.log('getPayments responded but had no cards?', {response});
+      }
+    });
+  };
+
+  const handleAddMorePressed = () => {
+    navigation.navigate('AddCard');
   };
 
   return (
     <View style={styles.container}>
       <GradientScrollingWrapper thirdColor={COLORS.white}>
-        <Header onPressRight={() => Alert.alert('Go to profile screen')} />
-        <CardImage
-          containerStyle={styles.cardImagContainer}
-          cardTypeText={
-            <Typography style={styles.primaryTxt}>PRIMARY</Typography>
-          }
-          CardImg={
-            <CardImage1
-              width={wp('80%%')}
-              height={hp('25%')}
-              style={styles.cardImage1BG}
-              preserveAspectRatio="xMinYMin slice"
-            />
-          }
-        />
-        <CardType
-          style={styles.cardTypeStyle}
-          balance="$50"
-          cardNumber="More card •• 5743"
-          onPress={() => navigation.navigate('CardDetail', {card})}
-        />
-        <Separator />
-        <CardType
-          style={styles.cardTypeStyle1}
-          CardLogo={<CardLogo width={wp('25.5%')} />}
-          balance="$0"
-          cardNumber="More card •• 9898"
-          onPress={() => handleCardButtonPressed()}
-          InfoIcon={null}
-        />
+        <View style={styles.innerContainer}>
+          <Header onPressRight={() => Alert.alert('Go to profile screen')} />
+          {primary && (
+            <>
+              <View style={styles.primaryCardContainer}>
+                <View style={styles.cardImageContainer}>
+                  <Typography style={styles.primaryTxt}>PRIMARY</Typography>
+                  <CardImage
+                    cardType={primary.cardType}
+                    width={Dimensions.get('window').width - 80}
+                  />
+                  <View style={styles.balanceContainer}>
+                    <CardType
+                      style={styles.cardTypeStyle}
+                      shouldShowLogo={false}
+                      card={primary}
+                      onPress={() =>
+                        navigation.navigate('CardDetail', {card: primary})
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+              <Separator style={styles.separator} />
+            </>
+          )}
+          {cards &&
+            cards.length > 0 &&
+            cards.map(card => (
+              <View style={styles.cardDetailContainer} key={card.cardId}>
+                <CardType
+                  style={styles.cardTypeStyle}
+                  card={card}
+                  onPress={() => navigation.navigate('CardDetail', {card})}
+                />
+              </View>
+            ))}
 
-        <CardType
-          style={styles.cardTypeStyle1}
-          CardLogo={<EmptyCardLogo width={wp('25.5%')} />}
-          cardNumber="Add CPay Card"
-          onPress={() => handleCardButtonPressed()}
-          InfoIcon={<InfoIcon width={wp('3.8%')} />}
-        />
-        <Separator />
+          {/* 
+           move empty logo into card type component  
+            
+          <CardType
+            style={styles.cardTypeStyle}
+            CardLogo={<EmptyCardLogo width={100} />}
+            cardNumber="Add CPay Card"
+            onPress={() => handleCardButtonPressed()}
+            InfoIcon={<InfoIcon width={wp('3.8%')} />}
+          /> */}
+          <AddMoreCard
+            onPress={() => {
+              handleAddMorePressed();
+            }}
+          />
+          <Separator style={styles.separator} />
+        </View>
       </GradientScrollingWrapper>
     </View>
   );
@@ -94,27 +107,49 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
+  innerContainer: {marginHorizontal: 20, marginBottom: 25},
+  primaryCardContainer: {
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  cardImageContainer: {
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 25,
+    marginBottom: 15,
+  },
   primaryTxt: {
     fontWeight: '500',
-    fontSize: hp('2%'),
+    fontSize: 12,
+    lineHeight: 16,
     color: COLORS.white,
     position: 'absolute',
-    top: hp('-2%'),
-    right: wp('7.5%'),
+    top: -9,
+    right: -5,
     backgroundColor: COLORS.blue,
-    paddingHorizontal: wp('2%'),
-    paddingVertical: hp('0.8%'),
-    borderRadius: 13,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 9,
     overflow: 'hidden',
     fontFamily: 'Rubik',
-    zIndex: 10,
+    zIndex: 100,
   },
-  cardImagContainer: {
-    marginTop: hp('3%'),
+  balanceContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    marginTop: 25,
   },
-  cardImage1BG: {backgroundColor: COLORS.blue1},
-  cardTypeStyle: {marginTop: hp('4.8%'), width: wp('75%')},
-  cardTypeStyle1: {marginTop: hp('4.8%'), width: wp('88%')},
+  cardDetailContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent: 'center',
+
+    marginTop: 15,
+  },
+  cardTypeStyle: {marginTop: 10},
+  separator: {marginHorizontal: 0},
 });
 export default CardsScreen;

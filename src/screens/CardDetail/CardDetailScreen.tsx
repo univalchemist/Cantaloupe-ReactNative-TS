@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {CardDetailsScreenProp} from '../../navigation/MainNavigator';
+import {
+  Alert,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import {COLORS} from '@theme/color';
-
-import {CardImage1, ManuallyReloadIcon, RightArrow} from '@assets/icon';
+import {ManuallyReloadIcon, RightArrow} from '@assets/icon';
 import {
   AutoReload,
   AddToWalletButton,
@@ -12,21 +17,19 @@ import {
   GradientScrollingWrapper,
 } from '@components/index';
 import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import {
   fetchProntoPass,
   CreateOrFindProntoPassResponse,
 } from '@apollo-endpoints/index';
 import {handlePassFromURL} from '@helpers/passManager';
+
+import {CardDetailsScreenProp} from '@navigation/TabNavigator';
 
 const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
   // const navigation = useNavigation<CardDetailsScreenProp>();
   const [passURL, setPassURL] = useState<string>();
   const {
     params: {
-      card: {cardId},
+      card: {cardId, cardNum, cardType, balance, primary},
     },
   } = route;
 
@@ -41,7 +44,6 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
   };
 
   const didPressAddToWallet = () => {
-    console.log(cardId);
     fetchProntoPass({cardId: cardId})
       .then((response: CreateOrFindProntoPassResponse) => {
         if (response && response?.prontoPassURLiOS) {
@@ -49,57 +51,58 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
           setPassURL(url);
         } else {
           //  Surface error
-          console.log('PROBLEM WITH REQUEST');
         }
       })
       .catch(error => {
-        console.log(error);
+        //  handle error
       });
   };
 
   return (
     <View style={styles.container}>
       <GradientScrollingWrapper thirdColor={COLORS.white}>
-        <Header onPressRight={() => Alert.alert('Go to profile screen')} />
-
-        <CardImage
-          containerStyle={styles.cardImagContainer}
-          CardImg={
-            <CardImage1
-              width={wp('80%%')}
-              height={hp('25%')}
-              style={styles.cardImage1BG}
-              preserveAspectRatio="xMinYMin slice"
+        <View style={styles.innerContainer}>
+          <Header onPressRight={() => Alert.alert('Go to profile screen')} />
+          <View style={styles.cardImageContainer}>
+            <CardImage
+              cardType={cardType}
+              width={Dimensions.get('window').width - 80}
             />
-          }
-        />
-        <View style={styles.balanceContainer}>
-          <Text style={styles.balanceTxt}>Balance</Text>
-          <Text style={styles.balanceAmount}>$50</Text>
-        </View>
-        <View style={styles.cardNoContainer}>
-          <Text style={styles.cardNo}>CPay •• 5743</Text>
-          <Text style={styles.cardTypeTxt}>This is the Primary Card</Text>
-        </View>
-        <AutoReload
-          balance="50"
-          onPress={() => handleAutoReloadButtonPressed()}
-        />
-        <TouchableOpacity
-          style={styles.manuallyReload}
-          onPress={() => {
-            navigation.navigate('ReloadCard');
-          }}>
-          <ManuallyReloadIcon />
-          <Text style={styles.ManualReloadTxt}>Manually Reload</Text>
-          <RightArrow width={wp('4%')} />
-        </TouchableOpacity>
-        <View style={styles.appleWalletContainer}>
-          <AddToWalletButton
-            onPress={() => {
-              didPressAddToWallet();
-            }}
+          </View>
+          <View style={styles.balanceContainer}>
+            <Text style={styles.balanceTxt}>Balance</Text>
+            <Text style={styles.balanceAmount}>${balance ?? 0}</Text>
+          </View>
+          <View style={styles.cardNumberContainer}>
+            <Text style={styles.cardNumberText}>{cardNum}</Text>
+            {primary && (
+              <Text style={styles.primaryCardText}>
+                This is the Primary Card
+              </Text>
+            )}
+          </View>
+          <AutoReload
+            balance="50"
+            onPress={() => handleAutoReloadButtonPressed()}
           />
+          <TouchableOpacity
+            style={styles.manuallyReloadContainer}
+            onPress={() => {
+              navigation.navigate('ReloadCard');
+            }}>
+            <View style={styles.manuallyReloadTextContainer}>
+              <ManuallyReloadIcon />
+              <Text style={styles.manualReloadText}>Manually Reload</Text>
+            </View>
+            <RightArrow width={44} />
+          </TouchableOpacity>
+          <View style={styles.appleWalletContainer}>
+            <AddToWalletButton
+              onPress={() => {
+                didPressAddToWallet();
+              }}
+            />
+          </View>
         </View>
       </GradientScrollingWrapper>
     </View>
@@ -109,64 +112,73 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  innerContainer: {marginHorizontal: 20, marginBottom: 25},
+  cardImageContainer: {
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 25,
+  },
   balanceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: wp('72%'),
     alignSelf: 'center',
-    marginVertical: hp('2%'),
+    marginVertical: 25,
   },
   balanceTxt: {
     fontWeight: '600',
-    fontSize: hp('2.8%'),
+    fontSize: 20,
+    lineHeight: 24,
     color: COLORS.black,
     flex: 1,
   },
   balanceAmount: {
     fontWeight: '500',
-    fontSize: hp('2.8%'),
+    fontSize: 28,
+    lineHeight: 32,
     color: COLORS.orange,
   },
-  cardNoContainer: {
-    width: wp('72%'),
-    alignSelf: 'center',
-    height: hp('6%'),
-    marginBottom: hp('0.6%'),
+  cardNumberContainer: {
+    marginBottom: 15,
   },
-  cardNo: {
+  cardNumberText: {
     fontWeight: '600',
-    fontSize: hp('2.1%'),
+    fontSize: 16,
+    lineHeight: 20,
     color: COLORS.black,
-    flex: 1,
   },
-  cardTypeTxt: {
-    fontSize: hp('1.7%'),
+  primaryCardText: {
+    fontSize: 14,
+    lineHeight: 16,
     color: COLORS.primaryGray,
   },
   appleWalletContainer: {
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 25,
     marginBottom: 30,
   },
-  manuallyReload: {
+  manuallyReloadContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: wp('72%'),
-    alignSelf: 'center',
-    marginVertical: hp('2%'),
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    marginTop: 15,
   },
-  ManualReloadTxt: {
+  manuallyReloadTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'flex-start',
+  },
+  manualReloadText: {
     fontWeight: '600',
-    fontSize: hp('2.5%'),
+    fontSize: 20,
+    lineHeight: 24,
     color: COLORS.black,
-    flex: 1,
-    marginHorizontal: wp('3.8%'),
+    marginLeft: 10,
+    marginRight: 25,
   },
-  cardImagContainer: {
-    marginTop: hp('2%'),
-  },
-  cardImage1BG: {backgroundColor: COLORS.blue1},
 });
 export default CardDetailScreen;

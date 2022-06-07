@@ -2,6 +2,13 @@ import {
   fetchProntoPass,
   CreateOrFindProntoPassResponse,
 } from './createOrFindProntoPass';
+import {
+  registerStoredValueCard,
+  RegisterStoredValueCardPassResponse,
+} from './registerStoredValueCard';
 
-export {fetchProntoPass};
-export type {CreateOrFindProntoPassResponse};
+export {fetchProntoPass, registerStoredValueCard};
+export type {
+  CreateOrFindProntoPassResponse,
+  RegisterStoredValueCardPassResponse,
+};

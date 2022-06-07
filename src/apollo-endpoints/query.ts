@@ -5,14 +5,14 @@ import {AsyncStorage} from 'react-native';
 //  import {useQuery, gql} from '@apollo/client';
 
 export interface QueryParamProps {
-  gqlQuery: String;
+  gqlQuery: string;
   params?: any;
 }
 
 export const Query = async ({gqlQuery, params}: QueryParamProps) => {
   const token = await AsyncStorage.getItem('token');
 
-  let headersToAdd = new Headers();
+  const headersToAdd = new Headers();
   headersToAdd.append('Content-Type', 'application/json');
 
   if (token && token?.length > 0) {

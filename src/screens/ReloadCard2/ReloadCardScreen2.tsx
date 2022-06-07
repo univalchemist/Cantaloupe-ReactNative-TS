@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
-import {ReloadCardScreenProp2} from '../../navigation/MainNavigator';
+import {ReloadCardScreenProp2} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
 // import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
@@ -36,7 +36,7 @@ const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
                       <Typography style={styles.primaryTxt}>PRIMARY</Typography>
                     }
                     CardImg={
-                      <CardImage2 style={{backgroundColor: COLORS.blue1}} />
+                      <CardImage2 style={{backgroundColor: COLORS.blueDark}} />
                     }
                   />
                 }
@@ -58,7 +58,7 @@ const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
               <TextInput
                 style={styles.codeInput}
                 placeholder="CVV"
-                placeholderTextColor={COLORS.gray1}
+                placeholderTextColor={COLORS.gray}
                 editable={false}
               />
               <Button
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     width: wp('90%'),
     height: hp('7%'),
     borderWidth: hp('0.15%'),
-    borderColor: COLORS.gray2,
+    borderColor: COLORS.grayLight,
     borderRadius: 15,
     paddingHorizontal: wp('3%'),
     fontSize: hp('3%'),

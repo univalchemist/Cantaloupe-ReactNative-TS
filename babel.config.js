@@ -19,7 +19,7 @@ module.exports = {
           '@screens': './src/screens',
           '@utils': './src/utils',
           '@context': './src/context',
-          '@navigator': './src/navigator',
+          '@navigation': './src/navigation',
           '@helpers': './src/helpers',
           '@api': './src/api',
           '@theme': './src/theme',
@@ -33,8 +33,12 @@ module.exports = {
     [
       'module:react-native-dotenv',
       {
-        moduleName: 'react-native-dotenv',
-        safe: true,
+        moduleName: '@env',
+        path: '.env',
+        blacklist: null,
+        whitelist: null,
+        safe: false,
+        allowUndefined: true,
       },
     ],
     [

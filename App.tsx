@@ -15,6 +15,8 @@ import {BASE_URL} from './src/helpers/constants';
 import {Provider} from 'react-redux';
 import MainNavigator from './src/navigation/MainNavigator';
 import {store} from './src/store/store';
+import {LogBox} from 'react-native';
+import {enableLatestRenderer} from 'react-native-maps';
 import {
   ApolloClient,
   InMemoryCache,
@@ -27,6 +29,10 @@ const client = new ApolloClient({
   uri: BASE_URL,
   cache: new InMemoryCache(),
 });
+
+LogBox.ignoreLogs(['ViewPropTypes will be removed']);
+
+enableLatestRenderer();
 
 const App = () => {
   return (

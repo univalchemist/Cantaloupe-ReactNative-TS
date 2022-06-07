@@ -37,40 +37,40 @@ const Login = ({}: LoginScreenProp) => {
 
   return (
     <GradientScrollingWrapper style={styles.container}>
-      <View style={styles.logoContainer}>
-        <LogoMore />
-      </View>
-      <View style={styles.titleContainer}>
-        <Typography style={styles.title}>Sign In</Typography>
-      </View>
-      <FloatLabelTextField
-        title="Enter your email"
-        viewStyle={styles.input}
-        titleStyle={styles.inputTitle}
-        onTextChange={text => {
-          setEmail(text);
-        }}
-      />
-      <FloatLabelTextField
-        title="Password"
-        viewStyle={styles.input}
-        titleStyle={styles.inputTitle}
-        onTextChange={text => {
-          setPassword(text);
-        }}
-      />
-      <View style={styles.buttonContainer}>
-        <Button
-          onPress={() => login()}
-          title="Complete"
-          style={styles.completeButton}
+      <View style={styles.innerContainer}>
+        <View style={styles.logoContainer}>
+          <LogoMore />
+        </View>
+        <View style={styles.titleContainer}>
+          <Typography style={styles.title}>Sign In</Typography>
+        </View>
+        <FloatLabelTextField
+          title="Enter your email"
+          titleStyle={styles.inputTitle}
+          onTextChange={text => {
+            setEmail(text);
+          }}
         />
-        <Button
-          title="Back Home"
-          onPress={() => navigation.pop()}
-          style={styles.backButton}
-          titleStyle={styles.backButtonText}
+        <FloatLabelTextField
+          title="Password"
+          titleStyle={styles.inputTitle}
+          onTextChange={text => {
+            setPassword(text);
+          }}
         />
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={() => login()}
+            title="Complete"
+            style={styles.completeButton}
+          />
+          <Button
+            title="Back Home"
+            onPress={() => navigation.pop()}
+            style={styles.backButton}
+            titleStyle={styles.backButtonText}
+          />
+        </View>
       </View>
     </GradientScrollingWrapper>
   );
@@ -79,9 +79,9 @@ const Login = ({}: LoginScreenProp) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  innerContainer: {
+    marginHorizontal: 20,
   },
   logoContainer: {
     marginVertical: 30,
@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: '500',
   },
-  input: {},
   buttonContainer: {
     width: '100%',
     backgroundColor: COLORS.white,

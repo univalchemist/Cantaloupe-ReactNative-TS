@@ -17,14 +17,16 @@ const GET_PAYMENT_METHODS = `
         balance
         currencyCd
         primary
+        mfoEligible
       }
     }
   `;
 
-export const getPaymentMethods = async ({email}: QueryProps) => {
+export const getPaymentMethods = async () => {
   const results = await Query({
     gqlQuery: GET_PAYMENT_METHODS,
-    params: {email: email},
+  }).catch(error => {
+    console.error("getPayments api caught an error", { error });
   });
   return results?.data?.getPaymentMethods;
 };

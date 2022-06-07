@@ -51,7 +51,6 @@ const SignIn = () => {
           <Typography style={styles.title}>Create Account</Typography>
           <FloatLabelTextField
             title="Email"
-            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
             isValidated={shouldShowExistingUserText}
             validate={text => {
@@ -69,22 +68,18 @@ const SignIn = () => {
 
           <FloatLabelTextField
             title="First Name *"
-            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Last Name *"
-            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Street Address"
-            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <FloatLabelTextField
             title="Zip / Postal Code *"
-            viewStyle={styles.input}
             titleStyle={styles.inputTitle}
           />
           <View style={styles.checkbox_view}>
@@ -125,6 +120,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    marginHorizontal: 20,
   },
 
   title: {

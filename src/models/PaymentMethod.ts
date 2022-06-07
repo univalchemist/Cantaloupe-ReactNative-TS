@@ -11,4 +11,5 @@ export interface PaymentMethod {
   balance: number;
   currencyCd: string;
   primary: boolean;
+  mfoEligible: boolean;
 }

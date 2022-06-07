@@ -1,8 +1,8 @@
 import {Query} from '@apollo-endpoints/query';
 
 interface QueryProps {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 }
 //  Will need to import the model from @models on screen used
 const LOGIN_USER = `
@@ -35,5 +35,6 @@ export const loginUser = async ({email, password}: QueryProps) => {
     gqlQuery: LOGIN_USER,
     params: {email: email, password: password},
   });
+
   return results?.data?.loginUser;
 };

@@ -1,4 +1,5 @@
 import CardImage from './card.svg';
+import BackArrow from './backArrow.svg';
 import LogoMore from './logo-more.svg';
 import Google from './google.svg';
 import Facebook from './facebook.svg';
@@ -7,7 +8,10 @@ import ProfileIcon from './ProfileIcon.svg';
 import LogoMoreSmall from './logoMoreSmall.svg';
 import CardImage1 from './card1.svg';
 import RightArrow from './rightArrow.svg';
-import CardLogo from './cardLogo.svg';
+import PrepaidCardLogo from './prepaidCardLogo.svg';
+import PayrollDeductCardLogo from './payrollDeductCardLogo.svg';
+import CryptoCardLogo from './cryptoCardLogo.svg';
+
 import InfoIcon from './infoIcon.svg';
 import EmptyCardLogo from './emptyCardLogo.svg';
 import MapIcon from './mapIcon.svg';
@@ -24,10 +28,30 @@ import Card2 from './card2.svg';
 import TickIcon from './tickIcon.svg';
 import ArrowDown from './arrowDown.svg';
 import WalletIcon from './walletIcon.svg';
+import AddIcon from './addIcon.svg';
+import LocationIcon from './locationIcon.svg';
+import TransactionIcon from './transactionIcon.svg';
+import RewardsIcon from './rewardsIcon.svg';
+import FaqIcon from './faqIcon.svg';
+import Back from './back.svg';
+import Filter from './filter.svg';
+import RadioButton from './radioButton.svg';
+import EmptyCircle from './emptyCircle.svg';
+import StreetImage from './street_icon.svg';
+import Direction from './directions.svg';
+import Search from './search.svg';
 import AddtoAppleWallet from './addtoAppleWallet.svg';
+import OrangePlus from './orangePlus.svg';
+import OrangeQuestionMarkIcon from './orangeQuestionMarkIcon.svg';
+import MapPinBlue from './map-pin-blue.svg';
+import MapPinGreen from './map-pin-green.svg';
+import MapPinOrange from './map-pin-orange.svg';
+import MapPinPurple from './map-pin-purple.svg';
+import MapPinRed from './map-pin-red.svg';
 
 export {
   CardImage,
+  BackArrow,
   LogoMore,
   Google,
   Facebook,
@@ -36,7 +60,9 @@ export {
   LogoMoreSmall,
   CardImage1,
   RightArrow,
-  CardLogo,
+  PrepaidCardLogo,
+  PayrollDeductCardLogo,
+  CryptoCardLogo,
   InfoIcon,
   EmptyCardLogo,
   MapIcon,
@@ -53,5 +79,24 @@ export {
   TickIcon,
   ArrowDown,
   WalletIcon,
+  AddIcon,
+  LocationIcon,
+  TransactionIcon,
+  RewardsIcon,
+  FaqIcon,
+  Back,
+  Filter,
+  RadioButton,
+  EmptyCircle,
+  StreetImage,
+  Direction,
+  Search,
   AddtoAppleWallet,
+  OrangePlus,
+  OrangeQuestionMarkIcon,
+  MapPinBlue,
+  MapPinGreen,
+  MapPinOrange,
+  MapPinPurple,
+  MapPinRed,
 };

@@ -11,7 +11,10 @@ import {Carousel} from './Carousel';
 import {Checkbox} from './Checkbox';
 import {FloatLabelTextField} from './FloatLabelTextField';
 import {GradientScrollingWrapper} from './GradientWrapper';
+import {GoBackHeader} from './GoBackHeader';
 import {Header} from './Header';
+
+import {ModalAlert} from './ModalAlert';
 
 import {PaymentMethodCard} from './PaymentMethodCard';
 import {ReloadCardDone} from './ReloadCardDone';
@@ -35,7 +38,9 @@ export {
   Checkbox,
   FloatLabelTextField,
   GradientScrollingWrapper,
+  GoBackHeader,
   Header,
+  ModalAlert,
   PaymentMethodCard,
   ReloadCardDone,
   ReloadCardImage,
