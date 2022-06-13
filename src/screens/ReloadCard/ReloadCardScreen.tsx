@@ -6,15 +6,16 @@ import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
-import {CardImage2, VisaIcon, CardSymbolIcon} from '@assets/icon';
+import {VisaIcon, CardSymbolIcon} from '@assets/icon';
 import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
-import {CardAmountDropDown} from '@components/index';
+import {CardAmountDropDown, Separator} from '@components/index';
 import {PaymentMethodCard} from '@components/PaymentMethodCard';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
 const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
   const navigation = useNavigation<ReloadCardScreenProp>();
@@ -33,10 +34,8 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
           <ReloadCardImage
             CardLogo={
               <CardImage
-                cardTypeText={
-                  <Typography style={styles.primaryTxt}>PRIMARY</Typography>
-                }
-                CardImg={<CardImage2 style={{backgroundColor: COLORS.blueDark}} />}
+                cardType={CantaloupeMoreCardType.PREPAID_CARD}
+                width={100}
               />
             }
             cardNumber="More Card •• 5743"
@@ -60,7 +59,7 @@ const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
             }}
           />
         </View>
-        <View style={[styles.separator]} />
+        <Separator />
       </GradientScrollingWrapper>
     </View>
   );

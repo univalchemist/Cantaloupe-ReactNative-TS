@@ -28,7 +28,7 @@ const Login = ({}: LoginScreenProp) => {
   };
 
   useEffect(() => {
-    if (userInfo && userInfo?.accessToken) {
+    if (userInfo && userInfo.accessToken && userInfo.accessToken.length > 0) {
       AsyncStorage.setItem('token', userInfo?.accessToken).then(() => {
         navigation.navigate('BottomTabs');
       });

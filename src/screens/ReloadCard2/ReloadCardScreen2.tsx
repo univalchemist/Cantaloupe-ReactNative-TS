@@ -16,6 +16,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
 const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
   // const navigation = useNavigation<ReloadCardScreenProp2>();
@@ -32,12 +33,8 @@ const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
               <ReloadCardImage
                 CardLogo={
                   <CardImage
-                    cardTypeText={
-                      <Typography style={styles.primaryTxt}>PRIMARY</Typography>
-                    }
-                    CardImg={
-                      <CardImage2 style={{backgroundColor: COLORS.blueDark}} />
-                    }
+                    cardType={CantaloupeMoreCardType.PREPAID_CARD}
+                    width={100}
                   />
                 }
                 cardNumber="More Card •• 5743"

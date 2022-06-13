@@ -1,7 +1,10 @@
-
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator, StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
-
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  createStackNavigator,
+  StackNavigationProp,
+  StackScreenProps,
+} from '@react-navigation/stack';
 import {
   CardsScreen,
   CardDetailScreen,
@@ -9,9 +12,9 @@ import {
   ReloadCardScreen2,
   MapScreen,
   HelpScreen,
-  AddCardsScreen
+  AddCardScreen,
 } from '@screens/index';
-import { BottomTabIcon } from '@components/BottomTabIcon';
+import {BottomTabIcon} from '@components/BottomTabIcon';
 import {
   CardIcon,
   HelpIcon,
@@ -19,17 +22,17 @@ import {
   MapIcon,
   RewardIcon,
 } from '@assets/icon';
-import { COLORS } from '@theme/color';
-import { PaymentMethod } from '@models/PaymentMethod';
+import {COLORS} from '@theme/color';
+import {PaymentMethod} from '@models/PaymentMethod';
 
 export type CardScreensParamList = {
   Cards: undefined;
-  CardDetail: { card: PaymentMethod };
+  CardDetail: {card: PaymentMethod};
   ReloadCard: undefined;
   ReloadCard2: undefined;
   MapScreen: undefined;
   Help: undefined;
-  AddCards: undefined;
+  AddCard: undefined;
 };
 
 export type BottomTabParamList = {
@@ -44,9 +47,6 @@ export type BottomTabParamList = {
   HelpTabNavigator: undefined;
 };
 
-export type AddCardsScreenParamList = {
-  AddCards: undefined
-}
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 function BottomTabs() {
@@ -60,13 +60,12 @@ function BottomTabs() {
           height: 80,
         },
       }}
-      initialRouteName="CardScreenNavigator"
-      >
+      initialRouteName="CardScreenNavigator">
       <BottomTab.Screen
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={MapIcon} label="Map" active={focused} />
           ),
         }}
@@ -77,7 +76,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon
               Icon={HistoryIcon}
               label="History"
@@ -92,7 +91,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={CardIcon} label="Cards" active={focused} />
           ),
         }}
@@ -103,7 +102,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={RewardIcon} label="Rewards" active={focused} />
           ),
         }}
@@ -114,7 +113,7 @@ function BottomTabs() {
         options={{
           headerShown: false,
           tabBarLabel: '',
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({focused}) => (
             <BottomTabIcon Icon={HelpIcon} label="Help" active={focused} />
           ),
         }}
@@ -138,7 +137,7 @@ const CardScreenNavigator = () => {
       <CardScreenStack.Screen name="ReloadCard" component={ReloadCardScreen} />
       <CardScreenStack.Screen name="MapScreen" component={MapScreen} />
       <CardScreenStack.Screen name="Help" component={HelpScreen} />
-      <CardScreenStack.Screen name="AddCards" component={AddCardsScreen} />
+      <CardScreenStack.Screen name="AddCard" component={AddCardScreen} />
       <CardScreenStack.Screen
         name="ReloadCard2"
         component={ReloadCardScreen2}
@@ -167,10 +166,9 @@ export type MapScreenScreenProp = StackNavigationProp<
   CardScreensParamList,
   'MapScreen'
 >;
-export type AddCardsScreenProp = StackNavigationProp<
+export type AddCardScreenProp = StackNavigationProp<
   CardScreensParamList,
-  'AddCards'
+  'AddCard'
 >;
-
 
 export default BottomTabs;
