@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
 import {ReloadCardScreenProp2} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
-// import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
-import {Card2, CardImage2} from '@assets/icon';
+import {Card2} from '@assets/icon';
 import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
 import {CardDetail} from '@components/CardDetail';
@@ -19,7 +18,6 @@ import {
 import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
 const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
-  // const navigation = useNavigation<ReloadCardScreenProp2>();
   const [reloadDone, setReloadDone] = useState(false);
 
   return (
@@ -85,20 +83,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik',
     marginVertical: hp('2.3%'),
   },
-  primaryTxt: {
-    fontWeight: '500',
-    fontSize: hp('0.7%'),
-    color: COLORS.white,
-    position: 'absolute',
-    top: hp('-1'),
-    right: wp('-0.5'),
-    backgroundColor: COLORS.blue,
-    padding: hp('0.4%'),
-    borderRadius: hp('0.6%'),
-    overflow: 'hidden',
-    fontFamily: 'Rubik',
-    zIndex: 10,
-  },
+
   securityTxt: {
     fontFamily: 'Rubik',
     color: COLORS.black,
@@ -106,13 +91,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 15,
     fontStyle: 'normal',
-  },
-  separatorCont: {
-    position: 'absolute',
-    bottom: 40,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
   },
 
   separator: {

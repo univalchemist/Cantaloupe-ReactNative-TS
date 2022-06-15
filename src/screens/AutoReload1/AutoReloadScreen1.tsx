@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {AutoReload1Props} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {CardImage} from '@components/CardImage/CardImage';
 import {VisaIcon, CardSymbolIcon} from '@assets/icon';
-import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
 import {
   CardAmountDropDown,
@@ -71,6 +70,8 @@ const AutoReloadScreen1 = ({}: AutoReload1Props) => {
               When Balance Falls Below:
             </Typography>
             <CardAmountDropDown
+              zIndex={2000}
+              zIndexInverse={2000}
               onPress={() => {}}
               items={items}
               setItems={setItems}
@@ -96,10 +97,7 @@ const AutoReloadScreen1 = ({}: AutoReload1Props) => {
 };
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20},
-  subContainer: {
-    paddingHorizontal: wp('5%'),
-    marginBottom: hp('3%'),
-  },
+
   cardTypeStyle: {
     justifyContent: 'flex-start',
   },
@@ -115,12 +113,6 @@ const styles = StyleSheet.create({
   reloadWith: {
     fontSize: hp('2.5%'),
     marginVertical: hp('0.5%'),
-  },
-  separator: {
-    backgroundColor: COLORS.lightOrange,
-    height: hp('0.3%'),
-    width: wp('85%'),
-    alignSelf: 'center',
   },
   dropDown: {
     marginVertical: hp('2%'),

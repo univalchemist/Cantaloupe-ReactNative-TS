@@ -12,12 +12,7 @@ import {
   PartnerCardBlack,
 } from '@assets/icon';
 import {Typography} from '@components/Typography';
-import {
-  CardAmountDropDown,
-  GoBackHeader,
-  PaymentMethodCard,
-  Separator,
-} from '@components/index';
+import {CardAmountDropDown, GoBackHeader, Separator} from '@components/index';
 
 import {
   widthPercentageToDP as wp,
@@ -28,7 +23,6 @@ import {Card} from '@components/CardType';
 import {ManuallyEnterCardText} from '@components/ManuallyEnterCardText';
 import {ChooseCard} from '@components/ChooseCard';
 import {CardConfirmModal} from '@components/CardConfirmModal';
-import RBSheet from 'react-native-raw-bottom-sheet';
 
 const AutoReloadScreen2 = ({}: AutoReload2Props) => {
   const [enableAutoReload, setEnableAutoReload] = useState(true);
@@ -116,10 +110,7 @@ const AutoReloadScreen2 = ({}: AutoReload2Props) => {
 };
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20},
-  subContainer: {
-    paddingHorizontal: wp('5%'),
-    marginBottom: hp('3%'),
-  },
+
   cardTypeStyle: {
     justifyContent: 'flex-start',
   },
@@ -128,20 +119,12 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
     marginBottom: hp('1%'),
   },
-  reloadiSettings: {
-    fontSize: hp('3%'),
-    marginVertical: hp('2%'),
-  },
+
   reloadWith: {
     fontSize: hp('2.5%'),
     marginVertical: hp('0.5%'),
   },
-  separator: {
-    backgroundColor: COLORS.lightOrange,
-    height: hp('0.3%'),
-    width: wp('85%'),
-    alignSelf: 'center',
-  },
+
   dropDown: {
     marginVertical: hp('2%'),
   },

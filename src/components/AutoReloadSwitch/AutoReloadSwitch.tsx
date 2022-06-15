@@ -25,7 +25,11 @@ export const AutoReloadSwitch = ({style, handleSwitch}: IAutoReloadProps) => {
   return (
     <View style={[styles.CardTypeContainer, style]}>
       <Text style={styles.autoReloadTxt}>Auto Reload</Text>
-      <SwitchComp toggleSwitch={toggleSwitch} isEnabled={isEnabled} />
+      <SwitchComp
+        toggleColor={COLORS.green}
+        toggleSwitch={toggleSwitch}
+        isEnabled={isEnabled}
+      />
     </View>
   );
 };

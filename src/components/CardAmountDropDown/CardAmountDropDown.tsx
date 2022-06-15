@@ -13,14 +13,24 @@ interface CardTypeProps {
   style?: ViewStyle;
   items?: any;
   setItems?: any;
+  zIndex?: any;
+  zIndexInverse?: any;
 }
 
-export const CardAmountDropDown = ({items, setItems, style}: CardTypeProps) => {
+export const CardAmountDropDown = ({
+  items,
+  setItems,
+  style,
+  zIndex,
+  zIndexInverse,
+}: CardTypeProps) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
 
   return (
     <DropDownPicker
+      zIndex={zIndex ? zIndex : 3000}
+      zIndexInverse={zIndexInverse ? zIndexInverse : 1000}
       open={open}
       value={value}
       items={items}

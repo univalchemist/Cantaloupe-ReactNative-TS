@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
   CardTypeContainer: {
     marginTop: hp('20%'),
     alignSelf: 'center',
-
     width: wp('90%'),
   },
 

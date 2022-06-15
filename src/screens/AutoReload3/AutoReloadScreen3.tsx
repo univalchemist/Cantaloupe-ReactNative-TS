@@ -1,22 +1,15 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {AutoReload3Props} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {CardImage} from '@components/CardImage/CardImage';
-import {
-  VisaIcon,
-  CardSymbolIcon,
-  PartnerCardGreen,
-  PartnerCardBlack,
-} from '@assets/icon';
+
 import {Typography} from '@components/Typography';
 import {
   Button,
-  CardAmountDropDown,
   GoBackHeader,
-  PaymentMethodCard,
   ReloadCardImage,
   Separator,
 } from '@components/index';
@@ -96,35 +89,7 @@ const AutoReloadScreen3 = ({route}: AutoReload3Props) => {
 };
 const styles = StyleSheet.create({
   container: {flex: 1, marginHorizontal: 20},
-  subContainer: {
-    paddingHorizontal: wp('5%'),
-    paddingBottom: hp('10%'),
-  },
-  cardTypeStyle: {
-    justifyContent: 'flex-start',
-  },
-  cardContainer: {
-    alignSelf: 'center',
-    marginTop: hp('2%'),
-    marginBottom: hp('1%'),
-  },
-  reloadiSettings: {
-    fontSize: hp('3%'),
-    marginVertical: hp('2%'),
-  },
-  reloadWith: {
-    fontSize: hp('2.5%'),
-    marginVertical: hp('0.5%'),
-  },
-  separator: {
-    backgroundColor: COLORS.lightOrange,
-    height: hp('0.3%'),
-    width: wp('85%'),
-    alignSelf: 'center',
-  },
-  dropDown: {
-    marginVertical: hp('2%'),
-  },
+
   screenTitle: {
     fontSize: hp('3.8%'),
     fontWeight: '400',

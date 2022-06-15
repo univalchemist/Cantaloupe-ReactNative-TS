@@ -3,7 +3,6 @@ import {StyleSheet, TouchableOpacity, View, FlatList, Text} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 import {CardRightArrow, SelectedCircle, UnSelectedCircle} from '@assets/icon';
-import {Button} from '../Button';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

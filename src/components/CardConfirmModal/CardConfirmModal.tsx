@@ -1,11 +1,11 @@
-import React, {useState, useCallback, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, ViewStyle, TouchableOpacity} from 'react-native';
 import {COLORS} from '@theme/color';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {CardRightArrow, HelpIcon} from '@assets/icon';
+import {CardRightArrow} from '@assets/icon';
 import {Typography} from '@components/Typography';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {ConfirmCardDetail} from '../ConfirmCardDetail/ConfirmCardDetail';
@@ -22,26 +22,15 @@ interface ICardConfrimModalProps {
 }
 
 export const CardConfirmModal = ({
-  style,
-  handleClose,
   refRBSheet,
   handleConfirm,
   selectedBank,
   handleNotYou,
 }: ICardConfrimModalProps) => {
-  const [isEnabled, setIsEnabled] = useState(true);
-
   return (
-    <View
-      style={{
-        // flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        backgroundColor: '#000',
-      }}>
+    <View style={styles.mainContainer}>
       <RBSheet
         ref={refRBSheet}
-        // closeOnDragDown={true}
         closeOnPressMask={false}
         customStyles={{
           wrapper: {},
@@ -100,6 +89,9 @@ export const CardConfirmModal = ({
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: '#000',
+  },
   container: {
     marginHorizontal: wp('4%'),
     borderRadius: 20,
