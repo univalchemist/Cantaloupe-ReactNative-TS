@@ -40,7 +40,7 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
   }, [passURL]);
 
   const handleAutoReloadButtonPressed = () => {
-    //  handle auto-reload
+    navigation.navigate('AutoReload1');
   };
 
   const didPressAddToWallet = () => {

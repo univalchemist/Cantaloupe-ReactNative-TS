@@ -10,10 +10,10 @@ import {
 import {Button} from '@components/Button/Button';
 
 interface AutoReloadDoneProps {
-  belowBalance?: any;
+  belowBalance?: number | string;
   style?: ViewStyle;
   chargedBalance?: number;
-  handleBackHome?: () => void;
+  handleBackHome: () => void;
 }
 
 export const AutoReloadDone = ({
@@ -26,16 +26,16 @@ export const AutoReloadDone = ({
     <View style={[styles.CardTypeContainer, style]}>
       <TickIcon style={{alignSelf: 'center'}} width={wp('36%')} />
       <Typography style={styles.doneTxt}>Done</Typography>
-      <Typography style={styles.laodedBalanceTxt}>
+      <Typography style={styles.loadedBalanceTxt}>
         Whenever the balance of
       </Typography>
-      <Typography style={styles.laodedBalanceTxt}>
+      <Typography style={styles.loadedBalanceTxt}>
         your More pass falls below
       </Typography>
-      <Typography style={styles.laodedBalanceTxt}>
+      <Typography style={styles.loadedBalanceTxt}>
         ${belowBalance}, we'll will charge your bank
       </Typography>
-      <Typography style={styles.laodedBalanceTxt}>
+      <Typography style={styles.loadedBalanceTxt}>
         credit card ${chargedBalance}
       </Typography>
 
@@ -55,17 +55,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: wp('90%'),
   },
-
   doneTxt: {
     fontWeight: '400',
-    fontSize: hp('4%'),
+    fontSize: 40,
     color: COLORS.orange,
     marginVertical: hp('1%'),
     alignSelf: 'center',
   },
-  laodedBalanceTxt: {
+  loadedBalanceTxt: {
     fontWeight: '400',
-    fontSize: hp('2.8%'),
+    fontSize: 24,
     color: COLORS.gray,
     marginVertical: hp('0.2%'),
     alignSelf: 'center',

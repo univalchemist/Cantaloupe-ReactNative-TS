@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {StyleSheet, TouchableOpacity, View, TextInput} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -10,11 +10,11 @@ import {
 } from 'react-native-responsive-screen';
 
 interface PaymentMethodProps {
-  CardTypeIcon?: any;
-  CardIcon?: any;
+  onPressContinueTxt: () => void;
+  onPressContinueBtn: () => void;
+  CardTypeIcon?: ReactElement;
+  CardIcon?: ReactElement;
   phoneNumber?: string;
-  onPressContinueTxt?: any;
-  onPressContinueBtn?: any;
   showCardIconsOnTop?: boolean;
 }
 

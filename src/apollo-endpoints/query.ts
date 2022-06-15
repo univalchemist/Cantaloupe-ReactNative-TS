@@ -1,5 +1,5 @@
 import {BASE_URL} from '@helpers/constants';
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //  AFTER REACT 18 UPGRADE (requires React Native 0.69.0)
 //  import {useQuery, gql} from '@apollo/client';

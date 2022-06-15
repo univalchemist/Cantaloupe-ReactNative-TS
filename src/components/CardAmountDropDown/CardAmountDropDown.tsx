@@ -9,12 +9,12 @@ import {
 } from 'react-native-responsive-screen';
 
 interface CardTypeProps {
-  onPress?: any;
+  onPress?: () => void;
   style?: ViewStyle;
-  items?: any;
-  setItems?: any;
-  zIndex?: any;
-  zIndexInverse?: any;
+  items: any[];
+  setItems?: (value: any) => void;
+  zIndex?: number;
+  zIndexInverse?: number;
 }
 
 export const CardAmountDropDown = ({

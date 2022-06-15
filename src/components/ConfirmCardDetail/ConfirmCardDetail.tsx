@@ -6,12 +6,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import { ReactElement } from 'react';
 
 interface ConfirmCardDetailProps {
-  CardLogo?: any;
+  CardLogo?: ReactElement;
   cardName?: string;
   onPressCard?: () => void;
-  InfoIcon?: any;
+  InfoIcon?: ReactElement;
   style?: ViewStyle | ViewStyle[];
   balance?: string | boolean;
   cardStyle?: ViewStyle;
@@ -33,7 +34,7 @@ export const ConfirmCardDetail = ({
     <View style={styles.container}>
       <Typography style={styles.estimatedTotal}>Estimated Total</Typography>
       <Typography style={styles.balanceFalls}>
-        Reload %50 when Balance Falls Below $5
+        Reload $50 when Balance Falls Below $5
       </Typography>
       <View style={styles.separator} />
       <TouchableOpacity onPress={onPressCard}>
@@ -94,18 +95,18 @@ const styles = StyleSheet.create({
   },
   cardName: {
     fontWeight: '500',
-    fontSize: hp('2%'),
+    fontSize: 16,
     color: COLORS.black,
     marginLeft: wp('1.7%'),
   },
   Address: {
     fontWeight: '500',
-    fontSize: hp('2%'),
+    fontSize: 14,
     color: COLORS.primaryGray,
   },
   cardNumber: {
     fontWeight: '600',
-    fontSize: hp('1.9%'),
+    fontSize: 14,
     color: COLORS.primaryGray,
     marginLeft: wp('1.7%'),
     marginTop: 2,
@@ -116,13 +117,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   estimatedTotal: {
-    fontSize: hp('2.4%'),
+    fontSize: 14,
     fontWeight: 'bold',
     color: COLORS.black,
     marginBottom: hp('1%'),
   },
   balanceFalls: {
-    fontSize: hp('1.8%'),
+    fontSize: 14,
     color: COLORS.primaryGray,
   },
   separator: {

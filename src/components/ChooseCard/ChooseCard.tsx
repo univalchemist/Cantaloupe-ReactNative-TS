@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {StyleSheet, TouchableOpacity, View, FlatList, Text} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -9,10 +9,10 @@ import {
 } from 'react-native-responsive-screen';
 
 interface ChooseCardProps {
-  CardTypeIcon?: any;
-  CardIcon?: any;
-  cardsList?: [];
-  handleSelectedCard?: (...args: any[]) => any;
+  CardTypeIcon?: ReactElement;
+  CardIcon?: ReactElement;
+  cardsList?: any[];
+  handleSelectedCard: (...args: any[]) => any;
   addNewCard?: () => void;
 }
 
@@ -55,7 +55,7 @@ export const ChooseCard = ({
         <TouchableOpacity onPress={() => handleSelectCard(index)}>
           {item.selected ? <SelectedCircle /> : <UnSelectedCircle />}
         </TouchableOpacity>
-        <View>{item.CardLogo}</View>
+        <View>{item?.CardLogo}</View>
         <View style={styles.cardInfoContainer}>
           <Typography style={styles.cardName}>{item.cardName}</Typography>
           <View style={styles.emptyCardContainer}>
@@ -117,13 +117,13 @@ const styles = StyleSheet.create({
   },
   cardName: {
     fontWeight: '500',
-    fontSize: hp('2%'),
+    fontSize: 15,
     color: COLORS.black,
     marginLeft: wp('1.7%'),
   },
   cardNumber: {
     fontWeight: '600',
-    fontSize: hp('1.9%'),
+    fontSize: 15,
     color: COLORS.primaryGray,
     marginLeft: wp('1.7%'),
     marginTop: 2,

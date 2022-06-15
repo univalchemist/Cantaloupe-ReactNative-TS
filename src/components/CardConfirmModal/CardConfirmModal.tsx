@@ -12,12 +12,12 @@ import {ConfirmCardDetail} from '../ConfirmCardDetail/ConfirmCardDetail';
 import {Button} from '@components/Button/Button';
 import {TermsAndConditionText} from '@components/TermsAndConditonText';
 
-interface ICardConfrimModalProps {
-  handleClose?: any;
+interface ICardConfirmModalProps {
+  handleClose?: () => void;
   style?: ViewStyle;
-  refRBSheet?: any;
-  handleConfirm?: any;
-  selectedBank?: any;
+  refRBSheet: React.RefObject<RBSheet>;
+  handleConfirm?: () => void;
+  selectedBank?: () => void;
   handleNotYou?: () => void;
 }
 
@@ -26,7 +26,7 @@ export const CardConfirmModal = ({
   handleConfirm,
   selectedBank,
   handleNotYou,
-}: ICardConfrimModalProps) => {
+}: ICardConfirmModalProps) => {
   return (
     <View style={styles.mainContainer}>
       <RBSheet
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   reviewPayment: {
-    fontSize: hp('3%'),
+    fontSize: 26,
     fontWeight: 'bold',
     marginTop: hp('2%'),
   },
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   ConfirmTxt: {
     backgroundColor: COLORS.black,
     borderRadius: 40,
-    fontSize: hp('2%'),
+    fontSize: 18,
     fontWeight: 'bold',
   },
   notYouContainer: {
@@ -134,11 +134,11 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
   },
   emailTxt: {
-    fontSize: hp('2%'),
+    fontSize: 18,
     color: COLORS.darkGray,
   },
   notYouTxt: {
-    fontSize: hp('2%'),
+    fontSize: 18,
     color: COLORS.darkGray,
     textDecorationLine: 'underline',
   },

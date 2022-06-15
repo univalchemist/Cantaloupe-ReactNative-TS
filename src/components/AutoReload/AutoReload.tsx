@@ -60,14 +60,14 @@ const styles = StyleSheet.create({
   },
   autoReloadTxt: {
     fontWeight: '600',
-    fontSize: hp('2.5%'),
+    fontSize: 20,
     color: COLORS.black,
     flex: 1,
   },
 
   activeTxt: {
     fontWeight: '500',
-    fontSize: hp('2.1%'),
+    fontSize: 16,
     color: COLORS.greenDark,
   },
   balanceCont: {
@@ -80,11 +80,11 @@ const styles = StyleSheet.create({
   balanceTxtCont: {flex: 1, marginLeft: 10},
   balance: {
     fontWeight: '500',
-    fontSize: hp('3.3%'),
+    fontSize: 28,
     color: COLORS.orange,
   },
   fallsBlnc: {
-    fontSize: hp('1.65%'),
+    fontSize: 14,
     color: COLORS.gray,
   },
 

@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react';
+import RBSheet from 'react-native-raw-bottom-sheet';
 import {StyleSheet, View} from 'react-native';
 import {AutoReload2Props} from '../../navigation/TabNavigator';
 import {COLORS} from '@theme/color';
@@ -45,7 +46,7 @@ const AutoReloadScreen2 = ({}: AutoReload2Props) => {
       cardNumber: '•• 2058',
     },
   ]);
-  const refRBSheet = useRef();
+  const refRBSheet = useRef<React.RefObject<RBSheet>>();
   const navigation = useNavigation<AutoReload2Props>();
 
   const backPressed = () => {
@@ -90,7 +91,7 @@ const AutoReloadScreen2 = ({}: AutoReload2Props) => {
               cardsList={savedCards}
               handleSelectedCard={bank => {
                 setSelectedBank(bank);
-                refRBSheet.current.open();
+                refRBSheet.current && refRBSheet?.current?.open();
               }}
             />
             <ManuallyEnterCardText onPress={() => {}} />
@@ -98,9 +99,11 @@ const AutoReloadScreen2 = ({}: AutoReload2Props) => {
         )}
         <CardConfirmModal
           selectedBank={selectedBank}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           refRBSheet={refRBSheet}
           handleConfirm={() => {
-            refRBSheet.current.close();
+            refRBSheet?.current?.close();
             navigation.navigate('AutoReload3', {selectedBank});
           }}
         />
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
   },
 
   reloadWith: {
-    fontSize: hp('2.5%'),
+    fontSize: 16,
     marginVertical: hp('0.5%'),
   },
 

@@ -31,7 +31,7 @@ export const Carousel = ({data}: CarouselProps) => {
         itemWidth={windowWidth}
         autoplay
         loop
-        autoplayInterval={6000}
+        autoplayInterval={3000}
         inactiveSlideScale={1}
         onSnapToItem={index => setActiveSlide(index)}
       />
@@ -49,10 +49,9 @@ export const Carousel = ({data}: CarouselProps) => {
     </View>
   );
 };
-
+const CAROUSEL_PAGINATION_DOT_INACTIVE_SIZE = 12;
 const CAROUSEL_ITEM_HEIGHT = 240;
 const CAROUSEL_PAGINATION_DOT_SIZE = hp('1.2%');
-const CAROUSEL_PAGINATION_DOT_INACTIVE_SIZE = hp('1.5%');
 
 const CAROUSEL_ACTIVE_COLOR = '#FF7F32';
 const CAROUSEL_INACTIVE_COLOR = '#C0C6E9';
@@ -67,15 +66,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: '300',
-    fontSize: hp('3.2%'),
-    lineHeight: hp('3.2%'),
+    fontSize: 24,
+    lineHeight: 27,
     marginBottom: hp('1%'),
     textAlign: 'center',
-  },
-  subtitle: {
-    fontWeight: '400',
-    fontSize: hp('2%'),
-    lineHeight: hp('2%'),
   },
   paginationContainer: {
     paddingVertical: 0,

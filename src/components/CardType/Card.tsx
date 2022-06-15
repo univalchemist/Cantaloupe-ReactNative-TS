@@ -1,3 +1,4 @@
+import {ReactElement} from 'react';
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
@@ -8,10 +9,10 @@ import {
 } from 'react-native-responsive-screen';
 
 interface CardTypeProps {
-  CardLogo?: any;
+  CardLogo?: ReactElement;
   cardNumber?: string;
   onPress?: () => void;
-  InfoIcon?: any;
+  InfoIcon?: ReactElement;
   style?: ViewStyle | ViewStyle[];
   balance?: string | boolean;
   cardStyle?: ViewStyle;

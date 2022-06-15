@@ -8,8 +8,9 @@ import {
 import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
 interface CardImageProps {
-  cardType: CantaloupeMoreCardType;
+  cardType?: CantaloupeMoreCardType;
   width: number;
+  height?: number;
 }
 
 export const CardImage = ({cardType, width}: CardImageProps) => {

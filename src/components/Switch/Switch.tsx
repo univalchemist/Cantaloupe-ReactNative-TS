@@ -5,7 +5,7 @@ import {moderateScale} from 'react-native-size-matters';
 import ToggleSwitch from 'toggle-switch-react-native';
 
 interface SwitchProps {
-  toggleSwitch: any;
+  toggleSwitch: () => void;
   isEnabled: boolean;
   toggleColor?: string;
 }

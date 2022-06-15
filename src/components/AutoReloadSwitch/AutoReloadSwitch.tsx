@@ -8,22 +8,22 @@ import {
 import {SwitchComp} from '../Switch';
 
 interface IAutoReloadProps {
-  handleSwitch?: any;
-  style?: ViewStyle;
+  handleSwitch: (val: boolean) => void;
 }
 
-export const AutoReloadSwitch = ({style, handleSwitch}: IAutoReloadProps) => {
+export const AutoReloadSwitch = ({handleSwitch}: IAutoReloadProps) => {
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState);
   }, []);
+
   useEffect(() => {
     handleSwitch(isEnabled);
   }, [isEnabled, handleSwitch]);
 
   return (
-    <View style={[styles.CardTypeContainer, style]}>
+    <View style={styles.CardTypeContainer}>
       <Text style={styles.autoReloadTxt}>Auto Reload</Text>
       <SwitchComp
         toggleColor={COLORS.green}
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   autoReloadTxt: {
     fontWeight: '300',
-    fontSize: hp('4%'),
+    fontSize: 30,
     color: COLORS.black,
     flex: 1,
   },
