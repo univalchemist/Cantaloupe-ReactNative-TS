@@ -13,7 +13,7 @@ interface IAutoReloadProps {
 }
 
 export const AutoReloadSwitch = ({style, handleSwitch}: IAutoReloadProps) => {
-  const [isEnabled, setIsEnabled] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState);
