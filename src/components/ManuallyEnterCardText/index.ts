@@ -1,0 +1,1 @@
+export {ManuallyEnterCardText} from './ManaullyEnterCardText';

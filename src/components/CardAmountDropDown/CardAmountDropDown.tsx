@@ -15,7 +15,7 @@ interface CardTypeProps {
   setItems?: any;
 }
 
-export const CardAmountDropDown = ({items, setItems}: CardTypeProps) => {
+export const CardAmountDropDown = ({items, setItems, style}: CardTypeProps) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
 
@@ -33,7 +33,7 @@ export const CardAmountDropDown = ({items, setItems}: CardTypeProps) => {
         color: COLORS.primaryGray,
       }}
       textStyle={styles.label}
-      style={styles.dropdown}
+      style={[styles.dropdown, style]}
       dropDownDirection="BOTTOM"
       ArrowDownIconComponent={() => <ArrowDown width={wp('8%')} />}
     />
@@ -49,5 +49,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: hp('2.7%'),
+    color: COLORS.grayDark,
   },
 });

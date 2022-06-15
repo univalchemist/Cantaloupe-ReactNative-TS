@@ -112,7 +112,14 @@ const AddCardScreen = ({navigation}: AddCardScreenProp) => {
               administrator.
             </Typography>
           </View>
-          <Button title={'Add Card'} onPress={() => addCardPressed()} />
+          <Button
+            title={'Add Card'}
+            onPress={() => {
+              navigation.navigate('AutoReload1');
+              return;
+              addCardPressed();
+            }}
+          />
         </View>
       </GradientScrollingWrapper>
       {shouldShowConfirmModal && (

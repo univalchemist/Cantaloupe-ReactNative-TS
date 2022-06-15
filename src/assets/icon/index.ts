@@ -48,6 +48,10 @@ import MapPinGreen from './map-pin-green.svg';
 import MapPinOrange from './map-pin-orange.svg';
 import MapPinPurple from './map-pin-purple.svg';
 import MapPinRed from './map-pin-red.svg';
+import UnSelectedCircle from './chooseCardCicle.svg';
+import SelectedCircle from './chooseCardBlackCircle.svg';
+import PartnerCardBlack from './partnerCardBlack.svg';
+import PartnerCardGreen from './partnerCardGreen.svg';
 
 export {
   CardImage,
@@ -99,4 +103,8 @@ export {
   MapPinOrange,
   MapPinPurple,
   MapPinRed,
+  UnSelectedCircle,
+  SelectedCircle,
+  PartnerCardBlack,
+  PartnerCardGreen,
 };

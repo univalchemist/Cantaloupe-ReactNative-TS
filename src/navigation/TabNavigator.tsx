@@ -13,6 +13,9 @@ import {
   MapScreen,
   HelpScreen,
   AddCardScreen,
+  AutoReloadScreen1,
+  AutoReloadScreen2,
+  AutoReloadScreen3,
 } from '@screens/index';
 import {BottomTabIcon} from '@components/BottomTabIcon';
 import {
@@ -33,6 +36,9 @@ export type CardScreensParamList = {
   MapScreen: undefined;
   Help: undefined;
   AddCard: undefined;
+  AutoReload1: undefined;
+  AutoReload2: undefined;
+  AutoReload3: undefined;
 };
 
 export type BottomTabParamList = {
@@ -139,6 +145,19 @@ const CardScreenNavigator = () => {
       <CardScreenStack.Screen name="Help" component={HelpScreen} />
       <CardScreenStack.Screen name="AddCard" component={AddCardScreen} />
       <CardScreenStack.Screen
+        name="AutoReload1"
+        component={AutoReloadScreen1}
+      />
+      <CardScreenStack.Screen
+        name="AutoReload2"
+        component={AutoReloadScreen2}
+      />
+      <CardScreenStack.Screen
+        name="AutoReload3"
+        component={AutoReloadScreen3}
+      />
+
+      <CardScreenStack.Screen
         name="ReloadCard2"
         component={ReloadCardScreen2}
       />
@@ -169,6 +188,18 @@ export type MapScreenScreenProp = StackNavigationProp<
 export type AddCardScreenProp = StackNavigationProp<
   CardScreensParamList,
   'AddCard'
+>;
+export type AutoReload1Props = StackNavigationProp<
+  CardScreensParamList,
+  'AutoReload1'
+>;
+export type AutoReload2Props = StackNavigationProp<
+  CardScreensParamList,
+  'AutoReload2'
+>;
+export type AutoReload3Props = StackNavigationProp<
+  CardScreensParamList,
+  'AutoReload3'
 >;
 
 export default BottomTabs;

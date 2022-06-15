@@ -14,7 +14,8 @@ interface CardTypeProps {
   InfoIcon?: any;
   style?: ViewStyle | ViewStyle[];
   balance?: string | boolean;
-  cardStyle?:ViewStyle
+  cardStyle?: ViewStyle;
+  hideRightArrow?: boolean;
 }
 
 export const Card = ({
@@ -24,7 +25,8 @@ export const Card = ({
   style,
   onPress,
   InfoIcon,
-  cardStyle
+  cardStyle,
+  hideRightArrow,
 }: CardTypeProps) => {
   return (
     <TouchableOpacity
@@ -38,9 +40,11 @@ export const Card = ({
           {InfoIcon}
         </View>
       </View>
-      <View style={styles.rightTitle}>
-        <RightArrow width={wp('4%')} />
-      </View>
+      {!hideRightArrow && (
+        <View style={styles.rightTitle}>
+          <RightArrow width={wp('4%')} />
+        </View>
+      )}
     </TouchableOpacity>
   );
 };
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
-    width:"100%",
+    width: '100%',
   },
   cardInfoContainer: {
     marginLeft: wp('1.8%'),
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
   rightTitle: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight:10
+    paddingRight: 10,
   },
   balance: {
     fontWeight: '500',

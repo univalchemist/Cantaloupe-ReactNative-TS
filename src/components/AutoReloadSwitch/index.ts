@@ -1,0 +1,1 @@
+export {AutoReloadSwitch} from '.AutoReloadSwitch';

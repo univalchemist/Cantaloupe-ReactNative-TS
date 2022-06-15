@@ -15,6 +15,7 @@ interface PaymentMethodProps {
   phoneNumber?: string;
   onPressContinueTxt?: any;
   onPressContinueBtn?: any;
+  showCardIconsOnTop?: boolean;
 }
 
 export const PaymentMethodCard = ({
@@ -23,21 +24,32 @@ export const PaymentMethodCard = ({
   CardIcon,
   phoneNumber,
   onPressContinueBtn,
+  showCardIconsOnTop,
 }: PaymentMethodProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.payProfileCont}>
         <View>
+          {showCardIconsOnTop && (
+            <View style={styles.topCardIconsCont}>
+              <CardRightArrow width={wp('6.5%')} />
+              <Typography> {' | '}</Typography>
+              {CardTypeIcon}
+              {CardIcon}
+            </View>
+          )}
           <Typography style={styles.looksLike}>Looks Like You Have </Typography>
           <Typography style={styles.looksLike}>
             A Click To Pay Profile
           </Typography>
         </View>
-        <CardRightArrow width={wp('10%')} />
-        <View>
-          {CardTypeIcon}
-          {CardIcon}
-        </View>
+        {!showCardIconsOnTop && <CardRightArrow width={wp('10%')} />}
+        {!showCardIconsOnTop && (
+          <View>
+            {CardTypeIcon}
+            {CardIcon}
+          </View>
+        )}
       </View>
       <Typography style={[styles.codeText, {marginTop: hp('0.5%')}]}>
         Enter The Code Mastercard Sent
@@ -70,15 +82,18 @@ const styles = StyleSheet.create({
   container: {
     width: wp('90%'),
     alignSelf: 'center',
-    height: hp('34%'),
     borderWidth: hp('0.05%'),
     borderColor: COLORS.primaryGray,
     borderRadius: hp('0.5%'),
     padding: hp('2%'),
   },
+  topCardIconsCont: {
+    flexDirection: 'row',
+    marginVertical: hp('1%'),
+    alignItems: 'center',
+  },
   payProfileCont: {
     width: wp('80%'),
-    height: hp('5%'),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

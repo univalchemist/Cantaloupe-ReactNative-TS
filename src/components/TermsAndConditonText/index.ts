@@ -1,0 +1,1 @@
+export {TermsAndConditionText} from './TermsAndConditionText';

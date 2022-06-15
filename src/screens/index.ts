@@ -10,3 +10,6 @@ export {CardDetailScreen} from './CardDetail';
 export {ReloadCardScreen} from './ReloadCard';
 export {ReloadCardScreen2} from './ReloadCard2';
 export {MapScreen} from './Map';
+export {AutoReloadScreen1} from './AutoReload1';
+export {AutoReloadScreen2} from './AutoReload2';
+export {AutoReloadScreen3} from './AutoReload3';
