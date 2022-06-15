@@ -5,17 +5,20 @@ import {
   LoginScreen,
   SignInScreen,
   DashboardScreen,
+  EnterEmailScreen,
 } from '@screens/index';
 import {
   createStackNavigator,
   StackNavigationProp,
+  StackScreenProps,
 } from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import BottomTabs from './TabNavigator';
 
 export type MainStackParamList = {
   Welcome: undefined;
-  AuthOption: undefined;
+  AuthOption: {email?: string};
+  EnterEmail: undefined;
   Login: undefined;
   Signin: undefined;
   Dashboard: undefined;
@@ -34,6 +37,7 @@ const MainNavigator = () => {
           gestureEnabled: false,
         }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="EnterEmail" component={EnterEmailScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="AuthOption" component={AuthOptionScreen} />
         <Stack.Screen name="Signin" component={SignInScreen} />
@@ -50,15 +54,20 @@ export type WelcomeScreenProp = StackNavigationProp<
   MainStackParamList,
   'Welcome'
 >;
-export type AuthOptionScreenProp = StackNavigationProp<
+export type EnterEmailScreenProp = StackNavigationProp<
+  MainStackParamList,
+  'EnterEmail'
+>;
+export type SigninScreenProp = StackScreenProps<
   MainStackParamList,
   'AuthOption'
 >;
-export type LoginScreenProp = StackNavigationProp<MainStackParamList, 'Login'>;
-export type SigninScreenProp = StackNavigationProp<
+export type AuthOptionScreenProp = StackNavigationProp<
   MainStackParamList,
   'Signin'
 >;
+export type LoginScreenProp = StackNavigationProp<MainStackParamList, 'Login'>;
+
 export type DashboardScreenProp = StackNavigationProp<
   MainStackParamList,
   'Dashboard'

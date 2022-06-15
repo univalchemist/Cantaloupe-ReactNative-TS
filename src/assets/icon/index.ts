@@ -1,4 +1,8 @@
-import CardImage from './card.svg';
+import AddtoAppleWallet from './addtoAppleWallet.svg';
+import AppleWalletSlide from './appleWalletSlide.svg';
+import CardImageSlide from './card.svg';
+import CryptoCardLogo from './cryptoCardLogo.svg';
+import CryptoCardSlide from './cryptoCardSlide.svg';
 import BackArrow from './backArrow.svg';
 import LogoMore from './logo-more.svg';
 import Google from './google.svg';
@@ -10,8 +14,6 @@ import CardImage1 from './card1.svg';
 import RightArrow from './rightArrow.svg';
 import PrepaidCardLogo from './prepaidCardLogo.svg';
 import PayrollDeductCardLogo from './payrollDeductCardLogo.svg';
-import CryptoCardLogo from './cryptoCardLogo.svg';
-
 import InfoIcon from './infoIcon.svg';
 import EmptyCardLogo from './emptyCardLogo.svg';
 import MapIcon from './mapIcon.svg';
@@ -40,7 +42,6 @@ import EmptyCircle from './emptyCircle.svg';
 import StreetImage from './street_icon.svg';
 import Direction from './directions.svg';
 import Search from './search.svg';
-import AddtoAppleWallet from './addtoAppleWallet.svg';
 import OrangePlus from './orangePlus.svg';
 import OrangeQuestionMarkIcon from './orangeQuestionMarkIcon.svg';
 import MapPinBlue from './map-pin-blue.svg';
@@ -52,9 +53,16 @@ import UnSelectedCircle from './chooseCardCicle.svg';
 import SelectedCircle from './chooseCardBlackCircle.svg';
 import PartnerCardBlack from './partnerCardBlack.svg';
 import PartnerCardGreen from './partnerCardGreen.svg';
+import TransactionSlide from './transactionSlide.svg';
+import TwoPercentSlide from './twoPercentSlide.svg';
+import ClearField from './clearField.svg';
 
 export {
-  CardImage,
+  AddtoAppleWallet,
+  AppleWalletSlide,
+  CardImageSlide,
+  CryptoCardLogo,
+  CryptoCardSlide,
   BackArrow,
   LogoMore,
   Google,
@@ -66,7 +74,6 @@ export {
   RightArrow,
   PrepaidCardLogo,
   PayrollDeductCardLogo,
-  CryptoCardLogo,
   InfoIcon,
   EmptyCardLogo,
   MapIcon,
@@ -95,7 +102,6 @@ export {
   StreetImage,
   Direction,
   Search,
-  AddtoAppleWallet,
   OrangePlus,
   OrangeQuestionMarkIcon,
   MapPinBlue,
@@ -107,4 +113,7 @@ export {
   SelectedCircle,
   PartnerCardBlack,
   PartnerCardGreen,
+  TransactionSlide,
+  TwoPercentSlide,
+  ClearField,
 };

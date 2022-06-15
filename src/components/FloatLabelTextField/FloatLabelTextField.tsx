@@ -1,3 +1,4 @@
+import React, {useEffect, useRef, useState, useCallback} from 'react';
 import {
   Animated,
   StyleSheet,
@@ -5,10 +6,14 @@ import {
   TextStyle,
   View,
   ViewStyle,
+  Dimensions,
+  Touchable,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
-import {Typography} from '../Typography';
 import {COLORS} from '@theme/color';
+
+import {Typography} from '../Typography';
+import {ClearField, TickIcon} from '@assets/icon';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface FloatLabelTextFieldProps {
   title: string;
@@ -17,6 +22,9 @@ interface FloatLabelTextFieldProps {
   onTextChange?: (text: string) => void;
   validate?: (text: string) => void;
   isValidated?: boolean;
+  initialValue?: string;
+  clearButton?: boolean;
+  shouldPreventEdit?: boolean;
 }
 export const FloatLabelTextField = ({
   title,
@@ -24,10 +32,28 @@ export const FloatLabelTextField = ({
   viewStyle,
   onTextChange,
   validate,
+  initialValue,
+  clearButton,
+  shouldPreventEdit,
 }: //  isValidated,
 FloatLabelTextFieldProps) => {
   const [value, setValue] = useState('');
   const moveText = useRef(new Animated.Value(0)).current;
+
+  const moveTextTop = useCallback(() => {
+    Animated.timing(moveText, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  }, [moveText]);
+
+  useEffect(() => {
+    if (initialValue) {
+      setValue(initialValue);
+      moveTextTop();
+    }
+  }, [initialValue, moveTextTop]);
 
   const onChangeText = (text: string) => {
     setValue(text);
@@ -48,14 +74,6 @@ FloatLabelTextFieldProps) => {
       validate(value);
       return;
     }
-  };
-
-  const moveTextTop = () => {
-    Animated.timing(moveText, {
-      toValue: 1,
-      duration: 200,
-      useNativeDriver: true,
-    }).start();
   };
 
   const moveTextBottom = () => {
@@ -91,16 +109,28 @@ FloatLabelTextFieldProps) => {
           style={[styles.input, viewStyle]}
           value={value}
           onChangeText={(text: string) => onChangeText(text)}
-          editable={true}
+          editable={!shouldPreventEdit}
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           blurOnSubmit
         />
+
+        <View style={styles.iconContainer}>
+          {validate ? (
+            <TickIcon height={30} width={30} />
+          ) : (
+            clearButton && (
+              <TouchableOpacity
+                style={styles.clearButton}
+                onPress={() => {
+                  onChangeText('');
+                }}>
+                <ClearField width={44} />
+              </TouchableOpacity>
+            )
+          )}
+        </View>
       </View>
-      {/* The below needs replaced with the validation checkmark or X */}
-      {/* {validate && isValidated === true && (
-        <Typography style={[styles.input]}>yay</Typography>
-      )} */}
     </>
   );
 };
@@ -108,6 +138,7 @@ FloatLabelTextFieldProps) => {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 15,
+    paddingLeft: 35,
     backgroundColor: COLORS.white,
     alignSelf: 'center',
     minHeight: 75,
@@ -125,13 +156,22 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     height: 50,
     paddingLeft: 15,
-    paddingTop: 20,
+    paddingTop: 10,
     paddingBottom: 5,
+    marginRight: 60,
     color: COLORS.orange,
     fontWeight: 'bold',
     backgroundColor: COLORS.transparent,
     width: '100%',
   },
+  iconContainer: {
+    position: 'absolute',
+    top: 22,
+    right: 10,
+    width: 44,
+    height: 44,
+  },
+  clearButton: {width: 44, height: 44},
   animatedStyle: {
     top: 25,
     left: 20,

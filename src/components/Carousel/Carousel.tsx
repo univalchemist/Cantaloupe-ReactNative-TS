@@ -2,10 +2,7 @@ import {Typography} from '@components/Typography';
 import React, {ReactElement, useState} from 'react';
 import {useWindowDimensions, StyleSheet, View} from 'react-native';
 import SnapCarousel, {Pagination} from 'react-native-snap-carousel';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+
 interface CarouselProps {
   data: {
     icon: ReactElement;
@@ -28,7 +25,9 @@ export const Carousel = ({data}: CarouselProps) => {
           </View>
         )}
         sliderWidth={windowWidth}
+        sliderHeight={windowWidth * 0.67}
         itemWidth={windowWidth}
+        // itemHeight={(windowWidth - 40) * 0.67}
         autoplay
         loop
         autoplayInterval={3000}
@@ -49,17 +48,17 @@ export const Carousel = ({data}: CarouselProps) => {
     </View>
   );
 };
+
+const CAROUSEL_PAGINATION_DOT_SIZE = 24;
 const CAROUSEL_PAGINATION_DOT_INACTIVE_SIZE = 12;
-const CAROUSEL_ITEM_HEIGHT = 240;
-const CAROUSEL_PAGINATION_DOT_SIZE = hp('1.2%');
 
 const CAROUSEL_ACTIVE_COLOR = '#FF7F32';
 const CAROUSEL_INACTIVE_COLOR = '#C0C6E9';
 
 const styles = StyleSheet.create({
   carouselItem: {
-    minHeight: CAROUSEL_ITEM_HEIGHT,
-    paddingHorizontal: wp('5%'),
+    paddingHorizontal: 0,
+    marginBottom: 15,
   },
   iconWrapper: {
     alignItems: 'center',
@@ -68,7 +67,6 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     fontSize: 24,
     lineHeight: 27,
-    marginBottom: hp('1%'),
     textAlign: 'center',
   },
   paginationContainer: {

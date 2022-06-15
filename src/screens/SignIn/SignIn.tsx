@@ -7,7 +7,7 @@ import {Typography} from '@components/Typography';
 import {useNavigation} from '@react-navigation/native';
 import {FloatLabelTextField} from '@components/FloatLabelTextField';
 import CheckBox from 'react-native-check-box';
-import {GradientScrollingWrapper} from '@components/GradientWrapper';
+import {GradientScrollingWrapper, GoBackHeader} from '@components/index';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   widthPercentageToDP as wp,
@@ -20,8 +20,8 @@ import {
   DetectExistingUserResponse,
 } from '@apollo-endpoints/index';
 
-const SignIn = () => {
-  const navigation = useNavigation<SigninScreenProp>();
+const SignIn = ({route, navigation}: SigninScreenProp) => {
+  const email = String(route && route.params) ?? '';
   const [checked, setChecked] = useState(false);
   const [isExistingUserResponse, setIsExistingUserResponse] =
     useState<DetectExistingUserResponse>();
@@ -34,7 +34,7 @@ const SignIn = () => {
     }
   }, [isExistingUserResponse]);
 
-  const detectIsExistingUser = useCallback(async (text: String) => {
+  const detectIsExistingUser = useCallback(async (text: string) => {
     await getIsExistingUser({email: text}).then(
       (response: DetectExistingUserResponse) => {
         setIsExistingUserResponse(response);
@@ -42,10 +42,19 @@ const SignIn = () => {
     );
   }, []);
 
+  const backPressed = () => {
+    navigation.pop();
+  };
+
   //const handleContinueWithEmail = useCallback(() => {}, []);
   // const handleBackHome = useCallback(() => navigation.goBack(), [navigation]);
   return (
     <GradientScrollingWrapper>
+      <GoBackHeader
+        headerState="addCard"
+        label="BACK"
+        onPress={() => backPressed()}
+      />
       <KeyboardAwareScrollView>
         <View style={styles.container}>
           <Typography style={styles.title}>Create Account</Typography>
@@ -56,6 +65,8 @@ const SignIn = () => {
             validate={text => {
               detectIsExistingUser(text);
             }}
+            initialValue={email}
+            shouldPreventEdit={email && email.length > 0 ? true : false}
           />
           {shouldShowExistingUserText && (
             <Typography style={styles.label_orange}>
