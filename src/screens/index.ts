@@ -1,6 +1,7 @@
 export {WelcomeScreen} from './Welcome';
 export {HelpScreen} from './Help';
 export {AuthOptionScreen} from './Auth';
+export {EnterEmailScreen} from './EnterEmail';
 export {LoginScreen} from './Login';
 export {SignInScreen} from './SignIn';
 export {DashboardScreen} from './Dashboard';

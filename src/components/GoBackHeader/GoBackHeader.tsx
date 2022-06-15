@@ -69,12 +69,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     paddingBottom: 20,
+    backgroundColor: COLORS.transparent,
   },
   headerSubWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     alignContent: 'center',
     zIndex: 49,
+    backgroundColor: COLORS.transparent,
   },
   actionButton: {
     height: 40,
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 20,
     zIndex: 50,
+    backgroundColor: COLORS.transparent,
   },
   text: {
     color: COLORS.primaryGray,

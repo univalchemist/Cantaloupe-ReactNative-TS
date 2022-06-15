@@ -13,7 +13,7 @@ const AuthOption = () => {
   const navigation = useNavigation<AuthOptionScreenProp>();
 
   const handleContinueWithEmail = useCallback(() => {
-    navigation.navigate('Signin');
+    navigation.navigate('EnterEmail');
   }, [navigation]);
 
   const handleBackHome = useCallback(() => navigation.goBack(), [navigation]);
