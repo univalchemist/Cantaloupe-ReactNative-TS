@@ -1,12 +1,13 @@
 import React, {ReactElement, useEffect, useState} from 'react';
 import {StyleSheet, TouchableOpacity, View, FlatList, Text} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
-import {CardRightArrow, SelectedCircle, UnSelectedCircle} from '@assets/icon';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+import {Typography} from '@components/Typography';
+import {COLORS} from '@theme/color';
+import {CardRightArrow, SelectedCircle, UnSelectedCircle} from '@assets/icon';
 
 interface ChooseCardProps {
   CardTypeIcon?: ReactElement;
@@ -49,7 +50,7 @@ export const ChooseCard = ({
     setList(listHolder);
   };
 
-  const renderItem = ({item, index}) => (
+  const renderItem = ({item, index}: {item: any; index: number}) => (
     <View>
       <View style={styles.cardItem}>
         <TouchableOpacity onPress={() => handleSelectCard(index)}>

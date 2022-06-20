@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
-import {COLORS} from '@theme/color';
-import {ArrowDown} from '@assets/icon';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+import {COLORS} from '@theme/color';
+import {ArrowDown} from '@assets/icon';
 
 interface CardTypeProps {
   onPress?: () => void;

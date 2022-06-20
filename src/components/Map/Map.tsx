@@ -1,11 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
+import MapView, {Marker} from 'react-native-maps';
+
 import {COLORS} from '@theme/color';
 import {MapPinGreen} from '@assets/icon';
-import MapView, {Marker} from 'react-native-maps';
 const windowWidth = Dimensions.get('window').width;
 
 interface MapProps {}
+// eslint-disable-next-line no-empty-pattern
 export const Map = ({}: MapProps) => {
   return (
     <View style={styles.page}>

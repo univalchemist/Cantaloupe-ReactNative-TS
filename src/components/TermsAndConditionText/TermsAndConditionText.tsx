@@ -1,17 +1,23 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Typography} from '@components/Typography';
-
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 
 interface TermsAndConditionProps {
   onPress?: () => void;
 }
-const Texts = ({leftText, rightText}) => {
+const Texts = ({
+  leftText,
+  rightText,
+}: {
+  leftText: string;
+  rightText: string;
+}) => {
   return (
     <View style={styles.textContainer}>
       <Typography style={styles.text}>{leftText}</Typography>

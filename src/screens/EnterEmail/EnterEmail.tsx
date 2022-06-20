@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {EnterEmailScreenProp} from '../../navigation/MainNavigator';
-import {COLORS} from '@theme/color';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
+import {EnterEmailScreenProp} from '@navigation/MainNavigator';
+import {COLORS} from '@theme/color';
 import {
   Button,
   GoBackHeader,
@@ -11,13 +12,10 @@ import {
   FloatLabelTextField,
   ModalAlert,
 } from '@components/index';
-
 import {
   DetectExistingUserResponse,
   getIsExistingUser,
 } from '@apollo-endpoints/index';
-import {useNavigation} from '@react-navigation/native';
-
 import {validateEmail} from '@utils/formValidation';
 
 const EnterEmailScreen = () => {
@@ -59,7 +57,7 @@ const EnterEmailScreen = () => {
       (response: DetectExistingUserResponse) => {
         console.log(response);
         if (response && !response.isExistingUser) {
-          navigation.navigate('Signin', email);
+          navigation.navigate('CreateAccount', email);
         } else {
           presentModal(response.message);
         }
@@ -83,7 +81,7 @@ const EnterEmailScreen = () => {
             onTextChange={text => {
               setEmail(text);
             }}
-            initialValue={email}
+            startingValue={email}
             clearButton={true}
           />
           <Button title={'Next step'} onPress={nextStepPressed} />

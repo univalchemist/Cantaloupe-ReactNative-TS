@@ -9,7 +9,7 @@ const SIGN_OUT = `
   }
 `;
 
-export const signOut = async () => {
+export const SignOut = async () => {
   const results = await Query({
     gqlQuery: SIGN_OUT,
   });

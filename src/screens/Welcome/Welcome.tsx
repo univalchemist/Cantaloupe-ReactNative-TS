@@ -1,4 +1,9 @@
 import React from 'react';
+import {StyleSheet, View, Dimensions} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
+import {WelcomeScreenProp} from '../../navigation/MainNavigator';
+
 import {Button} from '@components/Button';
 import {
   AppleWalletSlide,
@@ -9,10 +14,7 @@ import {
   TwoPercentSlide,
 } from '@assets/icon';
 import {Carousel} from '@components/Carousel';
-import {StyleSheet, View, Dimensions} from 'react-native';
-import {WelcomeScreenProp} from '../../navigation/MainNavigator';
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 
 const width = Dimensions.get('window').width;
@@ -40,7 +42,7 @@ const CarouselData = [
   },
 ];
 
-const Welcome = ({}: WelcomeScreenProp) => {
+const Welcome = () => {
   const navigation = useNavigation<WelcomeScreenProp>();
 
   const buttonTitle = 'Already Have An Account?';
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom: 10,
   },
   btnCreate: {
     marginHorizontal: 20,

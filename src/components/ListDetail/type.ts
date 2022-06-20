@@ -2,7 +2,7 @@ import {SvgProps} from 'react-native-svg';
 
 export type ListViewProp = {
   isEnabled: boolean;
-}
+};
 
 export type PlaceProp = {
   image: React.FC<SvgProps>;

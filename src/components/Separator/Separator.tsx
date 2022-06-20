@@ -8,7 +8,7 @@ interface SeparatorProps {
 }
 
 export const Separator = ({style}: SeparatorProps) => {
-  return <View style={[styles.separator, style]}></View>;
+  return <View style={[styles.separator, style]} />;
 };
 
 const styles = StyleSheet.create({

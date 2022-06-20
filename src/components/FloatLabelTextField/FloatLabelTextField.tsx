@@ -6,39 +6,44 @@ import {
   TextStyle,
   View,
   ViewStyle,
-  Dimensions,
-  Touchable,
 } from 'react-native';
-import {COLORS} from '@theme/color';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import {Typography} from '../Typography';
+
+import {COLORS} from '@theme/color';
 import {ClearField, TickIcon} from '@assets/icon';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface FloatLabelTextFieldProps {
   title: string;
+  startingValue?: string;
+  containerStyle?: ViewStyle;
   titleStyle?: TextStyle;
   viewStyle?: ViewStyle;
   onTextChange?: (text: string) => void;
   validate?: (text: string) => void;
   isValidated?: boolean;
-  initialValue?: string;
   clearButton?: boolean;
   shouldPreventEdit?: boolean;
 }
 export const FloatLabelTextField = ({
   title,
+  startingValue,
   titleStyle,
   viewStyle,
+  containerStyle,
   onTextChange,
   validate,
-  initialValue,
   clearButton,
   shouldPreventEdit,
 }: //  isValidated,
 FloatLabelTextFieldProps) => {
-  const [value, setValue] = useState('');
-  const moveText = useRef(new Animated.Value(0)).current;
+  const [value, setValue] = useState(startingValue);
+  const moveText = useRef(new Animated.Value(startingValue && startingValue.length > 0 ? 1 : 0)).current;
+
+  useEffect(() => {
+    setValue(startingValue);
+  }, [startingValue]);
 
   const moveTextTop = useCallback(() => {
     Animated.timing(moveText, {
@@ -47,13 +52,6 @@ FloatLabelTextFieldProps) => {
       useNativeDriver: true,
     }).start();
   }, [moveText]);
-
-  useEffect(() => {
-    if (initialValue) {
-      setValue(initialValue);
-      moveTextTop();
-    }
-  }, [initialValue, moveTextTop]);
 
   const onChangeText = (text: string) => {
     setValue(text);
@@ -99,7 +97,7 @@ FloatLabelTextFieldProps) => {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={[styles.container, containerStyle]}>
         {/* The fields need adjusted to match the design. Should be centered before focus, with larger font */}
         <Animated.View style={[styles.animatedStyle, animStyle]}>
           <Typography style={[styles.title, titleStyle]}>{title}</Typography>

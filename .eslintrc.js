@@ -10,6 +10,8 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:import/typescript',
     'plugin:import/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
   ],
   plugins: ['react-native', '@typescript-eslint', 'react', 'prettier'],
   overrides: [
@@ -30,4 +32,9 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
 };

@@ -6,17 +6,18 @@ import {
   ViewStyle,
   Text,
 } from 'react-native';
-import {COLORS} from '@theme/color';
-import {RightArrow} from '@assets/icon';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import {COLORS} from '@theme/color';
+import {RightArrow} from '@assets/icon';
+
 interface IAutoReloadProps {
   onPress?: () => void;
   style?: ViewStyle;
-  balance?: string;
+  balance?: string | number;
 }
 
 export const AutoReload = ({balance, style, onPress}: IAutoReloadProps) => {

@@ -1,15 +1,16 @@
 import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
-import {TickIcon} from '@assets/icon';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import {Typography} from '@components/Typography';
+import {COLORS} from '@theme/color';
+import {TickIcon} from '@assets/icon';
+
 interface ReloadCardDoneProps {
-  loadedBalance?: any;
+  loadedBalance?: number | string;
   style?: ViewStyle;
   newBalance?: string;
 }
@@ -22,10 +23,10 @@ export const ReloadCardDone = ({
   return (
     <View style={[styles.CardTypeContainer, style]}>
       <Typography style={styles.doneTxt}>Done</Typography>
-      <Typography style={[styles.laodedBalanceTxt, {marginVertical: hp('1%')}]}>
+      <Typography style={[styles.loadedBalanceTxt, {marginVertical: hp('1%')}]}>
         You successfully added ${loadedBalance}
       </Typography>
-      <Typography style={styles.laodedBalanceTxt}>to your More pass</Typography>
+      <Typography style={styles.loadedBalanceTxt}>to your More pass</Typography>
       <Typography style={styles.newBalanceTxt}>
         Your new balance is{' '}
         <Typography
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     color: COLORS.orange,
     marginVertical: hp('1%'),
   },
-  laodedBalanceTxt: {
+  loadedBalanceTxt: {
     fontWeight: '400',
     fontSize: hp('3%'),
     color: COLORS.gray,

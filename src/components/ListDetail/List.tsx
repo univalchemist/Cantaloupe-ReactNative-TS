@@ -1,9 +1,12 @@
-import {StyleSheet, View, ViewStyle, Text, FlatList} from 'react-native';
+import React from 'react';
+import {StyleSheet, View, Text, FlatList} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+
+import {PlaceProp, ListViewProp} from './type';
+
 import {COLORS} from '@theme/color';
 import {Direction} from '@assets/icon';
-import {moderateScale} from 'react-native-size-matters';
 import {placesArray} from '@screens/mock';
-import { PlaceProp, ListViewProp } from './type';
 
 const _renderItem = (item: PlaceProp, index: number) => {
   return (
@@ -11,7 +14,10 @@ const _renderItem = (item: PlaceProp, index: number) => {
       key={item.location}
       style={[
         styles.listContainerView,
-        {backgroundColor: index % 2 != 0 ? COLORS.grayLight : COLORS.transparent},
+        {
+          backgroundColor:
+            index % 2 != 0 ? COLORS.grayLight : COLORS.transparent,
+        },
       ]}>
       <View style={styles.image}>
         <item.image width={moderateScale(90)} height={moderateScale(67)} />
@@ -29,6 +35,7 @@ const _renderItem = (item: PlaceProp, index: number) => {
   );
 };
 
+// eslint-disable-next-line no-empty-pattern
 export const ListView = ({}: ListViewProp) => {
   return (
     <View style={styles.mainContainer}>

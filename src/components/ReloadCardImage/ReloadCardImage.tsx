@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
+
 import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 
 interface CardTypeProps {
-  CardLogo?: any;
+  CardLogo?: JSX.Element;
   cardNumber?: string;
   style?: ViewStyle;
   balance?: string;

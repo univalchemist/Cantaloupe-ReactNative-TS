@@ -1,21 +1,24 @@
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {COLORS} from '@theme/color';
 import React, {useCallback, useState} from 'react';
 import {moderateScale} from 'react-native-size-matters';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import { dummyArray } from '../../screens/mock';
-import { ListViewProp, LocationProp } from './type';
+
+import {dummyArray} from '../../screens/mock';
+
+import {ListViewProp, LocationProp} from './type';
+
+import {COLORS} from '@theme/color';
 
 export const FilterModule = ({isEnabled}: ListViewProp) => {
   const [selectedItem, setSelectedItem] = useState(dummyArray);
 
   const methodToSelectLocation = useCallback(
-    (index: number, selectedItem: LocationProp[]) => {
-      const item1: any = selectedItem[index];
-      const new_array = [...selectedItem];
+    (index: number, item: LocationProp[]) => {
+      const item1: LocationProp = item[index];
+      const new_array = [...item];
       const newItem: LocationProp = {
         id: item1.id,
         image: item1.image,
@@ -31,12 +34,12 @@ export const FilterModule = ({isEnabled}: ListViewProp) => {
   );
 
   const handleUnselectClick = useCallback(() => {
-    var newArray = selectedItem.map(item => ({
+    const newArray = selectedItem.map(item => ({
       ...item,
       isSelected: false,
     }));
     setSelectedItem(newArray);
-  }, []);
+  }, [selectedItem]);
 
   return (
     <View

@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
-import {ReloadCardScreenProp2} from '../../navigation/TabNavigator';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 import {COLORS} from '@theme/color';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
@@ -11,13 +15,9 @@ import {Typography} from '@components/Typography';
 import {CardDetail} from '@components/CardDetail';
 import {Button} from '@components/Button';
 import {ReloadCardDone} from '@components/ReloadCardDone';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
-const ReloadCardScreen2 = ({}: ReloadCardScreenProp2) => {
+const ReloadCardScreen2 = () => {
   const [reloadDone, setReloadDone] = useState(false);
 
   return (

@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, ScrollView, ViewStyle} from 'react-native';
-import {COLORS} from '@theme/color';
 import LinearGradient from 'react-native-linear-gradient';
+
+import {COLORS} from '@theme/color';
 
 type GradientScrollingWrapperProps = {
   style?: ViewStyle;

@@ -1,12 +1,13 @@
-import {ReactElement} from 'react';
+import React, {ReactElement} from 'react';
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
-import {RightArrow} from '@assets/icon';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+import {Typography} from '@components/Typography';
+import {COLORS} from '@theme/color';
+import {RightArrow} from '@assets/icon';
 
 interface CardTypeProps {
   CardLogo?: ReactElement;

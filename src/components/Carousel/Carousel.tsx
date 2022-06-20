@@ -1,7 +1,8 @@
-import {Typography} from '@components/Typography';
 import React, {ReactElement, useState} from 'react';
 import {useWindowDimensions, StyleSheet, View} from 'react-native';
 import SnapCarousel, {Pagination} from 'react-native-snap-carousel';
+
+import {Typography} from '@components/Typography';
 
 interface CarouselProps {
   data: {

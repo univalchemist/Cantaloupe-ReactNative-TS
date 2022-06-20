@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 
 import {LoginScreenProp} from '../../navigation/MainNavigator';
+
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
 import {LogoMore} from '@assets/icon';
 import {
   GradientScrollingWrapper,
@@ -12,14 +13,13 @@ import {
   FloatLabelTextField,
   Button,
 } from '@components/index';
-
 import {loginUser} from '@apollo-endpoints/index';
 import {UserInfo} from '@models/UserInfo';
 
-const Login = ({}: LoginScreenProp) => {
+const Login = () => {
   const navigation = useNavigation<LoginScreenProp>();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('raliatdev@gmail.com');
+  const [password, setPassword] = useState('Eromohun2!');
 
   const [userInfo, setUserInfo] = useState<UserInfo>();
 
@@ -35,7 +35,7 @@ const Login = ({}: LoginScreenProp) => {
         navigation.navigate('BottomTabs');
       });
     }
-  }, [userInfo]);
+  }, [navigation, userInfo]);
 
   return (
     <GradientScrollingWrapper style={styles.container}>

@@ -2,8 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 
 import {COLORS} from '@theme/color';
-
-import {Button, Typography} from '@components/index';
+import {Typography} from '@components/index';
 
 type Props = {
   primaryText: string;

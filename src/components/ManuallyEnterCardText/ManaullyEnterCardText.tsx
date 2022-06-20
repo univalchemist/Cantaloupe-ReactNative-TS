@@ -1,11 +1,8 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import {Typography} from '@components/Typography';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {Typography} from '@components/Typography';
 import {COLORS} from '@theme/color';
 
 interface ManuallyEnterCardTextProps {

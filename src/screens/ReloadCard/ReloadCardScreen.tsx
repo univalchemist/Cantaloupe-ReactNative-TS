@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
-import {ReloadCardScreenProp} from '../../navigation/TabNavigator';
-import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+import {ReloadCardScreenProp} from '../../navigation/TabNavigator';
+
+import {COLORS} from '@theme/color';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {Header} from '@components/Header';
 import {CardImage} from '@components/CardImage/CardImage';
@@ -11,13 +17,9 @@ import {ReloadCardImage} from '@components/ReloadCardImage';
 import {Typography} from '@components/Typography';
 import {CardAmountDropDown, Separator} from '@components/index';
 import {PaymentMethodCard} from '@components/PaymentMethodCard';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 
-const ReloadCardScreen = ({}: ReloadCardScreenProp) => {
+const ReloadCardScreen = () => {
   const navigation = useNavigation<ReloadCardScreenProp>();
   const [items, setItems] = useState([
     {label: '$50', value: '50'},
@@ -77,20 +79,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik',
     marginVertical: hp('2.3%'),
   },
-  primaryTxt: {
-    fontWeight: '500',
-    fontSize: hp('0.7%'),
-    color: COLORS.white,
-    position: 'absolute',
-    top: hp('-1'),
-    right: wp('-0.5'),
-    backgroundColor: COLORS.blue,
-    padding: hp('0.4%'),
-    borderRadius: hp('0.6%'),
-    overflow: 'hidden',
-    fontFamily: 'Rubik',
-    zIndex: 10,
-  },
   reloadWithTxt: {
     fontFamily: 'Rubik',
     color: COLORS.black,
@@ -100,20 +88,6 @@ const styles = StyleSheet.create({
     marginBottom: hp('1.6%'),
 
     fontStyle: 'normal',
-  },
-  separatorCont: {
-    position: 'absolute',
-    bottom: hp('4.7%'),
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-  },
-
-  separator: {
-    backgroundColor: COLORS.lightOrange,
-    height: hp('0.3%'),
-    width: wp('85%'),
-    alignSelf: 'center',
   },
 });
 export default ReloadCardScreen;

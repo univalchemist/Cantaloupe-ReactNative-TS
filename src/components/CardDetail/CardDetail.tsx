@@ -1,15 +1,16 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import {Typography} from '@components/Typography';
+import {COLORS} from '@theme/color';
+
 interface ICardDetailProps {
   amount?: string;
-  CardImg?: any;
+  CardImg?: JSX.Element;
   cardNumber?: string;
   name?: string;
   street?: string;

@@ -5,6 +5,7 @@ import {
   StackNavigationProp,
   StackScreenProps,
 } from '@react-navigation/stack';
+
 import {
   CardsScreen,
   CardDetailScreen,
@@ -12,6 +13,7 @@ import {
   ReloadCardScreen2,
   MapScreen,
   HelpScreen,
+  ProfileScreen,
   AddCardScreen,
   AutoReloadScreen1,
   AutoReloadScreen2,
@@ -35,10 +37,11 @@ export type CardScreensParamList = {
   ReloadCard2: undefined;
   MapScreen: undefined;
   Help: undefined;
+  Profile: undefined;
   AddCard: undefined;
-  AutoReload1: undefined;
-  AutoReload2: undefined;
-  AutoReload3: undefined;
+  AutoReload1: {card: PaymentMethod};
+  AutoReload2: {card: PaymentMethod};
+  AutoReload3: {card: PaymentMethod; selectedBank: undefined};
 };
 
 export type BottomTabParamList = {
@@ -46,6 +49,7 @@ export type BottomTabParamList = {
   History: undefined;
   Rewards: undefined;
   Help: undefined;
+  Profile: undefined;
   MapTabNavigator: undefined;
   HistoryTabNavigator: undefined;
   CardScreenNavigator: undefined;
@@ -140,6 +144,7 @@ const CardScreenNavigator = () => {
       }}>
       <CardScreenStack.Screen name="Cards" component={CardsScreen} />
       <CardScreenStack.Screen name="CardDetail" component={CardDetailScreen} />
+      <CardScreenStack.Screen name="Profile" component={ProfileScreen} />
       <CardScreenStack.Screen name="ReloadCard" component={ReloadCardScreen} />
       <CardScreenStack.Screen name="MapScreen" component={MapScreen} />
       <CardScreenStack.Screen name="Help" component={HelpScreen} />

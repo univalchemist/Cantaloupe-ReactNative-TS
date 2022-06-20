@@ -1,11 +1,10 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import {StyleSheet, View, ViewStyle, Text} from 'react-native';
-import {COLORS} from '@theme/color';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {StyleSheet, View, Text} from 'react-native';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import {SwitchComp} from '../Switch';
+
+import {COLORS} from '@theme/color';
 
 interface IAutoReloadProps {
   handleSwitch: (val: boolean) => void;

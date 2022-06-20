@@ -1,13 +1,15 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 import {StyleSheet, TouchableOpacity, View, TextInput} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
-import {CardRightArrow} from '@assets/icon';
-import {Button} from '../Button';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+import {Button} from '../Button';
+
+import {Typography} from '@components/Typography';
+import {COLORS} from '@theme/color';
+import {CardRightArrow} from '@assets/icon';
 
 interface PaymentMethodProps {
   onPressContinueTxt: () => void;

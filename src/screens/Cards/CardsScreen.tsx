@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Alert, StyleSheet, View, Dimensions} from 'react-native';
-import {COLORS} from '@theme/color';
 import {useNavigation} from '@react-navigation/native';
+
+import {COLORS} from '@theme/color';
 import {
   Typography,
   CardImage,
@@ -12,7 +13,6 @@ import {
 } from '@components/index';
 import {getPaymentMethods} from '@apollo-endpoints/index';
 import {PaymentMethod} from '@models/PaymentMethod';
-
 import {AddMoreCard} from '@components/AddMoreCard/AddMoreCard';
 import {CardsScreenProp} from '@navigation/TabNavigator';
 
@@ -41,11 +41,15 @@ const CardsScreen = ({}: CardsScreenProp) => {
     navigation.navigate('AddCard');
   };
 
+  const goToProfile = () => {
+    navigation.navigate('Profile');
+  }
+
   return (
     <View style={styles.container}>
       <GradientScrollingWrapper thirdColor={COLORS.white}>
         <View style={styles.innerContainer}>
-          <Header onPressRight={() => Alert.alert('Go to profile screen')} />
+          <Header onPressRight={() => goToProfile()} />
           {primary && (
             <>
               <View style={styles.primaryCardContainer}>
@@ -107,7 +111,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  innerContainer: {marginHorizontal: 20, marginBottom: 25},
+  innerContainer: {marginHorizontal: 20, marginVertical: 20},
   primaryCardContainer: {
     alignContent: 'center',
     alignItems: 'center',

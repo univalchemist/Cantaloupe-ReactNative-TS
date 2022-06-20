@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {Alert, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {AddCardScreenProp} from '../../navigation/MainNavigator';
-import {COLORS} from '@theme/color';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 
+import {AddCardScreenProp} from '@navigation/TabNavigator';
+import {COLORS} from '@theme/color';
 import {
   Button,
   GoBackHeader,
@@ -11,12 +11,10 @@ import {
   FloatLabelTextField,
   ModalAlert,
 } from '@components/index';
-
 import {
   registerStoredValueCard,
   RegisterStoredValueCardPassResponse,
 } from '@apollo-endpoints/index';
-
 import {OrangeQuestionMarkIcon} from '@assets/icon';
 
 const AddCardScreen = ({navigation}: AddCardScreenProp) => {
@@ -143,9 +141,10 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     marginHorizontal: 20,
+    marginVertical: 10,
   },
-  headerText: {fontSize: 32, lineHeight: 38, marginBottom: 15},
-  formLabel: {fontSize: 16, lineHeight: 20, marginVertical: 15},
+  headerText: {fontSize: 32, lineHeight: 38},
+  formLabel: {fontSize: 16, lineHeight: 20, marginVertical: 10},
   inputTitle: {
     color: COLORS.primaryGray,
     fontSize: 20,

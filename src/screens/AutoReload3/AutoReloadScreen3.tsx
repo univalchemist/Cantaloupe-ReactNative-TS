@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {AutoReload3Props} from '../../navigation/TabNavigator';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+import {AutoReload3Props, CardScreensParamList} from '@navigation/TabNavigator';
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {CardImage} from '@components/CardImage/CardImage';
-
 import {Typography} from '@components/Typography';
 import {
   Button,
@@ -13,23 +17,65 @@ import {
   ReloadCardImage,
   Separator,
 } from '@components/index';
-
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import {CantaloupeMoreCardType} from '@models/enums/CantaloupeMoreCardType';
 import {ConfirmCardDetail} from '@components/ConfirmCardDetail/ConfirmCardDetail';
 import {AutoReloadDone} from '@components/AutoReloadDone';
+import {
+  SetupReplenishMutationVariables,
+  useSetupReplenishMutation,
+} from '@apollo-endpoints/index';
 
-const AutoReloadScreen3 = ({route}: AutoReload3Props) => {
+const AutoReloadScreen3 = ({}: AutoReload3Props) => {
+  const route = useRoute<RouteProp<CardScreensParamList, 'AutoReload3'>>();
   const [isReloadDone, setIsReloadDone] = useState(false);
   const [selectedBank, setSelectedBank] = useState(route?.params.selectedBank);
   const navigation = useNavigation<AutoReload3Props>();
-
+  const [setupReplenish, {loading}] = useSetupReplenishMutation();
+  const card = useMemo(() => route.params.card, [route.params.card]);
   const backPressed = () => {
     navigation.popToTop();
   };
+
+  const handleReload = useCallback(async () => {
+    if (loading) return;
+    // TODO
+    // bank card information.
+    const variables: SetupReplenishMutationVariables = {
+      cardId: Number(card.cardId),
+      replenishCardNumber: selectedBank.cardNum.toString(),
+      replenishExpMonth: Number(selectedBank.expMonth),
+      replenishExpYear: Number(selectedBank.expYear),
+      replenishSecurityCode: selectedBank.cvc.toString(),
+      replenishType: Number(card.cardType),
+      amount: Number(selectedBank.replenish),
+      threshold: Number(selectedBank.replenishMin),
+      address1: selectedBank.address.trim(),
+      city: selectedBank.city.trim(),
+      state: selectedBank.state.toUpperCase().trim(),
+      postal: selectedBank.postal.trim(),
+      country: 'US',
+    };
+    await setupReplenish({
+      variables,
+      onCompleted: () => {
+        setIsReloadDone(true);
+      },
+    });
+  }, [
+    card,
+    loading,
+    selectedBank.address,
+    selectedBank.cardNum,
+    selectedBank.city,
+    selectedBank.cvc,
+    selectedBank.expMonth,
+    selectedBank.expYear,
+    selectedBank.postal,
+    selectedBank.replenish,
+    selectedBank.replenishMin,
+    selectedBank.state,
+    setupReplenish,
+  ]);
 
   return (
     <GradientScrollingWrapper scrollable={true} thirdColor={COLORS.white}>
@@ -67,9 +113,7 @@ const AutoReloadScreen3 = ({route}: AutoReload3Props) => {
           </View>
 
           <Button
-            onPress={() => {
-              setIsReloadDone(true);
-            }}
+            onPress={handleReload}
             title="Continue"
             style={styles.confirmBtn}
             titleStyle={styles.ConfirmTxt}

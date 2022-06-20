@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {AutoReload1Props} from '../../navigation/TabNavigator';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+import {AutoReload1Props, CardScreensParamList} from '@navigation/TabNavigator';
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {CardImage} from '@components/CardImage/CardImage';
 import {VisaIcon, CardSymbolIcon} from '@assets/icon';
@@ -13,16 +18,12 @@ import {
   PaymentMethodCard,
   Separator,
 } from '@components/index';
-
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import {AutoReloadSwitch} from '@components/AutoReloadSwitch/AutoReloadSwitch';
+import {AutoReloadSwitch} from '@components/AutoReloadSwitch';
 import {Card} from '@components/CardType';
 import {ManuallyEnterCardText} from '@components/ManuallyEnterCardText';
 
-const AutoReloadScreen1 = ({}: AutoReload1Props) => {
+const AutoReloadScreen1 = () => {
+  const route = useRoute<RouteProp<CardScreensParamList, 'AutoReload1'>>();
   const [enableAutoReload, setEnableAutoReload] = useState(true);
   const [items, setItems] = useState([
     {label: '$5', value: '50'},
@@ -30,6 +31,7 @@ const AutoReloadScreen1 = ({}: AutoReload1Props) => {
     {label: '$20', value: '200'},
   ]);
   const navigation = useNavigation<AutoReload1Props>();
+  const card = useMemo(() => route.params.card, [route]);
 
   const backPressed = () => {
     navigation.popToTop();
@@ -48,15 +50,15 @@ const AutoReloadScreen1 = ({}: AutoReload1Props) => {
           <Card
             CardLogo={<CardImage width={wp('33.33%')} height={hp('10.52%')} />}
             style={styles.cardTypeStyle}
-            balance={'$50'}
-            cardNumber={'More card •• 5743'}
+            balance={`$${card?.balance.toString() ?? ''}`}
+            cardNumber={card?.cardNum ?? ''}
             hideRightArrow={true}
           />
         </View>
         <Separator />
         {enableAutoReload && (
           <View>
-            <Typography style={styles.reloadiSettings}>
+            <Typography style={styles.reloadSettings}>
               Auto Reload Settings
             </Typography>
             <Typography style={styles.reloadWith}>Reload With:</Typography>
@@ -82,10 +84,10 @@ const AutoReloadScreen1 = ({}: AutoReload1Props) => {
               CardTypeIcon={<VisaIcon width={wp('13%')} />}
               CardIcon={<CardSymbolIcon width={wp('11%')} />}
               phoneNumber="+1 (•••) •••-•567"
-              onPressContinueTxt={() => {
-                navigation.navigate('AutoReload2');
-              }}
-              onPressContinueBtn={() => {}}
+              onPressContinueTxt={() => {}}
+              onPressContinueBtn={() =>
+                navigation.navigate('AutoReload2', {card: route.params.card})
+              }
               showCardIconsOnTop={true}
             />
             <ManuallyEnterCardText onPress={() => {}} />
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
     marginBottom: hp('1%'),
   },
-  reloadiSettings: {
+  reloadSettings: {
     fontSize: hp('3%'),
     marginVertical: hp('2%'),
   },

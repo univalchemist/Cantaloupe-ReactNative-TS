@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {COLORS} from '@theme/color';
 import {moderateScale} from 'react-native-size-matters';
 import ToggleSwitch from 'toggle-switch-react-native';
+
+import {COLORS} from '@theme/color';
 
 interface SwitchProps {
   toggleSwitch: () => void;

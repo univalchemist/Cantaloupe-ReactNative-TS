@@ -1,12 +1,13 @@
 import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
-import {Typography} from '@components/Typography';
-import {COLORS} from '@theme/color';
-import {TickIcon} from '@assets/icon';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+import {Typography} from '@components/Typography';
+import {COLORS} from '@theme/color';
+import {TickIcon} from '@assets/icon';
 import {Button} from '@components/Button/Button';
 
 interface AutoReloadDoneProps {

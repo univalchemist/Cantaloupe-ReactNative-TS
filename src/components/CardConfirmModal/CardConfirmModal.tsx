@@ -1,16 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, ViewStyle, TouchableOpacity} from 'react-native';
-import {COLORS} from '@theme/color';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+// eslint-disable-next-line import/default
+import RBSheet from 'react-native-raw-bottom-sheet';
+
+import {ConfirmCardDetail} from '../ConfirmCardDetail/ConfirmCardDetail';
+
+import {COLORS} from '@theme/color';
 import {CardRightArrow} from '@assets/icon';
 import {Typography} from '@components/Typography';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import {ConfirmCardDetail} from '../ConfirmCardDetail/ConfirmCardDetail';
 import {Button} from '@components/Button/Button';
-import {TermsAndConditionText} from '@components/TermsAndConditonText';
+import {TermsAndConditionText} from '@components/TermsAndConditionText';
 
 interface ICardConfirmModalProps {
   handleClose?: () => void;

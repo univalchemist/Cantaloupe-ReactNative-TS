@@ -1,0 +1,362 @@
+enum BakktStatus {
+  cancelled
+  failed
+  success
+}
+
+input ChangePasswordInput {
+  newPassword: String!
+  newPasswordConfirm: String!
+  password: String!
+}
+
+type ChangePasswordResponse {
+  message: String
+  success: Boolean
+}
+
+input CompleteForgotPasswordInput {
+  email: String!
+  newPassword: String!
+  newPasswordConfirm: String!
+  passcode: String!
+}
+
+type CompleteForgotPasswordResponse {
+  message: String!
+}
+
+type ConnectToBakktResponse {
+  signInUrl: String
+}
+
+type CreateOrFindProntoPassResponse {
+  prontoPassId: String!
+  prontoPassURLAndroid: String!
+  prontoPassURLiOS: String!
+}
+
+input CreateUserInput {
+  address1: String!
+  city: String!
+  confirmPassword: String!
+  country: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  mobile: String!
+  password: String!
+  postal: String!
+  state: String!
+}
+
+type CreateUserResponse {
+  accessToken: String
+  isAuth0: Boolean
+  message: String
+  success: Boolean
+}
+
+type DetectExistingMobileNumberResponse {
+  isExistingMobileNumber: Boolean!
+  message: String
+}
+
+type DetectExistingUserResponse {
+  isExistingUser: Boolean
+  message: String
+}
+
+type FinalizeBakktResponse {
+  success: Boolean!
+}
+
+type ForgotPasswordResponse {
+  isAuth0: Boolean!
+  message: String!
+  success: Boolean!
+}
+
+input GetReplenishmentsInput {
+  cardId: Int!
+  endTime: String!
+  maxRows: Int!
+  startTime: String!
+}
+
+input GetTransactionHistoryInput {
+  cardId: Int
+  endTime: String!
+  maxRows: Int!
+  startTime: String!
+}
+
+type GetUserResponse {
+  address1: String
+  bakktConnectionStatus: BakktStatus
+  carrierId: Int
+  city: String
+  consumerId: Int
+  consumerTypeId: Int
+  country: String
+  created: String
+  email: String
+  firstName: String
+  id: String
+  isAuth0: Boolean
+  lastName: String
+  mobile: String
+  postal: String
+  preferredCommType: Int
+  registered: Boolean
+  state: String
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type LoginUserResponse {
+  accessToken: String
+  address1: String
+  bakktConnectionStatus: BakktStatus
+  carrierId: Int
+  city: String
+  consumerId: Int
+  consumerTypeId: Int
+  country: String
+  created: String
+  email: String
+  firstName: String
+  id: String
+  isAuth0: Boolean
+  lastName: String
+  mobile: String
+  postal: String
+  preferredCommType: Int
+  registered: Boolean
+  state: String
+}
+
+scalar Long
+
+type Mutation {
+  changePassword(input: ChangePasswordInput!): ChangePasswordResponse!
+  completeForgotPassword(input: CompleteForgotPasswordInput!): CompleteForgotPasswordResponse!
+  connectToBakkt: ConnectToBakktResponse!
+  createOrFindProntoPass(cardId: Int!): CreateOrFindProntoPassResponse!
+  createUser(input: CreateUserInput): CreateUserResponse!
+  finalizeBakkt(status: BakktStatus!): FinalizeBakktResponse!
+  forgotPassword(email: String!): ForgotPasswordResponse!
+  registerPayrollDeductCard(cardNumber: String!, securityCode: String!): RegisterPayrollDeductCardResponse
+  registerStoredValueCard(cardNumber: String!, consumerId: Int, makePrimary: Boolean, securityCode: String!): RegisterStoredValueCardResponse
+  registerUnclaimedStoredValueCard: RegisterUnclaimedStoredValueCardResponse
+  requestC2PReplenish(input: RequestC2PReplenishInput!): RequestC2PReplenishResponse
+  setupReplenish(input: SetupReplenishInput!): SetupReplenishResponse
+  updatePrimaryStoredValueCard(input: UpdatePrimaryStoredValueCardInput!): UpdatePrimaryStoredValueCardResponse
+  updateReplenish(input: UpdateReplenishInput!): UpdateReplenishResponse
+  updateUser(input: UpdateUserInput!): UpdateUserResponse!
+  verifyUser(input: VerifyUserInput!): VerifyUserResponse!
+}
+
+type PrepaidAccount {
+  balance: Float
+  cardId: Int
+  cardNum: String
+  cardType: String
+  currencyCd: String
+  discount: Float
+  mfoEligible: Boolean
+  points: Int
+  primary: Boolean
+  promoTotal: Float
+  replenishTotal: Float
+}
+
+type Query {
+  detectExistingMobileNumber(mobile: String!): DetectExistingMobileNumberResponse!
+  detectExistingUser(email: String!): DetectExistingUserResponse!
+  getPaymentMethods: [PrepaidAccount]!
+  getReplenishmentInfo(cardId: Int!, replenishmentId: Long!): [ReplenishmentInfo]
+  getReplenishments(input: GetReplenishmentsInput): [Replenishment]
+  getTransactionHistory(input: GetTransactionHistoryInput!): [Transaction]!
+  getUser: GetUserResponse!
+  loginUser(email: String, password: String): LoginUserResponse!
+  signOut: SignOutResponse!
+  testCookie(input: TestCookieInput): TestCookieResponse!
+  validateCookie: ValidateCookieResponse!
+}
+
+type RegisterPayrollDeductCardResponse {
+  message: String
+  success: Boolean
+}
+
+type RegisterStoredValueCardResponse {
+  message: String
+  success: Boolean
+}
+
+type RegisterUnclaimedStoredValueCardResponse {
+  cardId: Int
+  message: String
+  success: Boolean
+}
+
+type Replenishment {
+  amount: Float
+  currencyCd: String
+  date: String
+  id: Long
+  info: [ReplenishmentInfo]
+  replenishedCard: String
+  type: String
+}
+
+type ReplenishmentInfo {
+  currencyCd: String
+  priority: Int
+  replenishAmount: Long
+  replenishCardKey: String
+  replenishCardNum: String
+  replenishDate: String
+  replenishId: String
+  replenishThreshold: Int
+  replenishType: Int
+}
+
+input RequestC2PReplenishInput {
+  amount: Int!
+  cardId: Int!
+  merchantTransactionId: String!
+  replenCount: Int
+  replenishSecurityCode: Int!
+  replenishType: Int!
+  srcDpaId: String!
+  threshold: Int
+  transactionCurrencyCode: String!
+  xSrcCxFlowId: String!
+}
+
+type RequestC2PReplenishResponse {
+  message: String
+  success: Boolean
+}
+
+input SetupReplenishInput {
+  address1: String!
+  amount: Int!
+  cardId: Int!
+  city: String!
+  country: String!
+  postal: String!
+  replenishCardNumber: String!
+  replenishExpMonth: Int!
+  replenishExpYear: Int!
+  replenishSecurityCode: String!
+  replenishType: Int!
+  state: String!
+  threshold: Int
+}
+
+type SetupReplenishResponse {
+  message: String
+  success: Boolean
+}
+
+type SignOutResponse {
+  success: Boolean!
+}
+
+input TestCookieInput {
+  id: String!
+}
+
+type TestCookieResponse {
+  message: String!
+}
+
+type Transaction {
+  address1: String
+  address2: String
+  cardNumber: String
+  cashback: Float
+  city: String
+  companyName: String
+  country: String
+  currencyCd: String
+  date: String
+  discount: Float
+  id: String
+  isDebit: Boolean
+  location: String
+  postal: String
+  purchase: Float
+  replenish: Float
+  state: String
+  type: String
+}
+
+input UpdatePrimaryStoredValueCardInput {
+  cardId: Int
+  consumerId: Int
+}
+
+type UpdatePrimaryStoredValueCardResponse {
+  message: String
+  success: Boolean
+}
+
+input UpdateReplenishInput {
+  address1: String
+  amount: Int!
+  cardId: Int!
+  city: String
+  country: String
+  postal: String
+  replenCount: Int!
+  replenishCardNumber: String
+  replenishExpMonth: Int
+  replenishExpYear: Int
+  replenishId: Long!
+  replenishSecurityCode: String
+  replenishType: Int!
+  state: String
+  threshold: Int
+}
+
+type UpdateReplenishResponse {
+  message: String
+  success: Boolean
+}
+
+input UpdateUserInput {
+  address1: String!
+  city: String!
+  country: String!
+  firstName: String!
+  lastName: String!
+  mobile: String!
+  postal: String!
+  preferredCommType: Int
+  state: String!
+}
+
+type UpdateUserResponse {
+  message: String
+  success: Boolean
+}
+
+type ValidateCookieResponse {
+  isValid: Boolean!
+}
+
+input VerifyUserInput {
+  email: String!
+  passcode: String!
+}
+
+type VerifyUserResponse {
+  result: Boolean!
+}

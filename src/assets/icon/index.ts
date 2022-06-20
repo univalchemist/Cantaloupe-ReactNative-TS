@@ -9,12 +9,14 @@ import Google from './google.svg';
 import Facebook from './facebook.svg';
 import Apple from './apple.svg';
 import ProfileIcon from './ProfileIcon.svg';
+import Logout from './Logout.svg';
 import LogoMoreSmall from './logoMoreSmall.svg';
 import CardImage1 from './card1.svg';
 import RightArrow from './rightArrow.svg';
 import PrepaidCardLogo from './prepaidCardLogo.svg';
 import PayrollDeductCardLogo from './payrollDeductCardLogo.svg';
 import InfoIcon from './infoIcon.svg';
+import EditIcon from './editIcon.svg';
 import EmptyCardLogo from './emptyCardLogo.svg';
 import MapIcon from './mapIcon.svg';
 import HistoryIcon from './historyIcon.svg';
@@ -74,6 +76,8 @@ export {
   RightArrow,
   PrepaidCardLogo,
   PayrollDeductCardLogo,
+  EditIcon,
+  Logout,
   InfoIcon,
   EmptyCardLogo,
   MapIcon,

@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
 import {Typography} from '@components/index';
 import {COLORS} from '@theme/color';
 import {BackArrow} from '@assets/icon';

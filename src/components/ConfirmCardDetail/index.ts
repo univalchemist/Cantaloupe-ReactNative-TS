@@ -1,0 +1,1 @@
+export {ConfirmCardDetail} from './ConfirmCardDetail';

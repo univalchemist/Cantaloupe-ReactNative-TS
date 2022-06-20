@@ -12,3 +12,5 @@ export type {
   CreateOrFindProntoPassResponse,
   RegisterStoredValueCardPassResponse,
 };
+
+export * from './autoReload.generated';

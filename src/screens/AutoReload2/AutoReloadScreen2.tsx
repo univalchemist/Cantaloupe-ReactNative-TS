@@ -1,9 +1,15 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useMemo} from 'react';
+// eslint-disable-next-line import/default
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {StyleSheet, View} from 'react-native';
-import {AutoReload2Props} from '../../navigation/TabNavigator';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+import {AutoReload2Props, CardScreensParamList} from '@navigation/TabNavigator';
 import {COLORS} from '@theme/color';
-import {useNavigation} from '@react-navigation/native';
 import {GradientScrollingWrapper} from '@components/GradientWrapper';
 import {CardImage} from '@components/CardImage/CardImage';
 import {
@@ -14,11 +20,6 @@ import {
 } from '@assets/icon';
 import {Typography} from '@components/Typography';
 import {CardAmountDropDown, GoBackHeader, Separator} from '@components/index';
-
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import {AutoReloadSwitch} from '@components/AutoReloadSwitch/AutoReloadSwitch';
 import {Card} from '@components/CardType';
 import {ManuallyEnterCardText} from '@components/ManuallyEnterCardText';
@@ -26,8 +27,10 @@ import {ChooseCard} from '@components/ChooseCard';
 import {CardConfirmModal} from '@components/CardConfirmModal';
 
 const AutoReloadScreen2 = ({}: AutoReload2Props) => {
+  const route = useRoute<RouteProp<CardScreensParamList, 'AutoReload2'>>();
   const [enableAutoReload, setEnableAutoReload] = useState(true);
   const [selectedBank, setSelectedBank] = useState();
+  const card = useMemo(() => route.params.card, [route]);
 
   const [items, setItems] = useState([
     {label: '$5', value: '50'},
@@ -66,7 +69,7 @@ const AutoReloadScreen2 = ({}: AutoReload2Props) => {
           <Card
             CardLogo={<CardImage width={wp('33.33%')} height={hp('10.52%')} />}
             style={styles.cardTypeStyle}
-            balance={'$50'}
+            balance={card.balance ?? ''}
             cardNumber={'More card •• 5743'}
             hideRightArrow={true}
           />
@@ -104,7 +107,7 @@ const AutoReloadScreen2 = ({}: AutoReload2Props) => {
           refRBSheet={refRBSheet}
           handleConfirm={() => {
             refRBSheet?.current?.close();
-            navigation.navigate('AutoReload3', {selectedBank});
+            navigation.navigate('AutoReload3', {selectedBank, card});
           }}
         />
       </View>

@@ -1,0 +1,25 @@
+overwrite: true
+schema: https://api-more-dev.mycantaloupe.com/graphql
+documents: './src/**/*.gql'
+generates:
+  src/apollo-endpoints/generated/apollo-helpers.ts:
+    plugins:
+      - 'typescript-apollo-client-helpers'
+  src/apollo-endpoints/generated/types.ts:
+    - 'typescript'
+  src/:
+    preset: 'near-operation-file'
+    presetConfig:
+      extension: '.generated.tsx'
+      baseTypesPath: 'apollo-endpoints/generated/types.ts'
+    plugins:
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withHooks: true
+  src/apollo-endpoints/generated/graphql.schema.json:
+    plugins:
+      - 'introspection'
+  src/apollo-endpoints/generated/graphql.schema.graphql:
+    plugins:
+      - schema-ast

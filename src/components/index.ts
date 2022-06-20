@@ -6,16 +6,13 @@ import {CardAmountDropDown} from './CardAmountDropDown/CardAmountDropDown';
 import {CardDetail} from './CardDetail';
 import {CardImage} from './CardImage';
 import {CardType} from './CardType';
-
 import {Carousel} from './Carousel';
 import {Checkbox} from './Checkbox';
 import {FloatLabelTextField} from './FloatLabelTextField';
 import {GradientScrollingWrapper} from './GradientWrapper';
 import {GoBackHeader} from './GoBackHeader';
 import {Header} from './Header';
-
 import {ModalAlert} from './ModalAlert';
-
 import {PaymentMethodCard} from './PaymentMethodCard';
 import {ReloadCardDone} from './ReloadCardDone';
 import {ReloadCardImage} from './ReloadCardImage';

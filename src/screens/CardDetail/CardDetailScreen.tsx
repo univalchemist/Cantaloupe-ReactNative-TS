@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+
 import {COLORS} from '@theme/color';
 import {ManuallyReloadIcon, RightArrow} from '@assets/icon';
 import {
@@ -21,7 +22,6 @@ import {
   CreateOrFindProntoPassResponse,
 } from '@apollo-endpoints/index';
 import {handlePassFromURL} from '@helpers/passManager';
-
 import {CardDetailsScreenProp} from '@navigation/TabNavigator';
 
 const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
@@ -40,7 +40,7 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
   }, [passURL]);
 
   const handleAutoReloadButtonPressed = () => {
-    navigation.navigate('AutoReload1');
+    navigation.navigate('AutoReload1', {card: route.params.card});
   };
 
   const didPressAddToWallet = () => {
@@ -82,8 +82,8 @@ const CardDetailScreen = ({route, navigation}: CardDetailsScreenProp) => {
             )}
           </View>
           <AutoReload
-            balance="50"
-            onPress={() => handleAutoReloadButtonPressed()}
+            balance={balance}
+            onPress={handleAutoReloadButtonPressed}
           />
           <TouchableOpacity
             style={styles.manuallyReloadContainer}
@@ -112,12 +112,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  innerContainer: {marginHorizontal: 20, marginBottom: 25},
+  innerContainer: {marginHorizontal: 20, marginVertical: 10},
   cardImageContainer: {
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 25,
+    marginTop: 15,
   },
   balanceContainer: {
     flexDirection: 'row',

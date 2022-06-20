@@ -1,1 +1,1 @@
-export {AutoReloadSwitch} from '.AutoReloadSwitch';
+export {AutoReloadSwitch} from './AutoReloadSwitch';
